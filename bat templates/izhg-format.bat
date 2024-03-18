@@ -1,0 +1,2 @@
+IziProjectsManager -t
+pause

@@ -1,0 +1,32 @@
+{
+  "guid": "1cc30110-bb35-4c73-8e24-b6fbfc8fe5e3",
+  "csprojs": [
+    {
+      "guid": "6e20ed6f-19fc-40eb-95c1-561028600a1b",
+      "fileName": "IziProjectsManager.csproj",
+      "pathRelative": "Console\\IziProjectsManager.csproj"
+    },
+    {
+      "guid": "f9c6f0c3-ac57-4d25-a4b6-7bb06c2174bb",
+      "fileName": "ConsoleArguments.csproj",
+      "pathRelative": "ConsoleArguments\\ConsoleArguments.csproj"
+    },
+    {
+      "guid": "414b79c8-ae49-4dd4-96ea-b92333eea08a",
+      "fileName": "izhg.FileSystem.netstd21.csproj",
+      "pathRelative": "izhg.io.netstd21\\izhg.FileSystem.netstd21.csproj"
+    },
+    {
+      "guid": "909de795-3acb-4017-8d93-5b5b85c529f6",
+      "fileName": "IziProjectsManagerWebGui.csproj",
+      "pathRelative": "IziProjectsManagerWebGui\\IziProjectsManagerWebGui.csproj"
+    },
+    {
+      "guid": "6fb53988-9fac-40a0-873d-d795c3471adb",
+      "fileName": "izhg.naming.csproj",
+      "pathRelative": "Naming\\izhg.naming.csproj"
+    }
+  ],
+  "asmdefs": [],
+  "unitypacks": []
+}

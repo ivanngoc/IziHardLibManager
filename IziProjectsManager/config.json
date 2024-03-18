@@ -1,0 +1,55 @@
+{
+  "scan": {
+    "unity_packages_caches": [
+      "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject4\\Library\\PackageCache",
+      "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Library\\PackageCache",
+      "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject2\\Library\\PackageCache",
+      "C:\\Users\\ngoc\\Documents\\GitHub\\EntityComponentSystemSamples\\EntitiesSamples\\Library\\PackageCache",
+      "C:\\Users\\ngoc\\Documents\\GitHub\\EntityComponentSystemSamples\\PhysicsSamples\\Library\\PackageCache",
+      "C:\\Users\\ngoc\\Documents\\GitHub\\EntityComponentSystemSamples\\GraphicsSamples\\URPSamples\\Library\\PackageCache"
+    ]
+  },
+  "scan_dirs": [
+    "C:\\.izhg-lib",
+    "C:\\Users\\ngoc\\Documents\\[Projects] C#"
+  ],
+  "scan_dirs_csproj_lib": [
+  ],
+  "scan_exclude": [
+
+
+  ],
+
+
+  "templates": {
+    "package.json": "C:\\.izhg-lib\\package.json.template",
+    "package.json.meta": "C:\\.izhg-lib\\package.json.meta.template",
+    "csproj": "C:\\.izhg-lib\\izhg.csproj.template",
+    "asmdef": "C:\\.izhg-lib\\izhg.asmdef.template",
+    "asmdef_meta": "C:\\.izhg-lib\\izhg.asmdef.meta.template"
+  },
+
+  "replace_filenames": [
+    {
+      "from": "izhg.pools.abstractions.netstd21.csproj",
+      "to": "izhg.pools.abstractions.netstd21.asmdef.csproj"
+    }
+  ],
+
+  "exclude_package.json": [
+    "C:\\Users\\ngoc\\Documents\\[Projects] C#\\IziHardGamesProxy\\node_modules\\@microsoft\\signalr\\package.json"
+  ],
+
+  "path_pack": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages",
+  "path_view": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages\\com.izihardgames.lib-control.pack\\View\\index.html",
+  "pack_sln": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages\\packs.sln",
+  "sln_all": "C:\\Users\\ngoc\\Documents\\[Projects] C#\\All\\All My Dependecies.sln",
+  "dir_unity_packages_cache": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Library\\PackageCache\\",
+
+
+  "dlls": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages\\Unity3d Dlls\\",
+
+  "unity_lib": {
+    "UnityEngine.CoreModule": "C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages\\Unity3d Dlls\\UnityEngine.CoreModule.dll"
+  }
+}

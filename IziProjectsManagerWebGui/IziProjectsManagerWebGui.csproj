@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectName>IziProjectsManagerWebGui</ProjectName>
+    <ProjectGuid>909de795-3acb-4017-8d93-5b5b85c529f6</ProjectGuid>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="~izhg-dependecies.tmp~\**" />
+    <Content Remove="~izhg-dependecies.tmp~\**" />
+    <EmbeddedResource Remove="~izhg-dependecies.tmp~\**" />
+    <None Remove="~izhg-dependecies.tmp~\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IziProjectsManager\IziProjectsManager.csproj">
+      <Guid>6e20ed6f-19fc-40eb-95c1-561028600a1b</Guid>
+      <ProjectName>IziProjectsManager</ProjectName>
+      <IziTag>28-Nov-23 02:31:08</IziTag>
+    </ProjectReference>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+  </ItemGroup>
+</Project>

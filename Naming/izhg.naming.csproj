@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ProjectName>izhg.naming</ProjectName>
+    <ProjectGuid>6fb53988-9fac-40a0-873d-d795c3471adb</ProjectGuid>
+  </PropertyGroup>
+</Project>

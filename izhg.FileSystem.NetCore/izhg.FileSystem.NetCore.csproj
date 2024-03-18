@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>8681A80E-24CD-479E-B3FF-FBAAEFB77B23</ProjectGuid>
+    <RootNamespace>IziHardGames.ForFileSystem</RootNamespace>
+    <ProductName>izhg.FileSystem.NetCore</ProductName>
+    <Authors>Tran Ngoc Anh</Authors>
+    <Company>IziHardGames</Company>
+    <ProjectName>izhg.FileSystem.NetCore</ProjectName>
+  </PropertyGroup>
+</Project>
+

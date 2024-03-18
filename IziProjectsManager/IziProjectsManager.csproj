@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <Authors>Tran Ngoc Anh</Authors>
+    <ProjectGuid>6e20ed6f-19fc-40eb-95c1-561028600a1b</ProjectGuid>
+    <ProjectName>IziProjectsManager</ProjectName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build" Version="17.7.2" />
+    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.11.230815" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleArguments\ConsoleArguments.csproj" />
+    <ProjectReference Include="..\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
+    <ProjectReference Include="..\Izhg.Lib.Text\Izhg.Lib.Text.csproj">
+      <Guid>6e0c5190-d147-464f-9205-7b1b69b26a24</Guid>
+      <ProjectName>Izhg.Lib.Text</ProjectName>
+      <IziTag>28-Nov-23 02:31:08</IziTag>
+    </ProjectReference>
+    <ProjectReference Include="..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <Guid>414b79c8-ae49-4dd4-96ea-b92333eea08a</Guid>
+      <ProjectName>izhg.FileSystem</ProjectName>
+      <IziTag>28-Nov-23 02:31:08</IziTag>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ProjectName>izhg.FileSystem</ProjectName>
+    <ProjectGuid>414b79c8-ae49-4dd4-96ea-b92333eea08a</ProjectGuid>
+    <RootNamespace>IziHardGames.ForFileSystem</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <DefineConstants>WINDOWS</DefineConstants>
+  </PropertyGroup>
+</Project>
