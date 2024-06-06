@@ -17,6 +17,8 @@ namespace IziProjectsManagerWebGui.Controllers
             return View(context.Csprojs.Include(x => x.Module).ToArray());
         }
 
+        [HttpGet]
+        [Route("Connections")]
         public ActionResult Connections()
         {
             using ModulesDbContext context = new ModulesDbContext();

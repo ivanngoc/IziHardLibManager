@@ -6,11 +6,14 @@
     <Authors>Tran Ngoc Anh</Authors>
     <ProjectGuid>6e20ed6f-19fc-40eb-95c1-561028600a1b</ProjectGuid>
     <ProjectName>IziProjectsManager</ProjectName>
+    <AssemblyName>izhg</AssemblyName>
+    <ApplicationIcon>icons\izhg-ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Build" Version="17.7.2" />
-    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.11.230815" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
+    <PackageReference Include="MongoDB.EntityFrameworkCore" Version="7.0.0-preview.1" />
+
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleArguments\ConsoleArguments.csproj" />
@@ -26,9 +29,32 @@
       <ProjectName>izhg.FileSystem</ProjectName>
       <IziTag>28-Nov-23 02:31:08</IziTag>
     </ProjectReference>
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
+    <ProjectReference Include="..\libs\IziLibrary.Infos\IziLibrary.Infos.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\.gitignore.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\Directory.Build.props.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\izhg.asmdef.meta.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\izhg.asmdef.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\izhg.csproj.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\package.json.meta.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\package.json.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

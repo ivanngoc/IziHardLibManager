@@ -1,0 +1,7 @@
+*/bin/*
+*/.vs/*
+*/obj/*
+
+**/Unity/obj.meta
+**/Abstractions/obj.meta
+**/netstd21/obj.meta

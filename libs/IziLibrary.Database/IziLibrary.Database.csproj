@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>{E406BE49-EE45-4092-80D5-3B8862E05246}</ProjectGuid>
+    <Company>IziHardGames</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DataBase\MongoDB\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
+    <ProjectReference Include="..\..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
+    <ProjectReference Include="..\..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="..\IziLibrary.Infos\IziLibrary.Infos.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F246D67-45D0-4770-8AA3-757BAE03FA5D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props.back = Directory.Build.props.back
+		docker-compose.yml = docker-compose.yml
+		nuget.config.back = nuget.config.back
+	EndProjectSection
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsManager", "IziProjectsManager\IziProjectsManager.csproj", "{6E20ED6F-19FC-40EB-95C1-561028600A1B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.naming", "Naming\izhg.naming.csproj", "{6FB53988-9FAC-40A0-873D-D795C3471ADB}"
@@ -18,6 +26,22 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.FileSystem.NetCore", "izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj", "{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleArguments", "ConsoleArguments\ConsoleArguments.csproj", "{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.ClassLibrary.NetStd21", "Template.ClassLibrary.NetStd21\Template.ClassLibrary.NetStd21.csproj", "{2990408A-DB16-432B-AA7A-E675CF395219}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{80801DDA-E138-41F4-BBE2-00DB5870F29A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FE0CD154-D4D9-4D66-AB2E-3A087CA7E736}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibraryApiGate", "src\IziLibraryApiGate\IziLibraryApiGate.csproj", "{99432EFB-94F5-4240-85B9-D3E05DFAE8DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Database", "libs\IziLibrary.Database\IziLibrary.Database.csproj", "{E406BE49-EE45-4092-80D5-3B8862E05246}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Infos", "libs\IziLibrary.Infos\IziLibrary.Infos.csproj", "{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.lib-control.contracts", "%IZHG_ROOT%\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj", "{B061E062-DAB4-467B-B4BF-8D58CAADFECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,9 +81,37 @@ Global
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2990408A-DB16-432B-AA7A-E675CF395219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2990408A-DB16-432B-AA7A-E675CF395219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2990408A-DB16-432B-AA7A-E675CF395219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2990408A-DB16-432B-AA7A-E675CF395219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E406BE49-EE45-4092-80D5-3B8862E05246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E406BE49-EE45-4092-80D5-3B8862E05246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E406BE49-EE45-4092-80D5-3B8862E05246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E406BE49-EE45-4092-80D5-3B8862E05246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E20ED6F-19FC-40EB-95C1-561028600A1B} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{909DE795-3ACB-4017-8D93-5B5B85C529F6} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{E406BE49-EE45-4092-80D5-3B8862E05246} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{B061E062-DAB4-467B-B4BF-8D58CAADFECB} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F86D174B-190A-4572-AC93-551DB1CFA836}

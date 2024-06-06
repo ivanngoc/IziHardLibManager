@@ -1,5 +1,14 @@
 <Project>
   <PropertyGroup>
-    <MSBuildProjectExtensionsPath>$(ProjectExtensionsPathForSpecifiedProject)</MSBuildProjectExtensionsPath>
-  </PropertyGroup>
+    <!--<BaseOutputPath>$(IZHG_BUILDS_ROOT)\Output\$(ProjectName)\$(Configuration)</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(IZHG_BUILDS_ROOT)\Intermediate\$(ProjectName)</BaseIntermediateOutputPath>-->
+
+    <!-- Define the base directory for intermediate output files -->
+    <BaseIntermediateOutputPath>C:\builds\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+
+    <!-- Define the base directory for final output files -->
+    <BaseOutputPath>C:\builds\$(MSBuildProjectName)\bin\</BaseOutputPath>
+    
+    <MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)extensions</MSBuildProjectExtensionsPath>
+</PropertyGroup>
 </Project>

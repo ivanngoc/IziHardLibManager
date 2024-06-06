@@ -1,0 +1,6 @@
+@IziLibraryApiGate_HostAddress = http://localhost:5069
+
+GET {{IziLibraryApiGate_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

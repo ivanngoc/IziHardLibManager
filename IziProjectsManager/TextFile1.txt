@@ -1,0 +1,2 @@
+﻿izhg new *template_name*
+izhg ensure

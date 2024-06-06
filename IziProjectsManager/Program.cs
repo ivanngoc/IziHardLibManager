@@ -8,6 +8,8 @@ using IziHardGames.FileSystem.NetStd21;
 using IziHardGames.Projects.DataBase;
 using IziHardGames.Projects.DataBase.Models;
 using IziHardGames.Projects.Sln;
+using CommandLine;
+using static IziHardGames.Projects.DataBase.ConstantsForIziProjects;
 
 namespace IziHardGames.Projects
 {
@@ -25,7 +27,11 @@ namespace IziHardGames.Projects
         {
             Console.WriteLine($"Version:{ArgumentsReader.MAGIC}");
 
-            if (args.Length == 1)
+            if (await ExecuteUnariCommandAsync(args))
+            {
+
+            }
+            else if (args.Length == 1)
             {
                 if (Guid.TryParse(args[0], out var guid))
                 {
@@ -50,64 +56,68 @@ namespace IziHardGames.Projects
                     return;
                 }
             }
-
-            var dir = new DirectoryInfo("C:\\.izhg-lib");
-            //var dirs = dir.GetDirectories().Where(x => x.Name.StartsWith("com."));
-            //foreach (var item in dirs)
-            //{
-            //    await IziEnsurePackageJson.EnsurePackageJson(item);
-            //}
-
-            //await Execute(new string[] { "--restore_junctions_asmdef=\"\"", "--target_path=\"\\\"" });
-            //await IziProjectsFormatters.FormatJsonPackagesAsync(dir).ConfigureAwait(false);
-            //await IziProjectsFormatters.FormatAsmdefsNestedAsync(dir).ConfigureAwait(false);
-
-            if (args.Length != 0)
-            {
-                //DirectoryInfo info = new DirectoryInfo(@"C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Assets\\[Project] GameProject3\\Scripts");
-                //await IziProjectsValidations.FormatProjectDir(info);
-                //Console.ReadKey();
-                await Execute(args);
-            }
             else
             {
-                if (false) await IziProjectsFinding.FindAllFromConfig();
-                if (false) await SlnMappedFile.Test1();
-                if (false) await SlnMappedFile.Test0();
-                if (false) await IziProjectsFormatters.FormatJsonPackagesAsync(new DirectoryInfo("C:\\.izhg-lib"));
-                if (false) await IziEnsureSlnPack.EnsureDependecies();
-                if (false) await IziEnsurePackageJson.EnsureDependeciesInPackageJson();
-                if (false) await IziProjectsValidations.FixNestedPackageJson(new DirectoryInfo("C:\\.izhg-lib"));
-
-                if (false) await IziEnsurePackageJson.EnsurePackageJsonAuthorMe(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
-                if (false) await IziEnsureCsproj.RegenerateByTemplate(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
-                if (false) IziEnsureCsproj.EnsureAuthorIsMe(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
-                if (false) IziEnsureCsproj.EnsureProjectName(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
-                
-                if (true) await ModulesDbContext.InitAsync();
-                if (true) await IziUnityCache.InitilizeAsync();
-
-                if (false) await IziEnsureCsproj.EnsureGuidInDataBase();
-                if (false) await IziEnsureAsmdef.EnsureReferencesToUnityDll();
-                if (false) await IziEnsureAsmdef.EnsureAsmdefDependeciesInCsproj();
-                if (false) await IziEnsureCsproj.EnsureProjectReferenceMetaGuid();
-                if (false) await IziProjectsActualization.UpdateSlnAllDependecie();
-
-                if (false) await IziProjectsActualization.UpdateCsprojByUnityAsmdefs();
-                if (false) await IziProjectsActualization.UpdatePackAsync(null);
-                if (false) await IziProjectsOperations.CorrespondAsmdefToCsprojAsync();
 
 
+                var dir = new DirectoryInfo("C:\\.izhg-lib");
+                //var dirs = dir.GetDirectories().Where(x => x.Name.StartsWith("com."));
+                //foreach (var item in dirs)
+                //{
+                //    await IziEnsurePackageJson.EnsurePackageJson(item);
+                //}
 
+                //await Execute(new string[] { "--restore_junctions_asmdef=\"\"", "--target_path=\"\\\"" });
+                //await IziProjectsFormatters.FormatJsonPackagesAsync(dir).ConfigureAwait(false);
+                //await IziProjectsFormatters.FormatAsmdefsNestedAsync(dir).ConfigureAwait(false);
 
-                if (false) await InfoCsproj.TestAsync();
-                if (false) await InfoCsproj.TestAsync();
-                if (false) await InfoCsproj.TestAsync3();
-
-                if (false)
+                if (args.Length != 0)
                 {
-                    CollectInfo ci = new CollectInfo();
-                    await ci.ExecuteAsync();
+                    //DirectoryInfo info = new DirectoryInfo(@"C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Assets\\[Project] GameProject3\\Scripts");
+                    //await IziProjectsValidations.FormatProjectDir(info);
+                    //Console.ReadKey();
+                    await Execute(args);
+                }
+                else
+                {
+                    if (false) await IziProjectsFinding.FindAllFromConfig();
+                    if (false) await SlnMappedFile.Test1();
+                    if (false) await SlnMappedFile.Test0();
+                    if (false) await IziProjectsFormatters.FormatJsonPackagesAsync(new DirectoryInfo("C:\\.izhg-lib"));
+                    if (false) await IziEnsureSlnPack.EnsureDependecies();
+                    if (false) await IziEnsurePackageJson.EnsureDependeciesInPackageJson();
+                    if (false) await IziProjectsValidations.FixNestedPackageJson(new DirectoryInfo("C:\\.izhg-lib"));
+
+                    if (false) await IziEnsurePackageJson.EnsurePackageJsonAuthorMe(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
+                    if (false) await IziEnsureCsproj.RegenerateByTemplate(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
+                    if (false) IziEnsureCsproj.EnsureAuthorIsMe(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
+                    if (false) IziEnsureCsproj.EnsureProjectName(new DirectoryInfo("C:\\Users\\ngoc\\Documents\\[Unity] Projects\\GameProject3\\Packages"));
+
+                    if (true) await ModulesDbContext.InitAsync();
+                    if (true) await IziUnityCache.InitilizeAsync();
+
+                    if (false) await IziEnsureCsproj.EnsureGuidInDataBase();
+                    if (false) await IziEnsureAsmdef.EnsureReferencesToUnityDll();
+                    if (false) await IziEnsureAsmdef.EnsureAsmdefDependeciesInCsproj();
+                    if (false) await IziEnsureCsproj.EnsureProjectReferenceMetaGuid();
+                    if (false) await IziProjectsActualization.UpdateSlnAllDependecie();
+
+                    if (false) await IziProjectsActualization.UpdateCsprojByUnityAsmdefs();
+                    if (false) await IziProjectsActualization.UpdatePackAsync(null);
+                    if (false) await IziProjectsOperations.CorrespondAsmdefToCsprojAsync();
+
+
+
+
+                    if (false) await InfoCsproj.TestAsync();
+                    if (false) await InfoCsproj.TestAsync();
+                    if (false) await InfoCsproj.TestAsync3();
+
+                    if (false)
+                    {
+                        CollectInfo ci = new CollectInfo();
+                        await ci.ExecuteAsync();
+                    }
                 }
             }
             Console.WriteLine("ProgramEND");
@@ -254,6 +264,24 @@ namespace IziHardGames.Projects
             {
                 await IziProjectsOperations.InitUnityPackage(directory, name).ConfigureAwait(false);
             }
+        }
+
+        private static async Task<bool> ExecuteUnariCommandAsync(string[] args)
+        {
+            if (args.Length > 0)
+            {
+                if (args[0][0] == '-') return false;
+                if (args[0] == UnariCommands.FIX_JUNCT)
+                {
+                    IziProjectsOperations.FixJunctions();
+                    return true;
+                }
+                else
+                {
+                    throw new NotImplementedException(args[0]);
+                }
+            }
+            else return false;
         }
     }
 }

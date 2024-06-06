@@ -5,7 +5,13 @@
     <ProjectName>IziProjectsManagerWebGui</ProjectName>
     <ProjectGuid>909de795-3acb-4017-8d93-5b5b85c529f6</ProjectGuid>
     <OutputType>Exe</OutputType>
+    <UserSecretsId>68f50bab-3e42-4978-aa53-9aed03259851</UserSecretsId>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="~izhg-dependecies.tmp~\**" />
     <Content Remove="~izhg-dependecies.tmp~\**" />
@@ -18,6 +24,13 @@
       <ProjectName>IziProjectsManager</ProjectName>
       <IziTag>28-Nov-23 02:31:08</IziTag>
     </ProjectReference>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
+    
+    <PackageReference Include="Grpc.AspNetCore"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
   </ItemGroup>
 </Project>
