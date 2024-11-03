@@ -21,7 +21,7 @@ namespace IziHardGames.Projects
                 infoDll = await IziProjectsActualization.UpdateInfoDllAsync(directory, fullPath).ConfigureAwait(false);
                 if (infoDll.IsChanged)
                 {
-                    using ModulesDbContext context = new ModulesDbContext();
+                    using ModulesDbContextV1 context = new ModulesDbContextV1();
                     await context.AddOrUpdateAsync(infoDll).ConfigureAwait(false);
                     await context.SaveChangesAsync().ConfigureAwait(false);
                 }

@@ -3,10 +3,10 @@
 	public class ProjectInfo
     {
         private InfoCsproj proj;
-        private InfoAsmdef item;
+        private OldInfoAsmdef item;
         public bool IsPaired => proj != null && item != null;
 
-        public ProjectInfo(InfoCsproj proj, InfoAsmdef item)
+        public ProjectInfo(InfoCsproj proj, OldInfoAsmdef item)
         {
             this.proj = proj;
             this.item = item;

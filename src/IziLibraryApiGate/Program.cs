@@ -1,5 +1,9 @@
-
+using IziHardGames.IziLibrary.Commands.AtDataBase;
+using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace IziLibraryApiGate
 {
@@ -12,10 +16,15 @@ namespace IziLibraryApiGate
             // Add services to the container.
 
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<ModulesDbContext>();
+            builder.Services.AddDbContext<ModulesDbContextV1>();
+            builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            IServiceConfig.Configure(builder.Services);
+
+            builder.Services.AddSingleton<FillDatabaseWithAsmdef>();
 
             var app = builder.Build();
 

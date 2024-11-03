@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>{7A631478-90CD-41F4-982A-F0A0F8063F41}</ProjectGuid>
+    <Company>IziHardGames</Company>
+    <RootNamespace>IziHardGames.IziLibrary.Metas.Factories</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\.izhg-lib\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
+  </ItemGroup>
+
+</Project>

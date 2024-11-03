@@ -17,7 +17,7 @@ namespace IziHardGames.Projects
         public static async Task EnsureReferencesToUnityDll()
         {
             Console.WriteLine($"Begin {nameof(EnsureReferencesToUnityDll)}");
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var asmdefs = await context.UnityAsmdefs.Include(x => x.Module).ToArrayAsync().ConfigureAwait(false);
             await Config.EnsureLoadedAsync().ConfigureAwait(false);
             var pathUnityCore = (string)(Config.JObj["unity_lib"]!["UnityEngine.CoreModule"]!);
@@ -25,7 +25,7 @@ namespace IziHardGames.Projects
             foreach (var item in asmdefs)
             {
                 FileInfo fileInfo = new FileInfo(item.PathFull);
-                InfoAsmdef infoAsmdef = new InfoAsmdef(fileInfo);
+                OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(fileInfo);
                 await infoAsmdef.ExecuteAsync().ConfigureAwait(false);
                 if (!infoAsmdef.IsNoUnityEngineRefs)
                 {
@@ -76,14 +76,14 @@ namespace IziHardGames.Projects
         {
             Console.WriteLine($"Begin {nameof(EnsureAsmdefDependeciesInCsproj)}");
 
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var asmdefs = await context.UnityAsmdefs.Include(x => x.Module).Where(x => !x.IsThirdParty).ToArrayAsync().ConfigureAwait(false);
             var thirdParty = await context.UnityAsmdefs.Include(x => x.Module).Where(x => x.IsThirdParty).ToArrayAsync().ConfigureAwait(false);
 
             foreach (var item in asmdefs)
             {
                 FileInfo fileInfo = new FileInfo(item.PathFull);
-                InfoAsmdef infoAsmdef = new InfoAsmdef(fileInfo);
+                OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(fileInfo);
                 await infoAsmdef.ExecuteAsync().ConfigureAwait(false);
                 var csproj = context.GetCorrespondCsproj(item);
 
@@ -153,7 +153,7 @@ namespace IziHardGames.Projects
 
         public static async Task EnsureAsmdefFormatSingle(FileInfo file)
         {
-            InfoAsmdef asmdef = new InfoAsmdef(file);
+            OldInfoAsmdef asmdef = new OldInfoAsmdef(file);
             await asmdef.ExecuteAsync().ConfigureAwait(false);
 
             if (asmdef.isIzhgGuidPresented)
@@ -178,15 +178,15 @@ namespace IziHardGames.Projects
                 string text = await File.ReadAllTextAsync(fileInfo.FullName);
                 var jObj = JsonNode.Parse(text)!.AsObject();
                 //var meta = jObj[InfoAsmdef.PROP_REF_HRF]!.AsArray();
-                var refs = jObj[InfoAsmdef.PROP_REFS]!.AsArray();
+                var refs = jObj[OldInfoAsmdef.PROP_REFS]!.AsArray();
 
                 //isNeedToOverrideFile = meta.Count != refs.Count;
-                using ModulesDbContext context = new ModulesDbContext();
+                using ModulesDbContextV1 context = new ModulesDbContextV1();
 
                 JsonArray jsonArray = new JsonArray();
                 for (int i = 0; i < refs.Count; i++)
                 {
-                    var guid = InfoAsmdef.FindGuid(refs[i]!);
+                    var guid = OldInfoAsmdef.FindGuid(refs[i]!);
                     var dep = context.UnityAsmdefs.Include(x => x.Module).FirstOrDefault(x => x.Module!.Guid == guid);
                     string hrf = "NOT_FOUNDED_IN_DATA_BASE";
                     if (dep != null)
@@ -195,7 +195,7 @@ namespace IziHardGames.Projects
                     }
                     jsonArray.Add(new JsonObject() { [guid.ToString("N")] = hrf });
                 }
-                jObj[InfoAsmdef.PROP_REF_HRF] = jsonArray;
+                jObj[OldInfoAsmdef.PROP_REF_HRF] = jsonArray;
                 await File.WriteAllTextAsync(fileInfo.FullName, jObj.ToJsonString(Shared.jOptions));
             }
             else throw new FileNotFoundException(fileInfo.FullName);
@@ -238,9 +238,9 @@ namespace IziHardGames.Projects
         }
         public static async Task EnsureDependeciesJunctionsAsync(DirectoryInfo directory, DirectoryInfo targetDir, FileInfo rootAsmdef)
         {
-            InfoAsmdef infoAsmdef = new InfoAsmdef(rootAsmdef);
+            OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(rootAsmdef);
             await infoAsmdef.ExecuteAsync().ConfigureAwait(false);
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
 
             foreach (var item in infoAsmdef.Refs)
             {
@@ -305,7 +305,7 @@ namespace IziHardGames.Projects
             REPEAT:
             Console.WriteLine($"{nameof(EnsureDependeciesJunctionsAsync)}. directory:{packagesDir.FullName}. TargetDir:{targetDir.FullName}");
             var dirs = new List<DirectoryInfo>();
-            var asmdefs = packagesDir.SelectAllFilesBeneath().Where(x => InfoAsmdef.IsValidExtension(x.Extension));
+            var asmdefs = packagesDir.SelectAllFilesBeneath().Where(x => OldInfoAsmdef.IsValidExtension(x.Extension));
             Console.WriteLine($"Founded asmdefs:{Environment.NewLine}{asmdefs.Select(x => x.FullName).Aggregate((x, y) => x + Environment.NewLine + y)}");
             bool repeat = false;
 
@@ -323,9 +323,9 @@ namespace IziHardGames.Projects
         /// <returns></returns>
         public static async Task<bool> EnsureDependeciesJunctionsAsync(FileInfo asmdefSource, DirectoryInfo target)
         {
-            InfoAsmdef infoAsmdef = new InfoAsmdef(asmdefSource);
+            OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(asmdefSource);
             await infoAsmdef.ExecuteAsync().ConfigureAwait(false);
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             bool isChanges = false;
 
             foreach (var guidAsString in infoAsmdef.Refs)

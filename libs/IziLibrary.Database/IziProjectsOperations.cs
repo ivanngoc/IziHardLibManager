@@ -18,7 +18,7 @@ namespace IziHardGames.Projects
         {
             foreach (var info in infos)
             {
-                if (info is InfoAsmdef asmdef)
+                if (info is OldInfoAsmdef asmdef)
                 {
                     var currentDir = info.FileInfo!.Directory!;
                     if (!info.IsPaired)
@@ -63,7 +63,7 @@ namespace IziHardGames.Projects
                 }
             }
         }
-        public static void CreateCsproj(DirectoryInfo rootDir, InfoAsmdef asmdef)
+        public static void CreateCsproj(DirectoryInfo rootDir, OldInfoAsmdef asmdef)
         {
             var projName = asmdef.FileInfo!.Name;
             var template = rootDir.GetFiles().First(x => x.Name == "izhg.csproj.template");
@@ -83,7 +83,7 @@ namespace IziHardGames.Projects
         {
             await IziProjectsOperations.CreateNewAsync(dir).ConfigureAwait(false);
         }
-        public static async Task CreatePackJsonAsync(DirectoryInfo rootDir, InfoAsmdef asmdef)
+        public static async Task CreatePackJsonAsync(DirectoryInfo rootDir, OldInfoAsmdef asmdef)
         {
             var template = new FileInfo(Config.PathTemplatePackJson);
             if (!template.Exists) throw new FileNotFoundException(template.FullName);
@@ -146,7 +146,7 @@ namespace IziHardGames.Projects
 
         public static async Task CorrespondAsmdefToCsprojAsync()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             await context.CorrespondingAsmdefToCsprojAsync().ConfigureAwait(false);
         }
 
@@ -154,7 +154,7 @@ namespace IziHardGames.Projects
         {
             Console.WriteLine($"InitUnityPackage(); directory:{directory.FullName}; name:{name}; {typeof(IziProjectsOperations).FullName}");
             await InfoCsproj.CreateDefault(directory, name).ConfigureAwait(false);
-            await InfoAsmdef.CreateDefault(directory, name).ConfigureAwait(false);
+            await OldInfoAsmdef.CreateDefault(directory, name).ConfigureAwait(false);
             await InfoPackageJson.CreateDefaultAsync(directory, name).ConfigureAwait(false);
             await IziProjectsFinding.CreateDefaultFileAsync(directory).ConfigureAwait(false);
         }
@@ -186,17 +186,17 @@ namespace IziHardGames.Projects
         }
 
         /// <summary>
-        /// <see cref="IziProjectsOperations.CreatePackJsonAsync(DirectoryInfo, InfoAsmdef)"/>
+        /// <see cref="IziProjectsOperations.CreatePackJsonAsync(DirectoryInfo, OldInfoAsmdef)"/>
         /// </summary>
         /// <param name="directory"></param>
         /// <returns></returns>
         public static async Task CreateNewAsync(DirectoryInfo directory)
         {
-            FileInfo? fInfo = directory.GetFiles().FirstOrDefault(x => InfoAsmdef.IsValidExtension(x.Extension));
+            FileInfo? fInfo = directory.GetFiles().FirstOrDefault(x => OldInfoAsmdef.IsValidExtension(x.Extension));
 
             if (fInfo != null)
             {
-                InfoAsmdef infoAsmdef = new InfoAsmdef(fInfo);
+                OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(fInfo);
                 await IziProjectsOperations.CreatePackJsonAsync(directory, infoAsmdef).ConfigureAwait(false);
             }
             else

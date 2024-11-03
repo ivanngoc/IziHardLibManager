@@ -96,7 +96,7 @@ namespace IziHardGames.Projects
             packageJsons.Add(meta.guid, meta);
         }
 
-        public void Add(InfoAsmdef item)
+        public void Add(OldInfoAsmdef item)
         {
             var meta = new IziMetaItem()
             {

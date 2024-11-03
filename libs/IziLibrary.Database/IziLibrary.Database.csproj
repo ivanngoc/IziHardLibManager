@@ -17,7 +17,7 @@
     <ProjectReference Include="..\..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
     <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
     <ProjectReference Include="..\..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
-    <ProjectReference Include="..\IziLibrary.Infos\IziLibrary.Infos.csproj" />
+    <ProjectReference Include="..\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
   </ItemGroup>
 
 </Project>

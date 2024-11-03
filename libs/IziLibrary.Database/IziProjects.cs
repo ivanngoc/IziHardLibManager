@@ -18,7 +18,7 @@ namespace IziHardGames.Projects
             if (type == typeof(IziModelSln)) return (uint)EModuleType.Sln;
             if (type == typeof(InfoSln)) return (uint)EModuleType.Sln;
             if (type == typeof(IziModelUnityAsmdef)) return (uint)EModuleType.UnityAsmdef;
-            if (type == typeof(InfoAsmdef)) return (uint)EModuleType.UnityAsmdef;
+            if (type == typeof(OldInfoAsmdef)) return (uint)EModuleType.UnityAsmdef;
             if (type == typeof(IziModelUnityPackageJson)) return (uint)EModuleType.UnityPackageJson;
             if (type == typeof(InfoPackageJson)) return (uint)EModuleType.UnityPackageJson;
             if (type == typeof(IziModelUnityMeta)) return (uint)EModuleType.UnityMeta;

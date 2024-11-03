@@ -19,7 +19,7 @@ namespace IziHardGames.Projects
         public const string PROP_GUID = "ProjectGuid";
         public ProjectRootElement Proj => proj ?? throw new NullReferenceException();
         private ProjectRootElement? proj;
-        public InfoAsmdef? infoAsmdef;
+        public OldInfoAsmdef? infoAsmdef;
 
         private readonly List<InfoCsproj> nested = new List<InfoCsproj>();
         private readonly List<InfoItem> items = new List<InfoItem>();
@@ -152,13 +152,13 @@ namespace IziHardGames.Projects
             return base.FindDependeciesInFileSystem();
         }
 
-        public void SetPairAsmdef(InfoAsmdef item)
+        public void SetPairAsmdef(OldInfoAsmdef item)
         {
             infoAsmdef = item;
             SetPaired(item);
         }
 
-        public bool TryGetAsmdef(out InfoAsmdef? asmdef)
+        public bool TryGetAsmdef(out OldInfoAsmdef? asmdef)
         {
             var result = infoAsmdef != null;
             asmdef = this.infoAsmdef;
@@ -313,11 +313,11 @@ namespace IziHardGames.Projects
             proj!.AddItem("ProjectReference", refProj.RelativePath());
             proj.Save();
         }
-        public void EnsureRefTo(InfoAsmdef refAsmdef)
+        public void EnsureRefTo(OldInfoAsmdef refAsmdef)
         {
             throw new NotImplementedException();
         }
-        public async Task EnsureRefToAsync(InfoAsmdef refAsmdef, InfoCsproj refProj)
+        public async Task EnsureRefToAsync(OldInfoAsmdef refAsmdef, InfoCsproj refProj)
         {
             throw new System.NotImplementedException();
         }

@@ -83,7 +83,7 @@ namespace IziHardGames.Projects
 
             foreach (var file in files)
             {
-                if (InfoAsmdef.IsValidExtension(file.Extension))
+                if (OldInfoAsmdef.IsValidExtension(file.Extension))
                 {
                     await IziEnsureAsmdef.EnsureAsmdefFormatSingle(file).ConfigureAwait(false);
                 }
@@ -97,10 +97,10 @@ namespace IziHardGames.Projects
         }
         public static async Task FormatAsmdefsAsync(IEnumerable<FileInfo> files)
         {
-            var asmdefs = files.Where(x => string.Equals(x.Extension, InfoAsmdef.EXTENSION, StringComparison.InvariantCultureIgnoreCase));
+            var asmdefs = files.Where(x => string.Equals(x.Extension, OldInfoAsmdef.EXTENSION, StringComparison.InvariantCultureIgnoreCase));
             foreach (var item in asmdefs)
             {
-                InfoAsmdef asmdef = new InfoAsmdef(item);
+                OldInfoAsmdef asmdef = new OldInfoAsmdef(item);
                 await asmdef.ExecuteAsync().ConfigureAwait(false);
                 string guidFile = Path.Combine(asmdef.DirectoryInfo.FullName, $"guid.asmdef.{asmdef.GuidStruct.ToString("N")}.tag");
                 FileInfo fileInfo = new FileInfo(guidFile);

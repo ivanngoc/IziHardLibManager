@@ -11,7 +11,7 @@ namespace IziHardGames.Projects
     {
         public static async Task TrackCsproj()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var myAsmdefs = await context.UnityAsmdefs.Include(x => x.Module).Where(x => !x.IsThirdParty && !x.IsNoUnityEngingeRef).ToArrayAsync();
 
             foreach (var asmdef in myAsmdefs)

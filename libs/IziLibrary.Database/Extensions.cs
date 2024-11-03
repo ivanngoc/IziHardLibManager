@@ -54,7 +54,7 @@ namespace IziLibrary.Database
 
             foreach (var item in infos)
             {
-                if (item is InfoAsmdef || item is InfoCsproj || item is InfoPackageJson)
+                if (item is OldInfoAsmdef || item is InfoCsproj || item is InfoPackageJson)
                 {
                     if (item.IsGuidGenerated) throw new InvalidOperationException($"You must initilize item: {item!.FileInfo!.FullName}");
                     var pathRelative = UtilityForPath.AbsToRelative(infoIziProjectsMeta.DirectoryInfo!, item.FileInfo.FullName);
@@ -63,7 +63,7 @@ namespace IziLibrary.Database
                     {
                         isChanges |= infoIziProjectsMeta.Ensure(infoIziProjectsMeta.csprojs, item.GuidStruct, filename, pathRelative);
                     }
-                    else if (item is InfoAsmdef infoAsmdef)
+                    else if (item is OldInfoAsmdef infoAsmdef)
                     {
                         isChanges |= infoIziProjectsMeta.Ensure(infoIziProjectsMeta.asmdefs, item.GuidStruct, filename, pathRelative);
                     }

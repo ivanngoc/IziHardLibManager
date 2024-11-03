@@ -39,9 +39,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibraryApiGate", "src\Iz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Database", "libs\IziLibrary.Database\IziLibrary.Database.csproj", "{E406BE49-EE45-4092-80D5-3B8862E05246}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Infos", "libs\IziLibrary.Infos\IziLibrary.Infos.csproj", "{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Metas.Linked", "libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj", "{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.lib-control.contracts", "%IZHG_ROOT%\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj", "{B061E062-DAB4-467B-B4BF-8D58CAADFECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Commands.AtDatabase", "IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj", "{8A27AB6F-4159-4469-8DD0-CCFD057DD358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Commands.AtFileSystem", "IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj", "{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Metas.Factory", "IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj", "{7A631478-90CD-41F4-982A-F0A0F8063F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Metas.Asmdef", "IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj", "{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +109,22 @@ Global
 		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B061E062-DAB4-467B-B4BF-8D58CAADFECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +136,10 @@ Global
 		{E406BE49-EE45-4092-80D5-3B8862E05246} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{B061E062-DAB4-467B-B4BF-8D58CAADFECB} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{8A27AB6F-4159-4469-8DD0-CCFD057DD358} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{7A631478-90CD-41F4-982A-F0A0F8063F41} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F86D174B-190A-4572-AC93-551DB1CFA836}

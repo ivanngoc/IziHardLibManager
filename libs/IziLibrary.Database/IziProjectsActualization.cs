@@ -21,7 +21,7 @@ namespace IziHardGames.Projects
             if (!fileInfoSln.Exists) throw new FileNotFoundException();
             InfoSln infoSln = new InfoSln(fileInfoSln);
 
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             //var projs = context.Csprojs.Include(x => x.Module).Where(x => x.IsPackProject).ToArray();
             var projs = context.Csprojs.Include(x => x.Module).ToArray();
 
@@ -42,7 +42,7 @@ namespace IziHardGames.Projects
         {
             Console.WriteLine($"Begin {nameof(UpdateCsprojByUnityAsmdefs)}");
 
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var asmdefs = context.UnityAsmdefs.Include(x => x.Module).ToArray();
 
             foreach (var asmdef in asmdefs)

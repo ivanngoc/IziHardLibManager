@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>{8A27AB6F-4159-4469-8DD0-CCFD057DD358}</ProjectGuid>
+    <Company>IziHardGames</Company>
+    <RootNamespace>IziHardGames.IziLibrary.Commands.AtDataBase</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
+    <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
+  </ItemGroup>
+</Project>

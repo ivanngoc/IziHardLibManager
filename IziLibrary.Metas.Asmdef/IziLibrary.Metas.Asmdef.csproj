@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}</ProjectGuid>
+    <Company>IziHardGames</Company>
+    <RootNamespace>IziHardGames.IziLibrary.Metas.ForAsmdef</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
+  </ItemGroup>
+</Project>

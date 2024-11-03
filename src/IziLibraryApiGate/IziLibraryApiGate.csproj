@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj" />
     <ProjectReference Include="..\..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
   </ItemGroup>
 

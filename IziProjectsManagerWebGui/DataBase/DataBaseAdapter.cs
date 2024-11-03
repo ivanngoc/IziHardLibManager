@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace IziProjectsManagerWebGui.DataBase
 {
 
-    public class DataBaseAdapter : ModulesDbContext
+    public class DataBaseAdapter : ModulesDbContextV1
     {
         public DbSet<IziModelCsproj> Models { get; set; }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IziLibrary.Infos
+﻿namespace IziHardGames.IziLibrary.Metas.Linked
 {
     public class Class1
     {

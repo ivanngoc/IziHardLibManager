@@ -9,11 +9,11 @@ namespace IziHardGames.Projects
 {
     public class InfoUnityMeta : InfoBase
     {
-        private InfoAsmdef infoAsmdef;
-        public InfoAsmdef InfoAsmdef => infoAsmdef;
+        private OldInfoAsmdef infoAsmdef;
+        public OldInfoAsmdef InfoAsmdef => infoAsmdef;
         public const string EXTENSION = ".meta";
 
-        public InfoUnityMeta(FileInfo info, InfoAsmdef infoAsmdef) : base(info)
+        public InfoUnityMeta(FileInfo info, OldInfoAsmdef infoAsmdef) : base(info)
         {
             this.infoAsmdef = infoAsmdef;
         }

@@ -29,8 +29,12 @@
       <ProjectName>izhg.FileSystem</ProjectName>
       <IziTag>28-Nov-23 02:31:08</IziTag>
     </ProjectReference>
+    <ProjectReference Include="..\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj" />
+    <ProjectReference Include="..\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
+    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
+    <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
     <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
-    <ProjectReference Include="..\libs\IziLibrary.Infos\IziLibrary.Infos.csproj" />
+    <ProjectReference Include="..\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="config.json">

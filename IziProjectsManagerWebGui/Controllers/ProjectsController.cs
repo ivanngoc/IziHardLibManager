@@ -13,7 +13,7 @@ namespace IziProjectsManagerWebGui.Controllers
         }
         public ActionResult Csprojs()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             return View(context.Csprojs.Include(x => x.Module).ToArray());
         }
 
@@ -21,7 +21,7 @@ namespace IziProjectsManagerWebGui.Controllers
         [Route("Connections")]
         public ActionResult Connections()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             return View(context.Relations.Include(x => x.From).Include(x => x.To).ToArray());
         }
     }

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}</ProjectGuid>
+    <Company>IziHardGames</Company>
+    <RootNamespace>IziHardGames.IziLibrary.Metas.Linked</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="..\..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="..\..\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
+    <ProjectReference Include="..\..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
+    <ProjectReference Include="..\..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
+  </ItemGroup>
+
+</Project>

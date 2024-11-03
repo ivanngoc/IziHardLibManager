@@ -32,7 +32,7 @@ namespace IziHardGames.Projects
         {
             if (packsln.Exists)
             {
-                using ModulesDbContext context = new ModulesDbContext();
+                using ModulesDbContextV1 context = new ModulesDbContextV1();
 
                 InfoSln infoSln = new InfoSln(packsln);
                 await infoSln.ExecuteAsync().ConfigureAwait(false);
@@ -47,10 +47,10 @@ namespace IziHardGames.Projects
                         {
                             InfoCsproj csproj = new InfoCsproj(fiCsproj);
                             await csproj.ExecuteAsync().ConfigureAwait(false);
-                            var ifAsmdef = fiCsproj.Directory!.GetFiles().FirstOrDefault(x => InfoAsmdef.IsValidExtension(x));
+                            var ifAsmdef = fiCsproj.Directory!.GetFiles().FirstOrDefault(x => OldInfoAsmdef.IsValidExtension(x));
                             if (ifAsmdef != null && ifAsmdef.Exists)
                             {
-                                InfoAsmdef asmdef = new InfoAsmdef(ifAsmdef);
+                                OldInfoAsmdef asmdef = new OldInfoAsmdef(ifAsmdef);
                                 await asmdef.ExecuteAsync().ConfigureAwait(false);
 
                                 foreach (var refGuid in asmdef.Refs)

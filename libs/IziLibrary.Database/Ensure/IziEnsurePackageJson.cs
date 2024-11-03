@@ -46,7 +46,7 @@ namespace IziHardGames.Projects
         /// <returns></returns>
         public static async Task EnsureDependeciesInPackageJson()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var jsons = context.UnityPackageJsons.Include(x => x.Module).ToArray();
 
             foreach (var json in jsons)
@@ -61,9 +61,9 @@ namespace IziHardGames.Projects
                 }
             }
         }
-        public static async Task EnsureDependecies(FileInfo fiPackageJson, ModulesDbContext context)
+        public static async Task EnsureDependecies(FileInfo fiPackageJson, ModulesDbContextV1 context)
         {
-            var files = fiPackageJson.Directory!.SelectAllFilesBeneathExceptLinksDir().Where(x => InfoAsmdef.IsValidExtension(x));
+            var files = fiPackageJson.Directory!.SelectAllFilesBeneathExceptLinksDir().Where(x => OldInfoAsmdef.IsValidExtension(x));
             var pjsonTarget = new InfoPackageJson(fiPackageJson);
             await pjsonTarget.ExecuteAsync().ConfigureAwait(false);
             var json = pjsonTarget.Value;
@@ -71,7 +71,7 @@ namespace IziHardGames.Projects
 
             foreach (var file in files)
             {
-                InfoAsmdef asmdef = new InfoAsmdef(file);
+                OldInfoAsmdef asmdef = new OldInfoAsmdef(file);
                 await asmdef.EnsureExecuted().ConfigureAwait(false);
 
                 foreach (var item in asmdef.Refs)

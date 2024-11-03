@@ -69,7 +69,7 @@ namespace IziHardGames.Projects
         {
             this.Content = await File.ReadAllTextAsync(FileInfo!.FullName);
             // как оказалось в  пакетах Unity asmdef может иметь сразу 2 свойства с одни и тем же именем. Тогда парсер падает. так что если и тут упадет из за этого
-            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="InfoAsmdef.ExecuteAsync"/>.FromBytes()
+            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="OldInfoAsmdef.ExecuteAsync"/>.FromBytes()
             value = JsonNode.Parse(Content)!.AsObject();
             var authorEl = value[PROP_AUTHOR];
             var unity = value[PROP_UNITY];
@@ -228,7 +228,7 @@ namespace IziHardGames.Projects
         {
             var content = await File.ReadAllTextAsync(info!.FullName);
             // как оказалось в  пакетах Unity asmdef может иметь сразу 2 свойства с одни и тем же именем. Тогда парсер падает. так что если и тут упадет из за этого
-            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="InfoAsmdef.ExecuteAsync"/>.FromBytes()
+            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="OldInfoAsmdef.ExecuteAsync"/>.FromBytes()
             var value = JsonNode.Parse(content)!.AsObject();
             var unity = value[PROP_UNITY];
             var unityRelease = value[PROP_UNITY_RELEASE];
@@ -241,7 +241,7 @@ namespace IziHardGames.Projects
         {
             var content = await File.ReadAllTextAsync(info!.FullName);
             // как оказалось в  пакетах Unity asmdef может иметь сразу 2 свойства с одни и тем же именем. Тогда парсер падает. так что если и тут упадет из за этого
-            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="InfoAsmdef.ExecuteAsync"/>.FromBytes()
+            /// то надо использовать <see cref="JsonDocument"/> как в <see cref="OldInfoAsmdef.ExecuteAsync"/>.FromBytes()
             var value = JsonNode.Parse(content)!.AsObject();
             var unity = value[PROP_UNITY];
             var unityRelease = value[PROP_UNITY_RELEASE];

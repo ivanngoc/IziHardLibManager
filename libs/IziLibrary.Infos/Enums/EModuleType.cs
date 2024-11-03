@@ -16,7 +16,7 @@
         Sln = 2,
         /// <summary>
         /// <see cref="IziModelUnityAsmdef"/>
-        /// <see cref="InfoAsmdef"/>
+        /// <see cref="OldInfoAsmdef"/>
         /// </summary>
         UnityAsmdef = 3,
 

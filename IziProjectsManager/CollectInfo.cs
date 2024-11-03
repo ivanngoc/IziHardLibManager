@@ -31,7 +31,7 @@ namespace IziHardGames.Projects
             DirectoryInfo dir = new DirectoryInfo(path);
 
             List<InfoBase> infos = new List<InfoBase>();
-            List<InfoAsmdef> unityCache = new List<InfoAsmdef>();
+            List<OldInfoAsmdef> unityCache = new List<OldInfoAsmdef>();
 
             var relations = new List<InfoRelation>();
             await IziProjectsFinding.MainSearchAsync(dir, infos, 0, relations).ConfigureAwait(false);
@@ -44,7 +44,7 @@ namespace IziHardGames.Projects
             {
                 await IziProjectsFinding.CollectAsmdefsFromCache(config, unityCache);
 
-                var usings = infos.Select(x => x as InfoAsmdef).Where(x => x != null);
+                var usings = infos.Select(x => x as OldInfoAsmdef).Where(x => x != null);
 
                 var intersects = unityCache.Where(x => usings.Any(y => y!.Refs.Contains(x.Guid)));
 
@@ -68,7 +68,7 @@ namespace IziHardGames.Projects
 
         private List<ProjectInfo> Analyz(List<InfoBase> input)
         {
-            Dictionary<string, InfoAsmdef> asmdefs = new Dictionary<string, InfoAsmdef>();
+            Dictionary<string, OldInfoAsmdef> asmdefs = new Dictionary<string, OldInfoAsmdef>();
             Dictionary<string, InfoCsproj> csporjs = new Dictionary<string, InfoCsproj>();
             List<ProjectInfo> result = new List<ProjectInfo>();
 
@@ -76,7 +76,7 @@ namespace IziHardGames.Projects
             {
                 if (item.IsGuidFounded)
                 {
-                    if (item is InfoAsmdef asmdef)
+                    if (item is OldInfoAsmdef asmdef)
                     {
                         if (asmdef.IsGuidFounded)
                         {

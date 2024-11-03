@@ -122,7 +122,7 @@ namespace IziHardGames.Projects.DataBase.Models
     }
 
     /// <summary>
-    /// <see cref="InfoAsmdef"/>
+    /// <see cref="OldInfoAsmdef"/>
     /// </summary>
     public class IziModelUnityAsmdef : IziInProjectUnit
     {
@@ -131,7 +131,7 @@ namespace IziHardGames.Projects.DataBase.Models
         {
 
         }
-        public IziModelUnityAsmdef(InfoAsmdef info) : base(info as InfoBase)
+        public IziModelUnityAsmdef(OldInfoAsmdef info) : base(info as InfoBase)
         {
             this.IsNoUnityEngingeRef = info.IsNoUnityEngineRefs;
         }

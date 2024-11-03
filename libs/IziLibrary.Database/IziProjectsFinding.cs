@@ -16,7 +16,7 @@ namespace IziHardGames.Projects
         public InfoIziProjectsMeta? meta = null;
         public InfoDll? infoDll = null;
         public InfoPackageJson? packageJson = null;
-        public InfoAsmdef? infoAsmdef = null;
+        public OldInfoAsmdef? infoAsmdef = null;
         public InfoUnityMeta? infoUnityMeta = null;
         public InfoCsproj? infoCsproj = null;
         public InfoSln? infoSln = null;
@@ -27,7 +27,7 @@ namespace IziHardGames.Projects
         public const string META_NAME = "iziprojects.json";
         public static IEnumerable<FileInfo> SearchAsmdefsNested(DirectoryInfo dir)
         {
-            var asmdefs = dir.SelectAllFilesBeneath().Where(x => InfoAsmdef.IsValidExtension(x.Extension));
+            var asmdefs = dir.SelectAllFilesBeneath().Where(x => OldInfoAsmdef.IsValidExtension(x.Extension));
             return asmdefs;
         }
         public static async Task SearchOnly(DirectoryInfo dir, List<InfoBase> result, int depth, List<ItemsInFolder> itemsInFolders)
@@ -65,7 +65,7 @@ namespace IziHardGames.Projects
                     {
                         case ".asmdef":
                             {
-                                infoBase = itemsInFolder.infoAsmdef = new InfoAsmdef(fileInfo);
+                                infoBase = itemsInFolder.infoAsmdef = new OldInfoAsmdef(fileInfo);
                                 break;
                             }
                         case ".csproj":
@@ -137,10 +137,10 @@ namespace IziHardGames.Projects
         /// <param name="config"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public static async Task SearchForDependeciesForeignAsync(JsonObject config, List<InfoBase> result, List<InfoAsmdef> unityCache)
+        public static async Task SearchForDependeciesForeignAsync(JsonObject config, List<InfoBase> result, List<OldInfoAsmdef> unityCache)
         {
             var myInfos = result.ToArray();
-            var myAsmdefs = result.Select(x => x as InfoAsmdef).Where(x => x != null).ToArray();
+            var myAsmdefs = result.Select(x => x as OldInfoAsmdef).Where(x => x != null).ToArray();
             var myCsprojs = result.Select(x => x as InfoCsproj).Where(x => x != null);
 
             var dlls = SearchForDlls(config);
@@ -186,7 +186,7 @@ namespace IziHardGames.Projects
             return result;
         }
 
-        public static async Task<List<InfoDependecy>> SearchForForeignAsmdefsDependecies(JsonObject config, IEnumerable<InfoAsmdef> myAsmdefs, List<InfoAsmdef> resultAsmdefs)
+        public static async Task<List<InfoDependecy>> SearchForForeignAsmdefsDependecies(JsonObject config, IEnumerable<OldInfoAsmdef> myAsmdefs, List<OldInfoAsmdef> resultAsmdefs)
         {
             List<InfoDependecy> result = new List<InfoDependecy>();
 
@@ -222,7 +222,7 @@ namespace IziHardGames.Projects
             return result.ToArray();
         }
 
-        public static async Task CollectAsmdefsFromCache(JsonObject config, List<InfoAsmdef> unitCache)
+        public static async Task CollectAsmdefsFromCache(JsonObject config, List<OldInfoAsmdef> unitCache)
         {
             var dir = (string)config["dir_unity_packages_cache"]!;
             DirectoryInfo root = new DirectoryInfo(dir);
@@ -232,7 +232,7 @@ namespace IziHardGames.Projects
 
             foreach (var item in results)
             {
-                if (item is InfoAsmdef asmdef)
+                if (item is OldInfoAsmdef asmdef)
                 {
                     unitCache.Add(asmdef);
                 }
@@ -324,11 +324,11 @@ namespace IziHardGames.Projects
                         throw new System.NotImplementedException($"Project: {item.ToStringInfo()}{Environment.NewLine}No Guid Founded or Path confirmed for:{Environment.NewLine}{x.ToStringInfo()}");
                     });
                 }
-                else if (item is InfoAsmdef asmdef)
+                else if (item is OldInfoAsmdef asmdef)
                 {
                     asmdef.FindConnectionsOwn(result, (x) =>
                     {
-                        return items.Where(x => x is InfoAsmdef).Select(x => x as InfoAsmdef).First(y => string.Compare(y.Guid, x, StringComparison.InvariantCultureIgnoreCase) == 0)!;
+                        return items.Where(x => x is OldInfoAsmdef).Select(x => x as OldInfoAsmdef).First(y => string.Compare(y.Guid, x, StringComparison.InvariantCultureIgnoreCase) == 0)!;
                     });
                 }
                 else if (item is InfoSln sln)
@@ -381,13 +381,13 @@ namespace IziHardGames.Projects
             return list;
         }
 
-        public static async Task FindDependeciesForCsproj(DirectoryInfo root, JsonObject config, List<InfoBase> infos, List<InfoAsmdef> unityPackagesCache)
+        public static async Task FindDependeciesForCsproj(DirectoryInfo root, JsonObject config, List<InfoBase> infos, List<OldInfoAsmdef> unityPackagesCache)
         {
             foreach (var info in infos)
             {
                 if (info is InfoCsproj csproj)
                 {
-                    if (csproj.TryGetAsmdef(out InfoAsmdef asmdef))
+                    if (csproj.TryGetAsmdef(out OldInfoAsmdef asmdef))
                     {
                         if (!asmdef!.IsNoUnityEngineRefs)
                         {
@@ -395,11 +395,11 @@ namespace IziHardGames.Projects
                         }
 
                         var guids = asmdef.Refs;
-                        List<InfoAsmdef> refs = new List<InfoAsmdef>();
+                        List<OldInfoAsmdef> refs = new List<OldInfoAsmdef>();
 
                         foreach (var guid in guids)
                         {
-                            var refAsmdef = infos.Select(x => x as InfoAsmdef).Where(x => x != null).First(x => x!.Guid == guid)!;
+                            var refAsmdef = infos.Select(x => x as OldInfoAsmdef).Where(x => x != null).First(x => x!.Guid == guid)!;
                             refs.Add(refAsmdef);
                         }
 
@@ -457,7 +457,7 @@ namespace IziHardGames.Projects
             FileInfo fileInfo = new FileInfo(pathAbs);
             DirectoryInfo? directoryInfo = fileInfo.Directory!;
             CsprojFindResult result = new CsprojFindResult();
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
 
             bool isActualGuid = default;
             bool isActualPathAbs = default;
@@ -577,7 +577,7 @@ namespace IziHardGames.Projects
                     await item.ExecuteAsync().ConfigureAwait(false);
                     meta.Add(infoCsproj);
                 }
-                else if (item is InfoAsmdef infoAsmdef)
+                else if (item is OldInfoAsmdef infoAsmdef)
                 {
                     await item.ExecuteAsync().ConfigureAwait(false);
                     meta.Add(infoAsmdef);

@@ -13,19 +13,19 @@ namespace IziHardGames.Projects
         public static async Task InitilizeAsync()
         {
             var dirs = Config.DirsUnityCaches;
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
 
             foreach (var dir in dirs)
             {
                 DirectoryInfo info = new DirectoryInfo(dir);
-                var files = info.SelectAllFilesBeneath().Where(x => InfoAsmdef.IsValidExtension(x));
+                var files = info.SelectAllFilesBeneath().Where(x => OldInfoAsmdef.IsValidExtension(x));
 
                 foreach (var file in files)
                 {
-                    Guid guid = await InfoAsmdef.FindGuidFromMetaAsync(file).ConfigureAwait(false);
+                    Guid guid = await OldInfoAsmdef.FindGuidFromMetaAsync(file).ConfigureAwait(false);
                     if (context.UnityAsmdefs.Include(x => x.Module).Any(x => x.Module!.Guid != guid))
                     {
-                        InfoAsmdef infoAsmdef = new InfoAsmdef(file);
+                        OldInfoAsmdef infoAsmdef = new OldInfoAsmdef(file);
                         await infoAsmdef.ExecuteAsync().ConfigureAwait(false);
                         if (!infoAsmdef.IsGuidFounded) continue;
                         infoAsmdef.IsThirdParty = true;
@@ -38,7 +38,7 @@ namespace IziHardGames.Projects
 
         public static bool CheckMissing(Guid guid)
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             return context.IsThirdPartyAsmdef(guid);
         }
     }

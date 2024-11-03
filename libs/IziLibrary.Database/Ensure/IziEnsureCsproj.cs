@@ -54,7 +54,7 @@ namespace IziHardGames.Projects
         }
         public static async Task EnsureGuidInDataBase()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var all = await context.Csprojs.Include(x => x.Module).ToArrayAsync();
 
             foreach (var csproj in all)
@@ -139,7 +139,7 @@ namespace IziHardGames.Projects
         }
         public static async Task EnsureProjectReferenceMetaGuid()
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             var csprojs = await context.Csprojs.ToArrayAsync().ConfigureAwait(false);
 
             foreach (var proj in csprojs)
@@ -216,7 +216,7 @@ namespace IziHardGames.Projects
                 InfoCsproj infoCsproj = new InfoCsproj(fileInfo);
                 await infoCsproj.ExecuteAsync().ConfigureAwait(false);
                 // 2. Add self meta to DataBase
-                using ModulesDbContext context = new ModulesDbContext();
+                using ModulesDbContextV1 context = new ModulesDbContextV1();
                 var existed = context.Csprojs.Include(x => x.Module).FirstOrDefault(x => x.Module!.Guid == infoCsproj.GuidStruct);
                 if (existed != null)
                 {
@@ -249,7 +249,7 @@ namespace IziHardGames.Projects
                 throw new System.InvalidOperationException($"Сначала нужно добавить проект в БД");
             }
 
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             bool isUpdateFile = false;
 
             // 3. Pull Update/Dependecies
@@ -310,7 +310,7 @@ namespace IziHardGames.Projects
 
         private static bool ExistsInDataBaseByGuid(InfoCsproj parent)
         {
-            using ModulesDbContext context = new ModulesDbContext();
+            using ModulesDbContextV1 context = new ModulesDbContextV1();
             if (context.TryFindByGuid(parent.GuidStruct, out var existed))
             {
                 return true;
