@@ -6,6 +6,6 @@ namespace IziHardGames.DotNetProjects
 {
     public interface ICsprojSaver
     {
-        Task SaveToDbAsync(IEnumerable<FileInfo> csprojsFullPaths);
+        Task<int> SaveToDbAsync(IEnumerable<FileInfo> csprojsFullPaths);
     }
 }
