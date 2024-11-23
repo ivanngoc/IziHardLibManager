@@ -16,21 +16,11 @@
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
     <ProjectReference Include="..\ConsoleArguments\ConsoleArguments.csproj" />
-    <ProjectReference Include="..\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
-    <ProjectReference Include="..\Izhg.Lib.Text\Izhg.Lib.Text.csproj">
-      <Guid>6e0c5190-d147-464f-9205-7b1b69b26a24</Guid>
-      <ProjectName>Izhg.Lib.Text</ProjectName>
-      <IziTag>28-Nov-23 02:31:08</IziTag>
-    </ProjectReference>
-    <ProjectReference Include="..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
-    <ProjectReference Include="..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
-      <Guid>414b79c8-ae49-4dd4-96ea-b92333eea08a</Guid>
-      <ProjectName>izhg.FileSystem</ProjectName>
-      <IziTag>28-Nov-23 02:31:08</IziTag>
-    </ProjectReference>
-    <ProjectReference Include="..\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj" />
-    <ProjectReference Include="..\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
     <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
     <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
     <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />

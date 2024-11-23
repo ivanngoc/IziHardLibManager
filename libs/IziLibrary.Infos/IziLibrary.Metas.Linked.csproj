@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
-    <ProjectReference Include="..\..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
-    <ProjectReference Include="..\..\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
     <ProjectReference Include="..\..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
     <ProjectReference Include="..\..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
   </ItemGroup>

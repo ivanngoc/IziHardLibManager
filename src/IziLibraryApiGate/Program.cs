@@ -1,9 +1,7 @@
 using IziHardGames.IziLibrary.Commands.AtDataBase;
 using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Npgsql;
 
 namespace IziLibraryApiGate
 {
@@ -14,8 +12,19 @@ namespace IziLibraryApiGate
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var uid = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_USER_DEV");
+            var pwd = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PASSWORD_DEV");
+            var server = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_SERVER_DEV");
+            var port = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PORT_DEV");
+            var portVal = $";port={port}";
+
+            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database=IziProjectsDbContext";
+
+
+            var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
 
             builder.Services.AddControllers();
+            //builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
             builder.Services.AddDbContext<ModulesDbContextV1>();
             builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -19,18 +19,15 @@
     <None Remove="~izhg-dependecies.tmp~\**" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IziProjectsManager\IziProjectsManager.csproj">
-      <Guid>6e20ed6f-19fc-40eb-95c1-561028600a1b</Guid>
-      <ProjectName>IziProjectsManager</ProjectName>
-      <IziTag>28-Nov-23 02:31:08</IziTag>
-    </ProjectReference>
-    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
-    
-    <PackageReference Include="Grpc.AspNetCore"/>
+
+    <PackageReference Include="Grpc.AspNetCore" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
   </ItemGroup>
 </Project>

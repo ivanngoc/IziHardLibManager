@@ -1,0 +1,1 @@
+setx IZHG_LIB_CONTROL_DIR_FOR_REFS "..\refs" /M

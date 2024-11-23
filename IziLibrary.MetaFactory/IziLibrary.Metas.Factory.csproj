@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\.izhg-lib\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
+    <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
   </ItemGroup>
 
 </Project>

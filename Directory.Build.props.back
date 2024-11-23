@@ -4,11 +4,12 @@
     <BaseIntermediateOutputPath>$(IZHG_BUILDS_ROOT)\Intermediate\$(ProjectName)</BaseIntermediateOutputPath>-->
 
     <!-- Define the base directory for intermediate output files -->
-    <BaseIntermediateOutputPath>C:\builds\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+    <!--<BaseIntermediateOutputPath>C:\builds\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>-->
 
     <!-- Define the base directory for final output files -->
-    <BaseOutputPath>C:\builds\$(MSBuildProjectName)\bin\</BaseOutputPath>
-    
-    <MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)extensions</MSBuildProjectExtensionsPath>
-</PropertyGroup>
+    <!--<BaseOutputPath>C:\builds\$(MSBuildProjectName)\bin\</BaseOutputPath>-->
+
+    <!--<MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)extensions</MSBuildProjectExtensionsPath>-->
+    <IziDirOfRefs></IziDirOfRefs>
+  </PropertyGroup>
 </Project>

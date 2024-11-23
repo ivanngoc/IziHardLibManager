@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
-    <ProjectReference Include="..\..\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
     <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
-    <ProjectReference Include="..\..\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
     <ProjectReference Include="..\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
   </ItemGroup>
 

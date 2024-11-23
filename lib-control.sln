@@ -5,8 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F246D67-45D0-4770-8AA3-757BAE03FA5D}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Packages.props = Directory.Packages.props
 		Directory.Build.props.back = Directory.Build.props.back
+		Directory.Packages.props = Directory.Packages.props
 		docker-compose.yml = docker-compose.yml
 		nuget.config.back = nuget.config.back
 	EndProjectSection
@@ -15,19 +15,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsManager", "IziPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.naming", "Naming\izhg.naming.csproj", "{6FB53988-9FAC-40A0-873D-D795C3471ADB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.FileSystem.netstd21", "izhg.io.netstd21\izhg.FileSystem.netstd21.csproj", "{414B79C8-AE49-4DD4-96EA-B92333EEA08A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.FileSystem.netstd21", "%IZHG_LIB_CONTROL_DIR_FOR_REFS%\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj", "{414B79C8-AE49-4DD4-96EA-B92333EEA08A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsManagerWebGui", "IziProjectsManagerWebGui\IziProjectsManagerWebGui.csproj", "{909DE795-3ACB-4017-8D93-5B5B85C529F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Izhg.Lib.Text", "Izhg.Lib.Text\Izhg.Lib.Text.csproj", "{6E0C5190-D147-464F-9205-7B1B69B26A24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.linq.netstd21", "%IZHG_LIB_CONTROL_DIR_FOR_REFS%\izhg.linq.netstd21\izhg.linq.netstd21.csproj", "{C71F2379-D0B7-44B3-85C6-3C842A295D47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.linq.netstd21", "izhg.linq.netstd21\izhg.linq.netstd21.csproj", "{C71F2379-D0B7-44B3-85C6-3C842A295D47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.FileSystem.NetCore", "%IZHG_LIB_CONTROL_DIR_FOR_REFS%\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj", "{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.FileSystem.NetCore", "izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj", "{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Commands.AtFileSystem", "%IZHG_LIB_CONTROL_DIR_FOR_REFS%\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj", "{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleArguments", "ConsoleArguments\ConsoleArguments.csproj", "{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.ClassLibrary.NetStd21", "Template.ClassLibrary.NetStd21\Template.ClassLibrary.NetStd21.csproj", "{2990408A-DB16-432B-AA7A-E675CF395219}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.ClassLibrary.NetStd21", "%IZHG_LIB_CONTROL_DIR_FOR_REFS%\Template.ClassLibrary.NetStd21\Template.ClassLibrary.NetStd21.csproj", "{2990408A-DB16-432B-AA7A-E675CF395219}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}"
 EndProject
@@ -43,13 +43,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Metas.Linked", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "izhg.lib-control.contracts", "%IZHG_ROOT%\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj", "{B061E062-DAB4-467B-B4BF-8D58CAADFECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Commands.AtDatabase", "IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj", "{8A27AB6F-4159-4469-8DD0-CCFD057DD358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Commands.AtDatabase", "IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj", "{8A27AB6F-4159-4469-8DD0-CCFD057DD358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Commands.AtFileSystem", "IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj", "{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Metas.Factory", "IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj", "{7A631478-90CD-41F4-982A-F0A0F8063F41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Metas.Factory", "IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj", "{7A631478-90CD-41F4-982A-F0A0F8063F41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziLibrary.Metas.Asmdef", "IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj", "{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziLibrary.Metas.Asmdef", "IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj", "{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "refs", "refs", "{708D2557-1640-4BF8-A279-EB4F5F5C2CE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bats", "bats", "{012CD4A2-D932-4E08-8DED-4F2A56AD9A6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +75,6 @@ Global
 		{909DE795-3ACB-4017-8D93-5B5B85C529F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909DE795-3ACB-4017-8D93-5B5B85C529F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909DE795-3ACB-4017-8D93-5B5B85C529F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E0C5190-D147-464F-9205-7B1B69B26A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E0C5190-D147-464F-9205-7B1B69B26A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E0C5190-D147-464F-9205-7B1B69B26A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E0C5190-D147-464F-9205-7B1B69B26A24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C71F2379-D0B7-44B3-85C6-3C842A295D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C71F2379-D0B7-44B3-85C6-3C842A295D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C71F2379-D0B7-44B3-85C6-3C842A295D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,6 +83,10 @@ Global
 		{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8681A80E-24CD-479E-B3FF-FBAAEFB77B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,10 +115,6 @@ Global
 		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A27AB6F-4159-4469-8DD0-CCFD057DD358}.Release|Any CPU.Build.0 = Release|Any CPU
-		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A631478-90CD-41F4-982A-F0A0F8063F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -131,13 +129,19 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E20ED6F-19FC-40EB-95C1-561028600A1B} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{6FB53988-9FAC-40A0-873D-D795C3471ADB} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
+		{414B79C8-AE49-4DD4-96EA-B92333EEA08A} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
 		{909DE795-3ACB-4017-8D93-5B5B85C529F6} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{C71F2379-D0B7-44B3-85C6-3C842A295D47} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
+		{8681A80E-24CD-479E-B3FF-FBAAEFB77B23} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
+		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
+		{F9C6F0C3-AC57-4D25-A4B6-7BB06C2174BB} = {80801DDA-E138-41F4-BBE2-00DB5870F29A}
+		{2990408A-DB16-432B-AA7A-E675CF395219} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
 		{99432EFB-94F5-4240-85B9-D3E05DFAE8DE} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{E406BE49-EE45-4092-80D5-3B8862E05246} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{B061E062-DAB4-467B-B4BF-8D58CAADFECB} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{8A27AB6F-4159-4469-8DD0-CCFD057DD358} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
-		{958D3644-6C45-4EDE-8DAF-3275EDEC8E47} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{7A631478-90CD-41F4-982A-F0A0F8063F41} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 		{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 	EndGlobalSection
