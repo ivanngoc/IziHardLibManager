@@ -40,7 +40,7 @@ namespace IziHardGames.DotNetProjects
             {
                 dirs = new List<string>()
                 {
-                    @"C:\Users\ngoc\Documents"
+                    @"C:\Users\ivan\Documents"
                 };
             }
 

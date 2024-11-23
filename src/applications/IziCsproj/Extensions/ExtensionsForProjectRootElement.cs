@@ -8,6 +8,19 @@ namespace IziHardGames.DotNetProjects.Extensions
 {
     public static class ExtensionsForProjectRootElement
     {
+        public static void RemoveProjectReferences(this ProjectRootElement root)
+        {
+            foreach (var grp in root.ItemGroups)
+            {
+                foreach (var item in grp.Items)
+                {
+                    if (item.ItemType == nameof(ECsprojTag.ProjectReference))
+                    {
+                        grp.RemoveChild(item);
+                    }
+                }
+            }
+        }
         public static IEnumerable<ProjectItemElement> GetProjectReferences(this ProjectRootElement root)
         {
             foreach (var grp in root.ItemGroups)
@@ -87,5 +100,13 @@ namespace IziHardGames.DotNetProjects.Extensions
             return root.Properties.Any(x => x.IsTag(tag));
         }
 
+        public static void AddProjectReference(this ProjectRootElement root, string include, CsprojId? childId)
+        {
+            if (childId.HasValue)
+            {
+                var item = root.AddItem(nameof(ECsprojTag.ProjectReference), include);
+                item.AddMetadata(name: "IziProjId", childId.ToString(), false);
+            }
+        }
     }
 }

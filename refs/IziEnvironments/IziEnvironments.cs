@@ -4,6 +4,7 @@ namespace IziHardGames.Environments
 {
     public static class IziEnvironments
     {
+        public const string IZHG_MODULES = "IZHG_MODULES";
         /// <summary>
         /// рефы для проекта управления библиотеками
         /// </summary>

@@ -23,7 +23,6 @@ namespace IziProjectsDiscoverWebAPI.Controllers
             {
                 var proj = new CsProjectAtDevice()
                 {
-                    Id = default,
                     Device = s.Device,
                     DeviceId = s.Device.Id,
                     PathAbs = fi.FullName,

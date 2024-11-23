@@ -1,4 +1,7 @@
-﻿using Microsoft.Build.Construction;
+﻿using System.Collections;
+using System.IO;
+using IziHardGames.FileSystem.NetStd21;
+using Microsoft.Build.Construction;
 
 namespace IziHardGames.DotNetProjects.Extensions
 {
@@ -13,6 +16,12 @@ namespace IziHardGames.DotNetProjects.Extensions
                 CsprojId = default,
             };
             return res;
+        }
+
+        public static string GetIncludePath(this ProjectItemElement element, FileInfo fileInfo)
+        {
+            var pathAbs = UtilityForPath.GetActualAbsolutePath(element.Include, fileInfo.Directory?.FullName);
+            return pathAbs;
         }
     }
 }

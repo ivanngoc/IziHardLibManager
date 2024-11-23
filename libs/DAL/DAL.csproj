@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ProjectGuid>6357ac0a-eb25-4d67-b253-db6b6e680357</ProjectGuid>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
     <ProjectReference Include="..\..\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj" />
   </ItemGroup>
-
 </Project>

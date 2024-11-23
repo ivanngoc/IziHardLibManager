@@ -27,6 +27,5 @@ namespace IziHardGames.DotNetProjects
             var guid = Guid.Parse(Environment.GetEnvironmentVariable(IziEnvironments.IZHG_DEVICE_GUID));
             return guid;
         }
-
     }
 }

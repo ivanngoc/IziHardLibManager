@@ -35,12 +35,16 @@ namespace IziHardGames.DotNetProjects
 
         public bool Equals(CsprojId other)
         {
-           return this == other;
+            return this == other;
         }
 
         public static CsprojId Create(Guid x)
         {
             return (CsprojId)x;
+        }
+        public static CsprojId? Create(Guid? x)
+        {
+            return x.HasValue ? (CsprojId?)x.Value : null;
         }
     }
 }

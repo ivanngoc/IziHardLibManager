@@ -21,7 +21,7 @@ namespace IziLibraryApiGate
             var port = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PORT_DEV");
             var portVal = $";port={port}";
 
-            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database=IziProjectsDbContext";
+            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database={nameof(IziProjectsDbContext)}; Include Error Detail=true";
 
 
             var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);

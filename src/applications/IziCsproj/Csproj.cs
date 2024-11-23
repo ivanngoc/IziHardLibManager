@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using IziHardGames.DotNetProjects.Extensions;
 using Microsoft.Build.Construction;
 
@@ -29,6 +33,31 @@ namespace IziHardGames.DotNetProjects
             }
             guid = default;
             return false;
+        }
+
+        public IEnumerable<string> GetIncludes()
+        {
+            ProjectRootElement root = global::Microsoft.Build.Construction.ProjectRootElement.Open(FilePathAbsolute);
+
+            foreach (var projReference in root.GetProjectReferences())
+            {
+                var include = projReference.Include;
+                var path = projReference.GetIncludePath(this.FileInfo);
+                yield return path;
+            }
+        }
+
+        public async Task SetChilds(IEnumerable<CsprojRelationAtDevice> childs)
+        {
+            ProjectRootElement root = global::Microsoft.Build.Construction.ProjectRootElement.Open(FilePathAbsolute);
+
+            root.RemoveProjectReferences();
+
+            foreach (var item in childs.OrderBy(x => x.Include))
+            {
+                root.AddProjectReference(item.Include, item.Relation.ChildId);
+            }
+            root.Save(System.Text.Encoding.UTF8);
         }
     }
 }

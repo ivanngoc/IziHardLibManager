@@ -10,6 +10,8 @@ namespace IziLibrary.Database.DataBase.EfCore
         public static Guid desktopVn = Guid.Parse("80afa9a5-f561-4a64-bab1-14654fa76145");
         public static Guid desktopKem = Guid.Parse("429862e8-12d6-470d-8808-592c573e34af");
         public DbSet<EntityCsproj> Csprojs { get; set; }
+        public DbSet<CsprojRelation> Relations { get; set; }
+        public DbSet<CsprojRelationAtDevice> RelationsAtDevice { get; set; }
         public DbSet<CsProjectAtDevice> ProjectsAtDevice { get; set; }
         public DbSet<IziProject> Projects { get; set; }
         public DbSet<Device> Devices { get; set; }
@@ -31,17 +33,35 @@ namespace IziLibrary.Database.DataBase.EfCore
                 x.Property(x => x.EntityCsprojId).HasConversion(x => x.Guid, x => CsprojId.Create(x));
                 x.HasMany(x => x.CsProjectAtDevices).WithOne(x => x.EntityCsproj).HasForeignKey(x => x.EntityCsprojId);
             });
+
             modelBuilder.Entity<CsProjectAtDevice>(x =>
             {
-                x.HasKey(x => x.Id);
+                x.HasKey(x => new { x.DeviceId, x.EntityCsprojId });
                 x.Property(x => x.EntityCsprojId).HasConversion(x => x.Guid, x => CsprojId.Create(x));
+                x.HasOne(x => x.Device).WithMany(x => x.Csprojects).HasForeignKey(x => x.DeviceId);
+            });
+
+            modelBuilder.Entity<CsprojRelation>(x =>
+            {
+                x.HasOne(x => x.Parent).WithMany(x => x.AsChild).HasForeignKey(x => x.ParentId);
+                x.HasOne(x => x.Child).WithMany(x => x.AsParent).HasForeignKey(x => x.ChildId);
+                x.HasKey(x => x.Id);
+                x.HasIndex(x => new { x.ParentId, x.ChildId }).HasFilter($"\"{nameof(CsprojRelation.ParentId)}\" IS NOT NULL AND \"{nameof(CsprojRelation.ChildId)}\" IS NOT NULL");//.HasDatabaseName("IX_");
+                x.Property(x => x.ParentId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
+                x.Property(x => x.ChildId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
+            });
+
+            modelBuilder.Entity<CsprojRelationAtDevice>(x =>
+            {
+                x.HasKey(x => x.Id);
+                x.HasOne(x => x.Relation).WithMany(x => x.RelationsAtDevice).HasForeignKey(x => x.RelationId);
+                x.HasOne(x => x.Device).WithMany(x => x.Relations).HasForeignKey(x => x.DeviceId);
+                x.HasIndex(x => x.Include);
             });
         }
 
         public async Task Init()
         {
-
-
             Devices.Add(new Device()
             {
                 Id = laptop,
@@ -96,6 +116,8 @@ namespace IziLibrary.Database.DataBase.EfCore
         public int DeviceSettingsId { get; set; }
         [JsonIgnore] public DeviceSettings Settings { get; set; } = null!;
         public ICollection<IziProject> IziProjects { get; set; } = null!;
+        public ICollection<CsProjectAtDevice> Csprojects { get; set; } = null!;
+        public ICollection<CsprojRelationAtDevice> Relations { get; set; } = null!;
     }
 
     public class DeviceSettings

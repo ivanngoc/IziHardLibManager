@@ -21,6 +21,7 @@ namespace IziHardGames.FileSystem.NetStd21
             // replace %ENV_NAME% but not $(ENV_NAME)
             var result = Environment.ExpandEnvironmentVariables(path);
             result = path.Replace(@$"$({IZHG_LIB_CONTROL_DIR_FOR_REFS})", Environment.GetEnvironmentVariable(IZHG_LIB_CONTROL_DIR_FOR_REFS));
+            result = path.Replace(@$"$({IZHG_MODULES})", Environment.GetEnvironmentVariable(IZHG_LIB_CONTROL_DIR_FOR_REFS));
             if (IsRelative(result))
             {
                 return RelativeToAbsolute(basePath, result);

@@ -12,33 +12,45 @@ namespace IziHardGames.DotNetProjects
     {
         public async Task<int> SaveToDbAsync(IEnumerable<FileInfo> fileInfos)
         {
+            int count = default;
+            var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
             foreach (var fileInfo in fileInfos)
             {
                 var meta = new Csproj(fileInfo);
 
                 if (meta.TryGetGuid(out var guid))
                 {
+                    Console.WriteLine($"{guid}: {fileInfo.FullName}");
+                    if (guid == default) throw new FormatException(fileInfo.FullName);
                     var id = (CsprojId)guid;
                     var toProcess = await context.Csprojs.Where(x => x.EntityCsprojId == id).Include(x => x.CsProjectAtDevices).FirstOrDefaultAsync();
-
+                    CsProjectAtDevice? csProjectAtDevice = null;
                     if (toProcess == null)
                     {
                         toProcess = new EntityCsproj()
                         {
                             EntityCsprojId = id,
+                            CsProjectAtDevices = new List<CsProjectAtDevice>(),
                         };
-                        var projAtDevice = new CsProjectAtDevice()
+                        csProjectAtDevice = new CsProjectAtDevice()
                         {
-                            DeviceId = IziEnvironmentsHelper.GetCurrentDeviceGuid(),
-                            EntityCsprojId = id,
+                            DeviceId = idDevice,
                             EntityCsproj = toProcess,
-                            PathAbs = meta.FilePathAbsolute,
+                            EntityCsprojId = id,
                         };
+                        toProcess.CsProjectAtDevices.Add(csProjectAtDevice);
                         context.Csprojs.Add(toProcess);
                     }
+                    if (csProjectAtDevice == null)
+                    {
+                        csProjectAtDevice = toProcess.CsProjectAtDevices.FirstOrDefault(x => x.DeviceId == idDevice);
+                    }
+                    ArgumentNullException.ThrowIfNull(csProjectAtDevice);
+                    csProjectAtDevice.PathAbs = meta.FilePathAbsolute;
                 }
             }
-            return await context.SaveChangesAsync();
+            count += await context.SaveChangesAsync();
+            return count;
         }
     }
 }

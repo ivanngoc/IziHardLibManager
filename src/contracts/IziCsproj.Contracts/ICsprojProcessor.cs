@@ -6,5 +6,10 @@ namespace IziHardGames.DotNetProjects
     {
         Task EnsureRequiredMetasAsync(ICsproj csproj);
         Task BeautifyAsync(ICsproj csproj);
+        Task<int> FillRelationsAsParentsAsync();
+        Task<int> FillRelationsAsChildsByIncludeFileExistingAsync();
+        Task<int> FillRelationsAsChildsByCsprojFileNameAsync();
+        Task<int> ReplaceChildIncludeAsync(string find, string replace);
+        Task<int> FormatDependecies();
     }
 }

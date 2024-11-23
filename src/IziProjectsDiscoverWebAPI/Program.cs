@@ -20,7 +20,7 @@ namespace IziProjectsDiscoverWebAPI
             var port = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PORT_DEV");
             var portVal = $";port={port}";
 
-            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database=IziProjects";
+            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database={nameof(IziProjectsDbContext)}";
 
 
             var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
