@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
     <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="..\..\..\libs\DAL\DAL.csproj" />
     <ProjectReference Include="..\..\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj" />
     <ProjectReference Include="..\..\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
     <ProjectReference Include="..\..\domains\IziCsproj.Domain\IziCsproj.Domain.csproj" />

@@ -1,12 +1,9 @@
-using IziHardGames.DotNetProjects;
-using IziHardGames.IziLibrary.Commands.AtDataBase;
-using IziHardGames.Projects;
-using IziHardGames.Projects.DataBase;
+using IziHardGames.IziLibrary.ForCsproj;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
-namespace IziLibraryApiGate
+namespace IziProjectsDiscoverWebAPI
 {
     public class Program
     {
@@ -15,31 +12,25 @@ namespace IziLibraryApiGate
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            // Add services to the container.
             var uid = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_USER_DEV");
             var pwd = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PASSWORD_DEV");
             var server = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_SERVER_DEV");
             var port = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PORT_DEV");
             var portVal = $";port={port}";
 
-            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database=IziProjectsDbContext";
+            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database=IziProjects";
 
 
             var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
 
-            builder.Services.AddControllers();
             builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
-            builder.Services.AddDbContext<ModulesDbContextV1>();
-            builder.Services.AddDbContext<ModulesDbContextV2>();
+            builder.Services.AddScoped<Dicsover>();
+            builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
-            builder.Services.AddScoped<ICsprojProcessor, CsprojProcessor>();
-            builder.Services.AddScoped<ICsprojSaver, CsprojSaver>();
-
-            IServiceConfig.Configure(builder.Services);
-
-            builder.Services.AddSingleton<FillDatabaseWithAsmdef>();
 
             var app = builder.Build();
 
@@ -51,6 +42,7 @@ namespace IziLibraryApiGate
             }
 
             app.UseAuthorization();
+
 
             app.MapControllers();
 

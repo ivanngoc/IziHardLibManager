@@ -8,7 +8,7 @@ namespace IziLibraryApiGate.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class CsprojsController(ICsproSearcher searcher, ICsprojProcessor processor) : ControllerBase
+    public class CsprojsController(ICsproSearcher searcher, ICsprojProcessor processor, ICsprojSaver saver) : ControllerBase
     {
         [HttpGet(nameof(DiscoverAndEnsureRequiredMetas))]
         public async Task<IActionResult> DiscoverAndEnsureRequiredMetas()
@@ -26,6 +26,7 @@ namespace IziLibraryApiGate.Controllers
         public async Task<IActionResult> DiscoverAndSaveToDb()
         {
             var csprojsFullPaths = searcher.FindMyCsprojs();
+            await saver.SaveToDbAsync(csprojsFullPaths);
             return Ok();
         }
     }

@@ -7,4 +7,7 @@
     <Author>Tran Ngoc Anh</Author>
     <Company>IziHardGames</Company>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\refs\IziEnvironments\IziEnvironments.csproj" />
+  </ItemGroup>
 </Project>

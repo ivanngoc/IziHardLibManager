@@ -37,5 +37,10 @@ namespace IziHardGames.DotNetProjects
         {
            return this == other;
         }
+
+        public static CsprojId Create(Guid x)
+        {
+            return (CsprojId)x;
+        }
     }
 }

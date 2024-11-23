@@ -1,0 +1,6 @@
+@IziProjectsDiscoverWebAPI_HostAddress = http://localhost:5140
+
+GET {{IziProjectsDiscoverWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

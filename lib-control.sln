@@ -58,19 +58,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "applications", "application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domains", "domains", "{E82AAB01-93D2-45AF-AEE4-A14F22D964A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziCsproj.Application", "src\applications\IziCsproj\IziCsproj.Application.csproj", "{58072E02-67CF-45EF-9787-773E4809B539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziCsproj.Application", "src\applications\IziCsproj\IziCsproj.Application.csproj", "{58072E02-67CF-45EF-9787-773E4809B539}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "contracts", "contracts", "{31E89F88-E26A-4CAA-81C5-E8804BD9E728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziCsproj.Contracts", "src\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj", "{E2D2269C-388E-496E-AA57-C970EFE710E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziCsproj.Contracts", "src\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj", "{E2D2269C-388E-496E-AA57-C970EFE710E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziCsproj.Domain", "src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj", "{BDA22602-828E-4FD2-A9F6-AC18E40FD17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziCsproj.Domain", "src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj", "{BDA22602-828E-4FD2-A9F6-AC18E40FD17A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziProjectsManager.Common", "src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj", "{6DC51A6E-F525-4AC6-96CB-A989C840C0EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsManager.Common", "src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj", "{6DC51A6E-F525-4AC6-96CB-A989C840C0EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csproj.UnitTests", "tests\Csproj.UnitTests\Csproj.UnitTests.csproj", "{E5B07B6D-49BA-4F8F-9E04-D43265C896F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csproj.UnitTests", "tests\Csproj.UnitTests\Csproj.UnitTests.csproj", "{E5B07B6D-49BA-4F8F-9E04-D43265C896F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziEnvironments", "refs\IziEnvironments\IziEnvironments.csproj", "{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziEnvironments", "refs\IziEnvironments\IziEnvironments.csproj", "{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "libs\DAL\DAL.csproj", "{D49DDF30-CEB4-4C2A-B350-CA3EC871667A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDomainForCsproj", "libs\AppDomainForCsproj\AppDomainForCsproj.csproj", "{10E9C868-9796-44C2-9D25-69AA90A98E20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{D5DB4807-3B44-4098-8103-681F2BFB50A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteTempAndObj", "tools\DeleteTempAndObj\DeleteTempAndObj.csproj", "{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsDiscoverWebAPI", "src\IziProjectsDiscoverWebAPI\IziProjectsDiscoverWebAPI.csproj", "{EB491D85-7D54-48EA-B95A-477DB6B669C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +176,22 @@ Global
 		{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49DDF30-CEB4-4C2A-B350-CA3EC871667A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49DDF30-CEB4-4C2A-B350-CA3EC871667A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49DDF30-CEB4-4C2A-B350-CA3EC871667A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49DDF30-CEB4-4C2A-B350-CA3EC871667A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10E9C868-9796-44C2-9D25-69AA90A98E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10E9C868-9796-44C2-9D25-69AA90A98E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10E9C868-9796-44C2-9D25-69AA90A98E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10E9C868-9796-44C2-9D25-69AA90A98E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -196,6 +222,10 @@ Global
 		{6DC51A6E-F525-4AC6-96CB-A989C840C0EA} = {31E89F88-E26A-4CAA-81C5-E8804BD9E728}
 		{E5B07B6D-49BA-4F8F-9E04-D43265C896F1} = {FE0CD154-D4D9-4D66-AB2E-3A087CA7E736}
 		{B33D9F1C-3DD5-4419-84A6-58CF9F407D5A} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
+		{D49DDF30-CEB4-4C2A-B350-CA3EC871667A} = {80801DDA-E138-41F4-BBE2-00DB5870F29A}
+		{10E9C868-9796-44C2-9D25-69AA90A98E20} = {BFDC67A1-7FDE-4FD9-BAE3-1FB302794C16}
+		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C} = {D5DB4807-3B44-4098-8103-681F2BFB50A0}
+		{EB491D85-7D54-48EA-B95A-477DB6B669C1} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F86D174B-190A-4572-AC93-551DB1CFA836}

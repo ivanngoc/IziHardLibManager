@@ -10,25 +10,39 @@ namespace IziHardGames.DotNetProjects
     {
         public IEnumerable<FileInfo> FindMyCsprojs()
         {
-            var excludeDirs = new List<string>()
+            var excludeDirs = Enumerable.Empty<string>();
+            var dirs = Enumerable.Empty<string>();
+            var excludeFilenameStartsWith = Enumerable.Empty<string>();
+
+            if (IziEnvironmentsHelper.IsMyPcVnn())
             {
-                "C:\\Users\\ngoc\\Documents\\GitHub",
-                "C:\\Users\\ngoc\\Documents\\GCE",
-                "C:\\Users\\ngoc\\Documents\\Packages\\zlib-1.2.12"
+                excludeDirs = new List<string>()
+                {
+                    "C:\\Users\\ngoc\\Documents\\GitHub",
+                    "C:\\Users\\ngoc\\Documents\\GCE",
+                    "C:\\Users\\ngoc\\Documents\\Packages\\zlib-1.2.12"
+                };
+
+                dirs = new List<string>()
+                {
+                    @"C:\Users\ngoc\Documents"
+                };
+
+                excludeFilenameStartsWith = new List<string>()
+                {
+                    "UnityEditor.TestRunner",
+                    "UnityEngine.TestRunner",
+                    "Unity.",
+                };
             };
 
-            var dirs = new List<string>()
+            if (IziEnvironmentsHelper.IsMyPcVnn())
             {
-                @"C:\Users\ngoc\Documents"
-            };
-
-            var excludeFilenameStartsWith = new List<string>()
-            {
-                "UnityEditor.TestRunner",
-                "UnityEngine.TestRunner",
-                "Unity.",
-            };
-
+                dirs = new List<string>()
+                {
+                    @"C:\Users\ngoc\Documents"
+                };
+            }
 
             IEnumerable<FileInfo> csprojsFullPaths = Enumerable.Empty<FileInfo>();
             foreach (var dir in dirs)
