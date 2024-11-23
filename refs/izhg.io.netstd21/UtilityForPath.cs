@@ -1,11 +1,32 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+using static IziHardGames.Environments.IziEnvironments;
 
 namespace IziHardGames.FileSystem.NetStd21
 {
     public static class UtilityForPath
     {
+        /// <summary>
+        /// C:\buildstemp\$(ProjectName)\$(Configuration)\bin, где $(Configuration) - переменная среды <br/>
+        /// $(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string GetActualAbsolutePath(string path, [NotNull] string? basePath)
+        {
+            if (string.IsNullOrEmpty(basePath)) throw new ArgumentNullException(nameof(basePath));
+            // replace %ENV_NAME% but not $(ENV_NAME)
+            var result = Environment.ExpandEnvironmentVariables(path);
+            result = path.Replace(@$"$({IZHG_LIB_CONTROL_DIR_FOR_REFS})", Environment.GetEnvironmentVariable(IZHG_LIB_CONTROL_DIR_FOR_REFS));
+            if (IsRelative(result))
+            {
+                return RelativeToAbsolute(basePath, result);
+            }
+            return path;
+        }
         public static bool IsValidPath(string path, out DirectoryInfo info)
         {
             info = new DirectoryInfo(path);
@@ -14,9 +35,10 @@ namespace IziHardGames.FileSystem.NetStd21
         public static bool IsValidPath(string path) => throw new System.NotImplementedException();
         public static bool IsRelative(string path)
         {
+            return !Path.IsPathRooted(path);
             if (path.Contains(':')) return false;
             // относительный переход может быть как вперед так и назад
-            //if (path.StartsWith("..\\")) return true;
+            //if (basePath.StartsWith("..\\")) return true;
             return true;
         }
 
@@ -74,9 +96,10 @@ namespace IziHardGames.FileSystem.NetStd21
             }
             return current.FullName + separator + relativePath.Substring(offset);
         }
-        public static string RelativeToAbsolute(string fullName, string pathToItem)
+        public static string RelativeToAbsolute(string basePath, string relativePath)
         {
-            throw new NotImplementedException();
+            string fullPath = Path.GetFullPath(Path.Combine(basePath, relativePath));
+            return fullPath;
         }
 
         [WindowsDirSeparator]

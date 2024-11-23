@@ -1,15 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ProjectGuid>{7A631478-90CD-41F4-982A-F0A0F8063F41}</ProjectGuid>
+    <ProjectGuid>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</ProjectGuid>
     <Company>IziHardGames</Company>
     <RootNamespace>IziHardGames.IziLibrary.Metas.Factories</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
   </ItemGroup>
-
 </Project>

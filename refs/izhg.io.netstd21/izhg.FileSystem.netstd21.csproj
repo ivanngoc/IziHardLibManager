@@ -4,11 +4,15 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ProjectName>izhg.FileSystem</ProjectName>
-    <ProjectGuid>414b79c8-ae49-4dd4-96ea-b92333eea08a</ProjectGuid>
+    <ProjectGuid>42792273-6319-4d5b-a70d-176fc2286c71</ProjectGuid>
     <RootNamespace>IziHardGames.ForFileSystem</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
     <DefineConstants>WINDOWS</DefineConstants>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IziEnvironments\IziEnvironments.csproj" />
+  </ItemGroup>
 </Project>

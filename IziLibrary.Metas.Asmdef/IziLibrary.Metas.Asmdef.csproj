@@ -2,9 +2,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ProjectGuid>{2DCE6DA7-2620-4721-BA3C-426BD7ECF9DB}</ProjectGuid>
+    <ProjectGuid>b8682796-fe92-4c41-8a95-2dcaedf2103a</ProjectGuid>
     <Company>IziHardGames</Company>
     <RootNamespace>IziHardGames.IziLibrary.Metas.ForAsmdef</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />

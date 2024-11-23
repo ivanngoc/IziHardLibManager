@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+    <ProjectGuid>23cad98d-4c36-42af-82b7-df031fd04929</ProjectGuid>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include=".template.config\template.json" />
   </ItemGroup>
-
 </Project>

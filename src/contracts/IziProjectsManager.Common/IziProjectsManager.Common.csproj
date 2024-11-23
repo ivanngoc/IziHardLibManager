@@ -2,9 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <ProjectName>izhg.naming</ProjectName>
-    <ProjectGuid>d3b7d18e-ce75-43ba-b2dd-7b6d463dad72</ProjectGuid>
+    <ProjectGuid>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</ProjectGuid>
+    <RootNamespace>IziHardGames.IziProjectsManager.Common</RootNamespace>
     <Author>Tran Ngoc Anh</Author>
     <Company>IziHardGames</Company>
   </PropertyGroup>

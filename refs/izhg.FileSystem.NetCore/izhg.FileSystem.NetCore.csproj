@@ -3,12 +3,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ProjectGuid>8681A80E-24CD-479E-B3FF-FBAAEFB77B23</ProjectGuid>
+    <ProjectGuid>1cf58f92-33ee-4334-be6b-37bcecc446e4</ProjectGuid>
     <RootNamespace>IziHardGames.ForFileSystem</RootNamespace>
     <ProductName>izhg.FileSystem.NetCore</ProductName>
     <Authors>Tran Ngoc Anh</Authors>
     <Company>IziHardGames</Company>
     <ProjectName>izhg.FileSystem.NetCore</ProjectName>
+    <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
 </Project>
-

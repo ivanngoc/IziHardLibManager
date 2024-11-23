@@ -2,10 +2,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-    <Authors>Tran Ngoc Anh</Authors>
+    <ProjectGuid>b38d0494-3cb8-4779-afae-455bb55ddfb5</ProjectGuid>
     <Company>IziHardGames</Company>
-    <ProjectGuid>1b18e20d-5128-4a26-ad86-8d37ddc4b74e</ProjectGuid>
-    <ProjectName>izhg.linq.netstd21</ProjectName>
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
+  </ItemGroup>
 </Project>

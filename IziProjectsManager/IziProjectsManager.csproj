@@ -4,15 +4,16 @@
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <Authors>Tran Ngoc Anh</Authors>
-    <ProjectGuid>6e20ed6f-19fc-40eb-95c1-561028600a1b</ProjectGuid>
+    <ProjectGuid>afca7a69-9033-4da1-8ad4-aeb0102c2c28</ProjectGuid>
     <ProjectName>IziProjectsManager</ProjectName>
     <AssemblyName>izhg</AssemblyName>
     <ApplicationIcon>icons\izhg-ico.ico</ApplicationIcon>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
     <PackageReference Include="MongoDB.EntityFrameworkCore" Version="7.0.0-preview.1" />
-
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
   <ItemGroup>

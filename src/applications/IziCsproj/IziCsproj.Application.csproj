@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Company>IziHardGames</Company>
+    <ProjectGuid>e64a64c7-bcf0-48d0-92af-795ffa02c2f7</ProjectGuid>
+    <RootNamespace>IziHardGames.DotNetProjects</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+    <ProjectReference Include="..\..\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj" />
+    <ProjectReference Include="..\..\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
+    <ProjectReference Include="..\..\domains\IziCsproj.Domain\IziCsproj.Domain.csproj" />
+  </ItemGroup>
+</Project>

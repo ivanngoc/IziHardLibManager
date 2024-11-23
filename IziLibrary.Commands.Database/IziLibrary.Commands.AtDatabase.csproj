@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ProjectGuid>{8A27AB6F-4159-4469-8DD0-CCFD057DD358}</ProjectGuid>
+    <ProjectGuid>d5dbcf5f-a658-40c1-b83d-057cc17888bd</ProjectGuid>
     <Company>IziHardGames</Company>
     <RootNamespace>IziHardGames.IziLibrary.Commands.AtDataBase</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
     <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />

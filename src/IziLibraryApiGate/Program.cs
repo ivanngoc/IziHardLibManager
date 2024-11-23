@@ -1,6 +1,8 @@
+using IziHardGames.DotNetProjects;
 using IziHardGames.IziLibrary.Commands.AtDataBase;
 using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
 namespace IziLibraryApiGate
@@ -24,12 +26,15 @@ namespace IziLibraryApiGate
             var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
 
             builder.Services.AddControllers();
-            //builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
+            builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
             builder.Services.AddDbContext<ModulesDbContextV1>();
             builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
+            builder.Services.AddScoped<ICsprojProcessor, CsprojProcessor>();
+            builder.Services.AddScoped<ICsprojSaver, CsprojSaver>();
 
             IServiceConfig.Configure(builder.Services);
 

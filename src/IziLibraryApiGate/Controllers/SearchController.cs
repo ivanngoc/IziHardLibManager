@@ -10,6 +10,9 @@ using IziHardGames.Projects.DataBase;
 
 namespace IziLibraryApiGate.Controllers
 {
+    /// <summary>
+    /// Поиск проекта в БД
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class SearchController : ControllerBase
@@ -105,8 +108,8 @@ namespace IziLibraryApiGate.Controllers
         //    return context.Asmdefs.Any(e => e.Id == id);
         //}
 
-        [HttpGet("{substring}")]
-        public IEnumerable<ProjectItem> SearchEverywhere(string substring)
+        [HttpGet("SearchEverywhere")]
+        public IEnumerable<ProjectItem> SearchEverywhere([FromQuery] string substring)
         {
             IEnumerable<ProjectItem> result = Enumerable.Empty<ProjectItem>();
             //result = result.Concat(context.Asmdefs.Where(x => x.FileName.Contains(substring, StringComparison.InvariantCultureIgnoreCase)));

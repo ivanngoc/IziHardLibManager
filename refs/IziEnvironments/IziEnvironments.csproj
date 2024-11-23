@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProjectGuid>eb0769fe-2287-4367-9151-47ce9a6cd916</ProjectGuid>
+    <RootNamespace>IziHardGames.Environments</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
+  </PropertyGroup>
+</Project>

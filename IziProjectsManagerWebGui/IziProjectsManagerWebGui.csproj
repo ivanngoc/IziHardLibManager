@@ -3,15 +3,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ProjectName>IziProjectsManagerWebGui</ProjectName>
-    <ProjectGuid>909de795-3acb-4017-8d93-5b5b85c529f6</ProjectGuid>
+    <ProjectGuid>dc79d77e-dc24-4fe3-ab47-96d2772d865e</ProjectGuid>
     <OutputType>Exe</OutputType>
     <UserSecretsId>68f50bab-3e42-4978-aa53-9aed03259851</UserSecretsId>
+    <Author>Tran Ngoc Anh</Author>
+    <Company>IziHardGames</Company>
   </PropertyGroup>
-
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="~izhg-dependecies.tmp~\**" />
     <Content Remove="~izhg-dependecies.tmp~\**" />
@@ -19,7 +19,6 @@
     <None Remove="~izhg-dependecies.tmp~\**" />
   </ItemGroup>
   <ItemGroup>
-
     <PackageReference Include="Grpc.AspNetCore" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />

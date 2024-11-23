@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ProjectGuid>{5AAE4E05-F910-499F-BA0D-C3224F2DF7DA}</ProjectGuid>
+    <ProjectGuid>79250dad-bbcb-4a69-93fb-8bb99e69934a</ProjectGuid>
     <Company>IziHardGames</Company>
     <RootNamespace>IziHardGames.IziLibrary.Metas.Linked</RootNamespace>
+    <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
     <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
@@ -15,5 +14,4 @@
     <ProjectReference Include="..\..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
     <ProjectReference Include="..\..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
   </ItemGroup>
-
 </Project>
