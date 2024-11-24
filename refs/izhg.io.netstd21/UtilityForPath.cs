@@ -1,33 +1,12 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
-using static IziHardGames.Environments.IziEnvironments;
 
 namespace IziHardGames.FileSystem.NetStd21
 {
     public static class UtilityForPath
     {
-        /// <summary>
-        /// C:\buildstemp\$(ProjectName)\$(Configuration)\bin, где $(Configuration) - переменная среды <br/>
-        /// $(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static string GetActualAbsolutePath(string path, [NotNull] string? basePath)
-        {
-            if (string.IsNullOrEmpty(basePath)) throw new ArgumentNullException(nameof(basePath));
-            // replace %ENV_NAME% but not $(ENV_NAME)
-            var result = Environment.ExpandEnvironmentVariables(path);
-            result = path.Replace(@$"$({IZHG_LIB_CONTROL_DIR_FOR_REFS})", Environment.GetEnvironmentVariable(IZHG_LIB_CONTROL_DIR_FOR_REFS));
-            result = path.Replace(@$"$({IZHG_MODULES})", Environment.GetEnvironmentVariable(IZHG_LIB_CONTROL_DIR_FOR_REFS));
-            if (IsRelative(result))
-            {
-                return RelativeToAbsolute(basePath, result);
-            }
-            return path;
-        }
+       
         public static bool IsValidPath(string path, out DirectoryInfo info)
         {
             info = new DirectoryInfo(path);

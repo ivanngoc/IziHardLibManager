@@ -11,5 +11,7 @@ namespace IziHardGames.DotNetProjects
         Task<int> FillRelationsAsChildsByCsprojFileNameAsync();
         Task<int> ReplaceChildIncludeAsync(string find, string replace);
         Task<int> FormatDependecies();
+        Task<int> DistinctRelationsAsync();
+        Task<int> FormatIncludePathToEnvVarBasedPathAsync();
     }
 }

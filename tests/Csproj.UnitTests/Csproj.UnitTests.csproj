@@ -23,11 +23,23 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
-    <ProjectReference Include="..\..\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
-    <ProjectReference Include="..\..\src\applications\IziCsproj\IziCsproj.Application.csproj" />
-    <ProjectReference Include="..\..\src\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj" />
-    <ProjectReference Include="..\..\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
-    <ProjectReference Include="..\..\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
+      <IziProjId>1cf58f92-33ee-4334-be6b-37bcecc446e4</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\applications\IziCsproj\IziCsproj.Application.csproj">
+      <IziProjId>e64a64c7-bcf0-48d0-92af-795ffa02c2f7</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj">
+      <IziProjId>fe1cca0c-f05c-439e-93c2-673656bac4dc</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj">
+      <IziProjId>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
+      <IziProjId>b38d0494-3cb8-4779-afae-455bb55ddfb5</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

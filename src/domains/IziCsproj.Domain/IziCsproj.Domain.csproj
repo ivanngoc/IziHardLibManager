@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ProjectGuid>b38d0494-3cb8-4779-afae-455bb55ddfb5</ProjectGuid>
     <Company>IziHardGames</Company>
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj">
+      <IziProjId>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

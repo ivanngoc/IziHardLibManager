@@ -8,8 +8,14 @@
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
-    <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
-    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
+      <IziProjId>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj">
+      <IziProjId>b8682796-fe92-4c41-8a95-2dcaedf2103a</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
+      <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

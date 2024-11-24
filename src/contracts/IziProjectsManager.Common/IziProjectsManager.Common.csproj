@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ProjectGuid>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</ProjectGuid>
     <RootNamespace>IziHardGames.IziProjectsManager.Common</RootNamespace>
@@ -8,6 +8,8 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\refs\IziEnvironments\IziEnvironments.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\IziEnvironments\IziEnvironments.csproj">
+      <IziProjId>eb0769fe-2287-4367-9151-47ce9a6cd916</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

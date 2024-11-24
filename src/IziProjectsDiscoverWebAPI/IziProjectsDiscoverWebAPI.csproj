@@ -11,7 +11,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\AppDomainForCsproj\AppDomainForCsproj.csproj" />
-    <ProjectReference Include="..\..\libs\DAL\DAL.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\AppDomainForCsproj\AppDomainForCsproj.csproj">
+      <IziProjId>737a73ec-ab27-4933-899a-75b6cb73baea</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\DAL\DAL.csproj">
+      <IziProjId>6357ac0a-eb25-4d67-b253-db6b6e680357</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

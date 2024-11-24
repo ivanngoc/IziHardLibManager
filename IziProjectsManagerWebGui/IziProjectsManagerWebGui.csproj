@@ -30,8 +30,5 @@
     <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
       <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
-      <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
-    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -13,6 +13,5 @@
     <DefineConstants>WINDOWS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IziEnvironments\IziEnvironments.csproj" />
   </ItemGroup>
 </Project>

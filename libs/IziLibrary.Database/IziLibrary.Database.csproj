@@ -11,10 +11,20 @@
     <Folder Include="DataBase\MongoDB\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
-    <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
-    <ProjectReference Include="..\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj">
+      <IziProjId>79250dad-bbcb-4a69-93fb-8bb99e69934a</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
+      <IziProjId>1cf58f92-33ee-4334-be6b-37bcecc446e4</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.linq.netstd21\izhg.linq.netstd21.csproj">
+      <IziProjId>1b18e20d-5128-4a26-ad86-8d37ddc4b74e</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.izhg-lib\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj">
+      <IziProjId>b061e062-dab4-467b-b4bf-8d58caadfecb</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

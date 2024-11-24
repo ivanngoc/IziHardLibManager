@@ -102,20 +102,22 @@ namespace IziHardGames.DotNetProjects
                     if (fi.Exists)
                     {
                         var csprojMeta = new Csproj(fi);
-                        var includes = csprojMeta.GetIncludes().ToArray();
-
-                        foreach (var include in includes)
+                        var projectReferences = csprojMeta.GetProjectReferences().ToArray();
+                        foreach (var projectReference in projectReferences)
                         {
+                            var include = projectReference.Include;
+                            var meta = projectReference.GetMetas();
                             if (string.IsNullOrEmpty(include))
                             {
                                 throw new Exception($"include is null or empty: {include}");
                             }
                             if (dictinary.TryGetValue(include, out var existed))
                             {
-                                throw new Exception($"Duplicate: {include}. {JsonSerializer.Serialize(existed)}");
+                                throw new Exception($"Duplicate: {projectReference}. {JsonSerializer.Serialize(existed)}");
                             }
 
-                            var existedRelation = csproj.AsParent.FirstOrDefault(x => x.RelationsAtDevice.Any(y => y.Include == include));
+                            var existedRelation = csproj.AsParent.Where(x => x.ChildId.HasValue)
+                                                                 .FirstOrDefault(x => meta.IsDefault() ? false : meta.CsprojId == x.ChildId!.Value || x.RelationsAtDevice.Any(y => y.Include == include));
                             if (existedRelation == null)
                             {
                                 existedRelation = new CsprojRelation()
@@ -123,8 +125,8 @@ namespace IziHardGames.DotNetProjects
                                     Id = default,
                                     ParentId = csproj.EntityCsprojId,
                                     Parent = csproj,
+                                    ChildId = meta.CsprojId,
                                     Child = default!,
-                                    ChildId = default,
                                     RelationsAtDevice = new List<CsprojRelationAtDevice>()
                                 };
                                 context.Relations.Add(existedRelation);
@@ -241,15 +243,69 @@ namespace IziHardGames.DotNetProjects
 
             foreach (var proj in projects)
             {
-                var childs = await context.RelationsAtDevice.Include(x => x.Relation).Where(x => x.Relation.ParentId == proj.EntityCsprojId).ToArrayAsync();
+                var childs = await context.RelationsAtDevice.Include(x => x.Relation)
+                                                            .ThenInclude(x => x.Child)
+                                                            .ThenInclude(x => x.CsProjectAtDevices)
+                                                            .Where(x => x.Relation.ParentId == proj.EntityCsprojId)
+                                                            .ToArrayAsync();
                 var fi = new FileInfo(proj.PathAbs);
                 if (fi.Exists)
                 {
                     var csproj = new Csproj(fi);
-                    await csproj.SetChilds(childs);
+                    await csproj.ReSetChilds(childs);
                 }
             }
             return await context.SaveChangesAsync();
+        }
+
+        public async Task<int> DistinctRelationsAsync()
+        {
+            var relations = await context.Relations.ToArrayAsync();
+            var dic = new Dictionary<(CsprojId, CsprojId), CsprojRelation>();
+            var dicParents = new Dictionary<CsprojId, CsprojRelation>();
+            var includes = new Dictionary<string, CsprojRelation>();
+            foreach (var relation in relations)
+            {
+                if (relation.ParentId.HasValue && relation.ChildId.HasValue)
+                {
+                    var key = (relation.ParentId.Value, relation.ChildId.Value);
+                    if (dic.TryGetValue(key, out var relationExisted))
+                    {
+                        context.Relations.Remove(relation);
+                    }
+                    else
+                    {
+                        dic.Add(key, relation);
+                    }
+                }
+                else if (relation.ParentId.HasValue)
+                {
+                    if (dicParents.TryGetValue(relation.ParentId.Value, out var existedVal))
+                    {
+                        context.Relations.Remove(relation);
+                    }
+                    else
+                    {
+                        dicParents.Add(relation.ParentId.Value, relation);
+                    }
+                }
+            }
+            return await context.SaveChangesAsync();
+        }
+
+        public async Task<int> FormatIncludePathToEnvVarBasedPathAsync()
+        {
+            var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
+            var projs = await context.ProjectsAtDevice.AsNoTracking().Where(x => x.DeviceId == idDevice).ToArrayAsync();
+            var count = 0;
+            foreach (var projAtDevice in projs)
+            {
+                var fi = new FileInfo(projAtDevice.PathAbs);
+                var proj = new Csproj(fi);
+                await proj.FormatAllProjectReferencesPathToRelativeAsync();
+                count++;
+            }
+            return count;
         }
     }
 }

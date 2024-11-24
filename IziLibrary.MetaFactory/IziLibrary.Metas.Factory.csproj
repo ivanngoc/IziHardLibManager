@@ -8,6 +8,8 @@
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="$(IZHG_ROOT)\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.izhg-lib\com.izihardgames.lib-control.contracts\Runtime\izhg.lib-control.contracts.csproj">
+      <IziProjId>b061e062-dab4-467b-b4bf-8d58caadfecb</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

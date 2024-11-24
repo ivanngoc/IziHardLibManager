@@ -105,7 +105,22 @@ namespace IziHardGames.DotNetProjects.Extensions
             if (childId.HasValue)
             {
                 var item = root.AddItem(nameof(ECsprojTag.ProjectReference), include);
-                item.AddMetadata(name: "IziProjId", childId.ToString(), false);
+                item.AddMetadata(name: CsprojProjectReferenceRequiredMetas.TAG_REF_PROJECT_GUID, childId.ToString(), false);
+            }
+        }
+
+        public static void FormatPathsToRelativeWithEnvVariables(this ProjectRootElement root)
+        {
+            foreach (var grp in root.ItemGroups)
+            {
+                foreach (var item in grp.Items)
+                {
+                    if (item.ItemType == nameof(ECsprojTag.ProjectReference))
+                    {
+                        var include = item.Include;
+                        item.Include = IziEnvironmentsHelper.ReplacePathWithEnvVariables(include);
+                    }
+                }
             }
         }
     }

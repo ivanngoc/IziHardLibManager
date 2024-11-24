@@ -42,6 +42,10 @@ namespace IziHardGames.DotNetProjects
                 {
                     @"C:\Users\ivan\Documents"
                 };
+                excludeDirs = new List<string>()
+                {
+                    @"C:\Users\ivan\Documents\GCE"
+                };
             }
 
             IEnumerable<FileInfo> csprojsFullPaths = Enumerable.Empty<FileInfo>();

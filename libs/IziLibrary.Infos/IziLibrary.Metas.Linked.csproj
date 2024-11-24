@@ -8,10 +8,20 @@
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj" />
-    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj" />
-    <ProjectReference Include="..\..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj" />
-    <ProjectReference Include="..\..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj" />
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
+      <IziProjId>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj">
+      <IziProjId>b8682796-fe92-4c41-8a95-2dcaedf2103a</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.linq.netstd21\izhg.linq.netstd21.csproj">
+      <IziProjId>1b18e20d-5128-4a26-ad86-8d37ddc4b74e</IziProjId>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj">
+      <IziProjId>d1bfae46-e985-42c3-85bc-b3b9b18f5a12</IziProjId>
+    </ProjectReference>
   </ItemGroup>
 </Project>

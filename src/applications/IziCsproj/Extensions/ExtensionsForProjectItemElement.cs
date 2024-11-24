@@ -20,8 +20,24 @@ namespace IziHardGames.DotNetProjects.Extensions
 
         public static string GetIncludePath(this ProjectItemElement element, FileInfo fileInfo)
         {
-            var pathAbs = UtilityForPath.GetActualAbsolutePath(element.Include, fileInfo.Directory?.FullName);
+            var pathAbs = IziEnvironmentsHelper.GetActualAbsolutePath(element.Include, fileInfo.Directory?.FullName);
             return pathAbs;
+        }
+
+        public static CsprojProjectReferenceRequiredMetas GetMetas(this ProjectItemElement projectItemElement)
+        {
+            var metas = new CsprojProjectReferenceRequiredMetas();
+            foreach (var metaItem in projectItemElement.Metadata)
+            {
+                if (metaItem.ElementName == CsprojProjectReferenceRequiredMetas.TAG_REF_PROJECT_GUID)
+                {
+                    if (System.Guid.TryParse(metaItem.Value, out var guid))
+                    {
+                        metas.CsprojId = (CsprojId)guid;
+                    }
+                }
+            }
+            return metas;
         }
     }
 }

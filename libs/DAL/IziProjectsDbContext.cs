@@ -46,7 +46,7 @@ namespace IziLibrary.Database.DataBase.EfCore
                 x.HasOne(x => x.Parent).WithMany(x => x.AsChild).HasForeignKey(x => x.ParentId);
                 x.HasOne(x => x.Child).WithMany(x => x.AsParent).HasForeignKey(x => x.ChildId);
                 x.HasKey(x => x.Id);
-                x.HasIndex(x => new { x.ParentId, x.ChildId }).HasFilter($"\"{nameof(CsprojRelation.ParentId)}\" IS NOT NULL AND \"{nameof(CsprojRelation.ChildId)}\" IS NOT NULL");//.HasDatabaseName("IX_");
+                x.HasIndex(x => new { x.ParentId, x.ChildId }).HasFilter($"\"{nameof(CsprojRelation.ParentId)}\" IS NOT NULL AND \"{nameof(CsprojRelation.ChildId)}\" IS NOT NULL").IsUnique();//.HasDatabaseName("IX_");
                 x.Property(x => x.ParentId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
                 x.Property(x => x.ChildId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
             });

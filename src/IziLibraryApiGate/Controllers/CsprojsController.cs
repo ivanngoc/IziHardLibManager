@@ -85,5 +85,19 @@ namespace IziLibraryApiGate.Controllers
             var count = await processor.FormatDependecies();
             return Ok(count);
         }
+
+        [HttpGet(nameof(DistinctRelations))]
+        public async Task<IActionResult> DistinctRelations()
+        {
+            var count = await processor.DistinctRelationsAsync();
+            return Ok(count);
+        }
+
+        [HttpGet(nameof(FormatIncludePathToEnvVarBasedPath))]
+        public async Task<IActionResult> FormatIncludePathToEnvVarBasedPath()
+        {
+            var count = await processor.FormatIncludePathToEnvVarBasedPathAsync();
+            return Ok(count);
+        }
     }
 }
