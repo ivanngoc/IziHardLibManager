@@ -24,4 +24,9 @@
       <IziProjId>d1bfae46-e985-42c3-85bc-b3b9b18f5a12</IziProjId>
     </ProjectReference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build"  />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection"  />
+  </ItemGroup>
 </Project>

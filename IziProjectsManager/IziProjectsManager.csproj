@@ -11,11 +11,13 @@
     <Author>Tran Ngoc Anh</Author>
     <Company>IziHardGames</Company>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
-    <PackageReference Include="MongoDB.EntityFrameworkCore" Version="7.0.0-preview.1" />
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="MongoDB.Driver"  />
+    <PackageReference Include="MongoDB.EntityFrameworkCore"  />
+    <PackageReference Include="CommandLineParser"  />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\ConsoleArguments\ConsoleArguments.csproj">
       <IziProjId>51797893-dcf3-43ba-98fb-e84cd2af20b1</IziProjId>

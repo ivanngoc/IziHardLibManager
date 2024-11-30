@@ -82,6 +82,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteTempAndObj", "tools\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziProjectsDiscoverWebAPI", "src\IziProjectsDiscoverWebAPI\IziProjectsDiscoverWebAPI.csproj", "{EB491D85-7D54-48EA-B95A-477DB6B669C1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziSwaggerSwashbuckle", "..\IziSwagger\src\IziSwaggerSwashbuckle\IziSwaggerSwashbuckle.csproj", "{54DF6454-9A0A-481A-90F7-EB372D5C28DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -192,6 +194,10 @@ Global
 		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB491D85-7D54-48EA-B95A-477DB6B669C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54DF6454-9A0A-481A-90F7-EB372D5C28DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DF6454-9A0A-481A-90F7-EB372D5C28DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DF6454-9A0A-481A-90F7-EB372D5C28DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DF6454-9A0A-481A-90F7-EB372D5C28DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -226,6 +232,7 @@ Global
 		{10E9C868-9796-44C2-9D25-69AA90A98E20} = {BFDC67A1-7FDE-4FD9-BAE3-1FB302794C16}
 		{0CCD18B0-97C1-4277-8F2D-CA51D37CB78C} = {D5DB4807-3B44-4098-8103-681F2BFB50A0}
 		{EB491D85-7D54-48EA-B95A-477DB6B669C1} = {7AC996F0-F3C2-4B0F-B78B-96ADD6E97AE3}
+		{54DF6454-9A0A-481A-90F7-EB372D5C28DD} = {708D2557-1640-4BF8-A279-EB4F5F5C2CE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F86D174B-190A-4572-AC93-551DB1CFA836}

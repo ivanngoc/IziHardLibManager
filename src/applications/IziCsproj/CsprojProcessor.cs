@@ -1,17 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Build.Construction;
 using IziHardGames.DotNetProjects.Extensions;
 using IziHardGames.FileSystem.NetStd21;
-using System.Linq;
-using Newtonsoft.Json.Linq;
 using IziLibrary.Database.DataBase.EfCore;
+using Microsoft.Build.Construction;
 using Microsoft.EntityFrameworkCore;
-using IziHardGames.Environments;
-using System.IO;
-using System.Collections.Generic;
-using System.Text.Json;
-using static Google.Protobuf.WellKnownTypes.Field.Types;
 
 namespace IziHardGames.DotNetProjects
 {
@@ -106,7 +103,7 @@ namespace IziHardGames.DotNetProjects
                         foreach (var projectReference in projectReferences)
                         {
                             var include = projectReference.Include;
-                            var meta = projectReference.GetMetas();
+                            var refMeta = projectReference.GetMetas();
                             if (string.IsNullOrEmpty(include))
                             {
                                 throw new Exception($"include is null or empty: {include}");
@@ -116,8 +113,18 @@ namespace IziHardGames.DotNetProjects
                                 throw new Exception($"Duplicate: {projectReference}. {JsonSerializer.Serialize(existed)}");
                             }
 
-                            var existedRelation = csproj.AsParent.Where(x => x.ChildId.HasValue)
-                                                                 .FirstOrDefault(x => meta.IsDefault() ? false : meta.CsprojId == x.ChildId!.Value || x.RelationsAtDevice.Any(y => y.Include == include));
+                            CsprojRelation? existedRelation = null;
+
+                            if (refMeta.CsprojId.HasValue)
+                            {
+                                existedRelation = context.Relations.FirstOrDefault(x => x.ParentId == csproj.EntityCsprojId && x.ChildId == refMeta.CsprojId);
+                            }
+                            else
+                            {
+                                existedRelation = csproj.AsParent.Where(x => x.ChildId.HasValue)
+                                                                     .FirstOrDefault(x => refMeta.IsDefault() ? false : refMeta.CsprojId == x.ChildId!.Value || x.RelationsAtDevice.Any(y => y.Include == include));
+                            }
+
                             if (existedRelation == null)
                             {
                                 existedRelation = new CsprojRelation()
@@ -125,14 +132,15 @@ namespace IziHardGames.DotNetProjects
                                     Id = default,
                                     ParentId = csproj.EntityCsprojId,
                                     Parent = csproj,
-                                    ChildId = meta.CsprojId,
+                                    ChildId = refMeta.CsprojId,
                                     Child = default!,
                                     RelationsAtDevice = new List<CsprojRelationAtDevice>()
                                 };
                                 context.Relations.Add(existedRelation);
                             }
 
-                            CsprojRelationAtDevice? relationAtDevice = existedRelation.RelationsAtDevice.FirstOrDefault(x => x.Include == include);
+                            CsprojRelationAtDevice? relationAtDevice = existedRelation.RelationsAtDevice.FirstOrDefault(x => (x.RelationId != default && (x.DeviceId == idDevice && x.RelationId == existedRelation.Id)) || x.Include == include);
+
                             if (relationAtDevice == null)
                             {
                                 relationAtDevice = new CsprojRelationAtDevice()

@@ -15,4 +15,9 @@
       <IziProjId>b38d0494-3cb8-4779-afae-455bb55ddfb5</IziProjId>
     </ProjectReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+  </ItemGroup>
 </Project>

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Build.Construction;
-using Newtonsoft.Json.Linq;
 
 namespace IziHardGames.DotNetProjects.Extensions
 {

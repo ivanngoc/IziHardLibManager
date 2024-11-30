@@ -9,11 +9,11 @@
     <Company>IziHardGames</Company>
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\IziSwagger\src\IziSwaggerSwashbuckle\IziSwaggerSwashbuckle.csproj" />
+    <ProjectReference Include="..\..\libs\DAL\DAL.csproj" />
+    <ProjectReference Include="..\..\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
     <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj">
       <IziProjId>d5dbcf5f-a658-40c1-b83d-057cc17888bd</IziProjId>
     </ProjectReference>
@@ -38,5 +38,11 @@
     <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
       <IziProjId>b38d0494-3cb8-4779-afae-455bb55ddfb5</IziProjId>
     </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
 </Project>

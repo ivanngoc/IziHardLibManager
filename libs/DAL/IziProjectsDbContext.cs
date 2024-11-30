@@ -54,6 +54,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             modelBuilder.Entity<CsprojRelationAtDevice>(x =>
             {
                 x.HasKey(x => x.Id);
+                x.HasIndex(x => new { x.RelationId, x.DeviceId }).IsUnique();
                 x.HasOne(x => x.Relation).WithMany(x => x.RelationsAtDevice).HasForeignKey(x => x.RelationId);
                 x.HasOne(x => x.Device).WithMany(x => x.Relations).HasForeignKey(x => x.DeviceId);
                 x.HasIndex(x => x.Include);

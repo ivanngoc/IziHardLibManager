@@ -9,7 +9,7 @@ namespace IziLibraryApiGate.Controllers
         [HttpPost(nameof(DiscoverAndSaveToDb))]
         public async Task<IActionResult> DiscoverAndSaveToDb()
         {
-
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -8,7 +8,8 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore"  />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\AppDomainForCsproj\AppDomainForCsproj.csproj">

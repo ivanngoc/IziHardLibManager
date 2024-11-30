@@ -4,6 +4,7 @@ using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
 namespace IziLibraryApiGate
@@ -32,7 +33,7 @@ namespace IziLibraryApiGate
             builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGenWithSpecificOfIziHardGames();
             builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
             builder.Services.AddScoped<ICsprojProcessor, CsprojProcessor>();
             builder.Services.AddScoped<ICsprojSaver, CsprojSaver>();
@@ -46,8 +47,7 @@ namespace IziLibraryApiGate
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerWithSpecificOfIziHardGames();
             }
 
             app.UseAuthorization();
