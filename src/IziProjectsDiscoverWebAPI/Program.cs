@@ -1,3 +1,4 @@
+using System.Reflection;
 using IziHardGames.IziLibrary.ForCsproj;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,13 @@ namespace IziProjectsDiscoverWebAPI
 
             var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
 
-            builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
+            builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString, opt =>
+            {
+                var asm = Assembly.GetEntryAssembly();
+                ArgumentNullException.ThrowIfNull(asm);
+                opt.MigrationsAssembly(asm.GetName().Name);
+            }));
+
             builder.Services.AddScoped<Dicsover>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

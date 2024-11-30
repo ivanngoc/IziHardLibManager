@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IziHardGames.DotNetProjects
+namespace IziHardGames.Projects.Common
 {
     public interface IIdentityValueObject
     {

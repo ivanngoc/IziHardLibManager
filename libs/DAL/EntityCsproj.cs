@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using IziHardGames.CrossTables;
 using IziLibrary.Database.DataBase.EfCore;
 
 namespace IziHardGames.DotNetProjects
@@ -13,6 +14,7 @@ namespace IziHardGames.DotNetProjects
         public ICollection<CsProjectAtDevice> CsProjectAtDevices { get; set; } = null!;
         public ICollection<CsprojRelation> AsChild { get; set; } = null!;
         public ICollection<CsprojRelation> AsParent { get; set; } = null!;
+        public ICollection<AsmdefXCsproj> AsmdefXCsprojs { get; set; } = null!;
     }
 
     public class CsprojRelationAtDevice

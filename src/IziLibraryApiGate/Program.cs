@@ -1,11 +1,10 @@
-using IziHardGames.DotNetProjects;
+﻿using IziHardGames.DotNetProjects;
 using IziHardGames.IziLibrary.Commands.AtDataBase;
 using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
 
 namespace IziLibraryApiGate
 {
@@ -15,22 +14,16 @@ namespace IziLibraryApiGate
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            var uid = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_USER_DEV");
-            var pwd = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PASSWORD_DEV");
-            var server = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_SERVER_DEV");
-            var port = Environment.GetEnvironmentVariable("IZHG_DB_POSTGRES_PORT_DEV");
-            var portVal = $";port={port}";
-
-            var cs = $"server={server};uid={uid};pwd={pwd}{(port is null ? string.Empty : portVal)};database={nameof(IziProjectsDbContext)}; Include Error Detail=true";
+            // если прокинуть его как синглтон, то все равно в конфигурацию AddDbContextPool будет пробрасываться другой инстанс
+            var optBuilder = new DbContextOptionsBuilder<IziProjectsDbContext>();
 
 
-            var npsqlCsb = new NpgsqlConnectionStringBuilder(cs);
-
+            builder.Services.AddSingleton<IDbConfigurator, ApiGateConfigurator>();
             builder.Services.AddControllers();
-            builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.UseNpgsql(npsqlCsb.ConnectionString));
-            builder.Services.AddDbContext<ModulesDbContextV1>();
-            builder.Services.AddDbContext<ModulesDbContextV2>();
+            builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.ConfigureWithIziSpecifics());
+
+            //builder.Services.AddDbContext<ModulesDbContextV1>();
+            //builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGenWithSpecificOfIziHardGames();
