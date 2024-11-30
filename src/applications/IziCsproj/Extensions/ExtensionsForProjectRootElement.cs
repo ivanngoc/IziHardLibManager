@@ -117,7 +117,10 @@ namespace IziHardGames.DotNetProjects.Extensions
                     if (item.ItemType == nameof(ECsprojTag.ProjectReference))
                     {
                         var include = item.Include;
-                        item.Include = IziEnvironmentsHelper.ReplacePathWithEnvVariables(include);
+                        if (IziEnvironmentsHelper.TryReplacePathWithEnvVariables(include, out var result))
+                        {
+                            item.Include = result;
+                        }
                     }
                 }
             }

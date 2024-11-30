@@ -96,7 +96,7 @@ namespace IziHardGames.DotNetProjects
             var result = false;
             foreach (var refEl in refs)
             {
-                var include = refEl.GetIncludePathAsIs(this.FileInfo);
+                var include = refEl.GetIncludePathAsIs();
                 if (!UtilityForPath.IsRelative(include))
                 {
                     var meta = refEl.GetMetas();

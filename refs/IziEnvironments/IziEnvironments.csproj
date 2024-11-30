@@ -7,11 +7,11 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
-      <IziProjId>1cf58f92-33ee-4334-be6b-37bcecc446e4</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
+      <Project>1cf58f92-33ee-4334-be6b-37bcecc446e4</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
-      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <Project>42792273-6319-4d5b-a70d-176fc2286c71</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

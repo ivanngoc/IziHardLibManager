@@ -7,6 +7,7 @@ namespace IziHardGames.DotNetProjects
     public class EntityCsproj : IziEntity
     {
         public CsprojId EntityCsprojId { get; set; }
+        public int CountReferencesToProjects { get; set; }
         public ICollection<CsProjectAtDevice> CsProjectAtDevices { get; set; } = null!;
         public ICollection<CsprojRelation> AsChild { get; set; } = null!;
         public ICollection<CsprojRelation> AsParent { get; set; } = null!;
@@ -30,6 +31,7 @@ namespace IziHardGames.DotNetProjects
         public ERelationType RelationType { get; set; }
         public EntityCsproj? Parent { get; set; }
         public EntityCsproj? Child { get; set; }
+        public DateTimeOffset? CheckDateTime { get; set; }
         public ICollection<CsprojRelationAtDevice> RelationsAtDevice { get; set; }
     }
 
@@ -38,5 +40,6 @@ namespace IziHardGames.DotNetProjects
         Undefined,
         None,
         ParentChild,
+        ParentMissingChild,
     }
 }

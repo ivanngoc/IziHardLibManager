@@ -8,8 +8,8 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\IziEnvironments\IziEnvironments.csproj">
-      <IziProjId>eb0769fe-2287-4367-9151-47ce9a6cd916</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziEnvironments\IziEnvironments.csproj">
+      <Project>eb0769fe-2287-4367-9151-47ce9a6cd916</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

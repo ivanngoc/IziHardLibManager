@@ -29,7 +29,7 @@ namespace IziHardGames.DotNetProjects.Extensions
             return pathAbs;
         }
 
-        public static string GetIncludePathAsIs(this ProjectItemElement element, FileInfo fileInfo)
+        public static string GetIncludePathAsIs(this ProjectItemElement element)
         {
             return element.Include;
         }

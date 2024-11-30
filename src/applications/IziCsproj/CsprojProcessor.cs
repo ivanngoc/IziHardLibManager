@@ -86,103 +86,178 @@ namespace IziHardGames.DotNetProjects
 
         public async Task<int> FillRelationsAsParentsAsync()
         {
-            var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
-            var csprojs = await context.Csprojs.Include(x => x.CsProjectAtDevices).Include(x => x.AsParent).ThenInclude(x => x.RelationsAtDevice).ToArrayAsync();
-            var dictinary = new Dictionary<string, CsprojRelationAtDevice>();
-            foreach (var csproj in csprojs)
+            try
             {
-                var atThisDevice = csproj.CsProjectAtDevices.FirstOrDefault(x => x.DeviceId == idDevice);
-                if (atThisDevice != null)
+                var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
+                var csprojs = await context.Csprojs.Include(x => x.CsProjectAtDevices).Include(x => x.AsParent).ThenInclude(x => x.RelationsAtDevice).ToArrayAsync();
+                var dictinary = new Dictionary<string, CsprojRelationAtDevice>();
+                var checkoutDate = DateTime.Now;
+
+                foreach (var csproj in csprojs)
                 {
-                    var path = atThisDevice.PathAbs;
-                    var fi = new FileInfo(path);
-                    if (fi.Exists)
+                    var atThisDevice = csproj.CsProjectAtDevices.FirstOrDefault(x => x.DeviceId == idDevice);
+                    if (atThisDevice != null)
                     {
-                        var csprojMeta = new Csproj(fi);
-                        var projectReferences = csprojMeta.GetProjectReferences().ToArray();
-                        foreach (var projectReference in projectReferences)
+                        var path = atThisDevice.PathAbs;
+                        var fi = new FileInfo(path);
+                        if (fi.Exists)
                         {
-                            var include = projectReference.Include;
-                            var refMeta = projectReference.GetMetas();
-                            if (string.IsNullOrEmpty(include))
-                            {
-                                throw new Exception($"include is null or empty: {include}");
-                            }
-                            if (dictinary.TryGetValue(include, out var existed))
-                            {
-                                throw new Exception($"Duplicate: {projectReference}. {JsonSerializer.Serialize(existed)}");
-                            }
+                            var csprojMeta = new Csproj(fi);
+                            var projectReferences = csprojMeta.GetProjectReferences().ToArray();
+                            var refCount = projectReferences.Length;
+                            csproj.CountReferencesToProjects = refCount;
 
-                            CsprojRelation? existedRelation = null;
-
-                            if (refMeta.CsprojId.HasValue)
+                            var countMissingChilds = 0;
+                            foreach (var projectReference in projectReferences)
                             {
-                                existedRelation = context.Relations.FirstOrDefault(x => x.ParentId == csproj.EntityCsprojId && x.ChildId == refMeta.CsprojId);
-                            }
-                            else
-                            {
-                                existedRelation = csproj.AsParent.Where(x => x.ChildId.HasValue)
-                                                                     .FirstOrDefault(x => refMeta.IsDefault() ? false : refMeta.CsprojId == x.ChildId!.Value || x.RelationsAtDevice.Any(y => y.Include == include));
-                            }
-
-                            if (existedRelation == null)
-                            {
-                                existedRelation = new CsprojRelation()
+                                var includeAsAbs = projectReference.GetIncludePathAsAbs(fi);
+                                var refMeta = projectReference.GetMetas();
+                                if (string.IsNullOrEmpty(includeAsAbs))
                                 {
-                                    Id = default,
-                                    ParentId = csproj.EntityCsprojId,
-                                    Parent = csproj,
-                                    ChildId = refMeta.CsprojId,
-                                    Child = default!,
-                                    RelationsAtDevice = new List<CsprojRelationAtDevice>()
-                                };
-                                context.Relations.Add(existedRelation);
-                            }
-
-                            CsprojRelationAtDevice? relationAtDevice = existedRelation.RelationsAtDevice.FirstOrDefault(x => (x.RelationId != default && (x.DeviceId == idDevice && x.RelationId == existedRelation.Id)) || x.Include == include);
-
-                            if (relationAtDevice == null)
-                            {
-                                relationAtDevice = new CsprojRelationAtDevice()
+                                    throw new Exception($"include is null or empty: {includeAsAbs}");
+                                }
+                                if (dictinary.TryGetValue(includeAsAbs, out var existed))
                                 {
-                                    Id = default,
-                                    DeviceId = idDevice,
-                                    RelationId = existedRelation.Id,
-                                    Relation = existedRelation,
-                                    Device = default!,
-                                };
-                                existedRelation.RelationsAtDevice.Add(relationAtDevice);
-                                context.RelationsAtDevice.Add(relationAtDevice);
-                            }
+                                    throw new Exception($"Duplicate: {projectReference}. {JsonSerializer.Serialize(existed)}");
+                                }
 
-                            relationAtDevice!.Include = include;
-                            dictinary.Add(include, relationAtDevice);
+                                CsprojRelation? existedRelation = null;
+
+                                if (refMeta.CsprojId.HasValue)
+                                {
+                                    existedRelation = context.Relations.FirstOrDefault(x => x.ParentId == csproj.EntityCsprojId && x.ChildId == refMeta.CsprojId);
+                                }
+                                else
+                                {
+                                    existedRelation = context.Relations.Where(x => x.ParentId == csproj.EntityCsprojId)
+                                                                       .AsEnumerable()
+                                                                       .Where(x => x.ChildId.HasValue)
+                                                                       .FirstOrDefault(x => refMeta.IsDefault() ? false : refMeta.CsprojId == x.ChildId!.Value || x.RelationsAtDevice.Any(y => y.Include == includeAsAbs));
+                                }
+
+                                var relationType = ERelationType.ParentMissingChild;
+
+                                if (refMeta.CsprojId.HasValue)
+                                {
+                                    relationType = ERelationType.ParentChild;
+                                }
+                                else
+                                {
+                                    countMissingChilds++;
+                                }
+
+                                if (existedRelation == null)
+                                {
+                                    // если есть старая запись с потеряным чилдом, берем его и обновляем
+                                    existedRelation = context.Relations.Include(x => x.RelationsAtDevice)
+                                                                       .Where(x => x.ParentId == csproj.EntityCsprojId)
+                                                                       .FirstOrDefault(x => x.RelationType != ERelationType.ParentChild && x.CheckDateTime < checkoutDate);
+
+                                    if (existedRelation == null)
+                                    {
+                                        existedRelation = new CsprojRelation()
+                                        {
+                                            Id = default,
+                                            ParentId = csproj.EntityCsprojId,
+                                            Parent = csproj,
+                                            ChildId = refMeta.CsprojId,
+                                            Child = default!,
+                                            RelationsAtDevice = new List<CsprojRelationAtDevice>()
+                                        };
+                                        context.Relations.Add(existedRelation);
+                                    }
+                                    else
+                                    {
+                                        // если можно переиспользовать, то вычищаем старые записи
+                                        var toCleanup = existedRelation.RelationsAtDevice.Where(x => x.DeviceId == idDevice).ToArray();
+                                        context.RelationsAtDevice.RemoveRange(toCleanup);
+                                    }
+                                }
+
+                                existedRelation.CheckDateTime = checkoutDate;
+                                existedRelation.RelationType = relationType;
+
+                                CsprojRelationAtDevice? relationAtDevice = existedRelation.RelationsAtDevice.FirstOrDefault(x => (x.RelationId != default && (x.DeviceId == idDevice && x.RelationId == existedRelation.Id)) || x.Include == includeAsAbs);
+
+                                if (relationAtDevice == null)
+                                {
+                                    relationAtDevice = new CsprojRelationAtDevice()
+                                    {
+                                        Id = default,
+                                        DeviceId = idDevice,
+                                        RelationId = existedRelation.Id,
+                                        Relation = existedRelation,
+                                        Device = default!,
+                                    };
+                                    existedRelation.RelationsAtDevice.Add(relationAtDevice);
+                                    context.RelationsAtDevice.Add(relationAtDevice);
+                                }
+
+                                relationAtDevice.Include = includeAsAbs;
+                                dictinary.Add(includeAsAbs, relationAtDevice);
+                            }
                         }
                     }
+                    dictinary.Clear();
                 }
-                dictinary.Clear();
+                return await context.SaveChangesAsync();
             }
-            return await context.SaveChangesAsync();
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
 
         public async Task<int> FillRelationsAsChildsByIncludeFileExistingAsync()
         {
             var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
-            var relationsAtDevice = await context.RelationsAtDevice.Where(x => x.DeviceId == idDevice).Include(x => x.Relation).ThenInclude(x => x.Parent).ToArrayAsync();
+            var relationsAtDevice = await context.RelationsAtDevice.Where(x => x.DeviceId == idDevice)
+                                                                   .Where(x => x.Relation.RelationType != ERelationType.ParentChild)
+                                                                   .Include(x => x.Relation)
+                                                                   .ThenInclude(x => x.Parent)
+                                                                   .ToArrayAsync();
 
+            var checkDate = DateTimeOffset.Now;
+            int count = 0;
             foreach (var relationAtDevice in relationsAtDevice)
             {
-                var fi = new FileInfo(relationAtDevice.Include);
+                var pathAbs = relationAtDevice.Include;
+                if (UtilityForPath.IsRelative(pathAbs))
+                {
+                    throw new FormatException($"relationAtDevice: {relationAtDevice.Id}, Path is relative: {pathAbs}");
+                }
+                var fi = new FileInfo(pathAbs);
                 if (fi.Exists)
                 {
                     var csproj = new Csproj(fi);
                     if (csproj.TryGetGuid(out var id))
                     {
                         relationAtDevice.Relation.ChildId = id;
+                        relationAtDevice.Relation.RelationType = ERelationType.ParentChild;
+                        relationAtDevice.Relation.CheckDateTime = checkDate;
                     }
                 }
             }
-            return await context.SaveChangesAsync();
+            count += await context.SaveChangesAsync();
+
+            var projects = await context.ProjectsAtDevice.Where(x => x.DeviceId == idDevice).ToArrayAsync();
+            foreach (var proj in projects)
+            {
+                var fi = new FileInfo(proj.PathAbs);
+                var matches = await context.RelationsAtDevice.Where(x => x.DeviceId == idDevice)
+                                                             .Include(x => x.Relation)
+                                                             .Where(x => x.Relation.RelationType != ERelationType.ParentChild)
+                                                             .Where(x => x.Include.Contains(fi.Name)).ToArrayAsync();
+                foreach (var match in matches)
+                {
+                    match.Include = fi.FullName;
+                    match.Relation.ChildId = proj.EntityCsprojId;
+                    match.Relation.RelationType = ERelationType.ParentChild;
+                    match.Relation.CheckDateTime = checkDate;
+                }
+            }
+            count += await context.SaveChangesAsync();
+            return count;
         }
 
         public async Task<int> FillRelationsAsChildsByCsprojFileNameAsync()
@@ -248,7 +323,7 @@ namespace IziHardGames.DotNetProjects
             //}
 
             var projects = await context.ProjectsAtDevice.Where(x => x.DeviceId == idDevice).ToArrayAsync();
-
+            int changes = 0;
             foreach (var proj in projects)
             {
                 var childs = await context.RelationsAtDevice.Include(x => x.Relation)
@@ -260,10 +335,14 @@ namespace IziHardGames.DotNetProjects
                 if (fi.Exists)
                 {
                     var csproj = new Csproj(fi);
-                    await csproj.ReSetChilds(childs);
+                    if (childs.Any())
+                    {
+                        changes++;
+                        await csproj.ReSetChilds(childs);
+                    }
                 }
             }
-            return await context.SaveChangesAsync();
+            return changes;
         }
 
         public async Task<int> DistinctRelationsAsync()
@@ -333,14 +412,48 @@ namespace IziHardGames.DotNetProjects
                     }
 #endif
                     var path = atDevice.PathAbs;
-                    var csproj = new Csproj(new FileInfo(path));
-                    if (await csproj.ReplaceIncludesOfProjectReferencesWherePathIsAbsAsync(context, idDevice))
+                    var fi = new FileInfo(path);
+                    if (fi.Exists)
                     {
-                        replace++;
+                        var csproj = new Csproj(fi);
+                        if (await csproj.ReplaceIncludesOfProjectReferencesWherePathIsAbsAsync(context, idDevice))
+                        {
+                            replace++;
+                        }
                     }
                 }
             }
             return replace;
+        }
+
+        public async Task<int> ReplaceAbsIncludesWithEnvBasedAsync()
+        {
+            var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
+            var projs = await context.ProjectsAtDevice.Include(x => x.EntityCsproj).Where(x => x.DeviceId == idDevice).ToArrayAsync();
+            int count = default;
+            foreach (var proj in projs)
+            {
+                var fi = new FileInfo(proj.PathAbs);
+                if (fi.Exists)
+                {
+                    var csproj = new Csproj(fi);
+                    var refs = csproj.GetProjectReferences();
+
+                    foreach (var refEl in refs)
+                    {
+                        var include = refEl.GetIncludePathAsIs();
+                        if (UtilityForPath.IsAbsolute(include))
+                        {
+                            if (IziEnvironmentsHelper.TryReplacePathWithEnvVariables(include, out var result))
+                            {
+                                refEl.SetIncludePath(result);
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+            return count;
         }
     }
 }

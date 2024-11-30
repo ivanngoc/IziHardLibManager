@@ -8,15 +8,15 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore"  />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\AppDomainForCsproj\AppDomainForCsproj.csproj">
-      <IziProjId>737a73ec-ab27-4933-899a-75b6cb73baea</IziProjId>
+    <ProjectReference Include="..\..\libs\AppDomainForCsproj\AppDomainForCsproj.csproj">
+      <Project>737a73ec-ab27-4933-899a-75b6cb73baea</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\DAL\DAL.csproj">
-      <IziProjId>6357ac0a-eb25-4d67-b253-db6b6e680357</IziProjId>
+    <ProjectReference Include="..\..\libs\DAL\DAL.csproj">
+      <Project>6357ac0a-eb25-4d67-b253-db6b6e680357</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

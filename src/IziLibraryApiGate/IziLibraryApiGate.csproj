@@ -9,37 +9,41 @@
     <Company>IziHardGames</Company>
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IziSwagger\src\IziSwaggerSwashbuckle\IziSwaggerSwashbuckle.csproj" />
-    <ProjectReference Include="..\..\libs\DAL\DAL.csproj" />
-    <ProjectReference Include="..\..\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj" />
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj">
-      <IziProjId>d5dbcf5f-a658-40c1-b83d-057cc17888bd</IziProjId>
+    <ProjectReference Include="..\..\IziLibrary.Commands.Database\IziLibrary.Commands.AtDatabase.csproj">
+      <Project>d5dbcf5f-a658-40c1-b83d-057cc17888bd</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
-      <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
+    <ProjectReference Include="..\..\libs\DAL\DAL.csproj">
+      <Project>6357ac0a-eb25-4d67-b253-db6b6e680357</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
-      <IziProjId>1cf58f92-33ee-4334-be6b-37bcecc446e4</IziProjId>
+    <ProjectReference Include="..\..\libs\IziLibrary.Database\IziLibrary.Database.csproj">
+      <Project>b60120f9-0877-42b9-8317-ceab504ca67b</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
-      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    <ProjectReference Include="..\..\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj">
+      <Project>79250dad-bbcb-4a69-93fb-8bb99e69934a</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\IziEnvironments\IziEnvironments.csproj">
-      <IziProjId>eb0769fe-2287-4367-9151-47ce9a6cd916</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
+      <Project>1cf58f92-33ee-4334-be6b-37bcecc446e4</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\applications\IziCsproj\IziCsproj.Application.csproj">
-      <IziProjId>e64a64c7-bcf0-48d0-92af-795ffa02c2f7</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <Project>42792273-6319-4d5b-a70d-176fc2286c71</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj">
-      <IziProjId>fe1cca0c-f05c-439e-93c2-673656bac4dc</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziEnvironments\IziEnvironments.csproj">
+      <Project>eb0769fe-2287-4367-9151-47ce9a6cd916</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
-      <IziProjId>b38d0494-3cb8-4779-afae-455bb55ddfb5</IziProjId>
+    <ProjectReference Include="..\applications\IziCsproj\IziCsproj.Application.csproj">
+      <Project>e64a64c7-bcf0-48d0-92af-795ffa02c2f7</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj">
+      <Project>fe1cca0c-f05c-439e-93c2-673656bac4dc</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
+      <Project>b38d0494-3cb8-4779-afae-455bb55ddfb5</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\IziSwagger\src\IziSwaggerSwashbuckle\IziSwaggerSwashbuckle.csproj">
+      <Project>54df6454-9a0a-481a-90f7-eb372d5c28dd</Project>
     </ProjectReference>
   </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />

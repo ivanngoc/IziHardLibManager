@@ -20,15 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"  />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"  />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger"  />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen"  />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
-      <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj">
+      <Project>b60120f9-0877-42b9-8317-ceab504ca67b</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

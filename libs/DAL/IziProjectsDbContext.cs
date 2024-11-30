@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using IziHardGames.DotNetProjects;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IziLibrary.Database.DataBase.EfCore
 {
@@ -43,6 +44,7 @@ namespace IziLibrary.Database.DataBase.EfCore
 
             modelBuilder.Entity<CsprojRelation>(x =>
             {
+                x.Property(x => x.CheckDateTime).HasConversion<NullableDateTimeOffsetConverter>().HasColumnType("timestamptz");
                 x.HasOne(x => x.Parent).WithMany(x => x.AsChild).HasForeignKey(x => x.ParentId);
                 x.HasOne(x => x.Child).WithMany(x => x.AsParent).HasForeignKey(x => x.ChildId);
                 x.HasKey(x => x.Id);
@@ -126,5 +128,34 @@ namespace IziLibrary.Database.DataBase.EfCore
         public Guid Id { get; set; }
         public string[] SourceDirs { get; set; } = Array.Empty<string>();
         [JsonIgnore] public Device Device { get; set; } = null!;
+    }
+
+    /// <summary>
+    /// a value converter that ensures you can run TMDS (integration tests) in timezones with UTC offset != 0
+    /// </summary>
+    /// </summary>
+    /// <remarks>
+    /// Copied from https://github.com/npgsql/npgsql/issues/4176#issuecomment-1064313552
+    /// </remarks>
+    internal class DateTimeOffsetConverter : ValueConverter<DateTimeOffset, DateTimeOffset>
+    {
+        public DateTimeOffsetConverter()
+            : base(
+                d => d.ToUniversalTime(),
+                d => d.ToUniversalTime())
+        {
+        }
+    }
+    /// <summary>
+    /// <see cref="DateTimeOffsetConverter"/> but for nullable
+    /// </summary>
+    internal class NullableDateTimeOffsetConverter : ValueConverter<DateTimeOffset?, DateTimeOffset?>
+    {
+        public NullableDateTimeOffsetConverter()
+            : base(
+                d => d == null ? null : d.Value.ToUniversalTime(),
+                d => d == null ? null : d.Value.ToUniversalTime())
+        {
+        }
     }
 }

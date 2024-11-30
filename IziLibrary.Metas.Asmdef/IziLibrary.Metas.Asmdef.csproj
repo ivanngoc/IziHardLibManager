@@ -8,8 +8,8 @@
     <Author>Tran Ngoc Anh</Author>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
-      <IziProjId>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</IziProjId>
+    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
+      <Project>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

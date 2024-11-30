@@ -83,7 +83,10 @@ namespace IziLibraryApiGate.Controllers
             var count = await processor.ReplaceChildIncludeAsync(find, replace);
             return Ok(count);
         }
-
+        /// <summary>
+        /// Добавляет {ProjectReference}.{Project}=GUID и делает {ProjectReference.Include}=PathAbs
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(nameof(FormatDependecies))]
         public async Task<IActionResult> FormatDependecies()
         {
@@ -107,14 +110,15 @@ namespace IziLibraryApiGate.Controllers
         }
 
         /// <summary>
-        /// По всем <see cref="EntityCsproj"/> заменяет ProjectReference-Include с абсолютного пути на относительный
+        /// По всем <see cref="EntityCsproj"/> заменяет {ProjectReference}.Include с абсолютного пути сначала на ENV-VAR based, потом оставшиеся на относительный путь
         /// </summary>
         /// <returns></returns>
-        [HttpGet(nameof(ReplaceAbsIncludesWithRelative))]
-        public async Task<IActionResult> ReplaceAbsIncludesWithRelative()
+        [HttpGet(nameof(ReplaceAbsIncludesWithEnvBasedAndRelative))]
+        public async Task<IActionResult> ReplaceAbsIncludesWithEnvBasedAndRelative()
         {
-            var count = await processor.ReplaceAbsIncludesWithRelativeAsync();
-            return Ok(count);
+            var count0 = await processor.ReplaceAbsIncludesWithEnvBasedAsync();
+            var count1 = await processor.ReplaceAbsIncludesWithRelativeAsync();
+            return Ok(count0 + count1);
         }
     }
 }

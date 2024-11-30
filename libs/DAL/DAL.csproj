@@ -8,14 +8,13 @@
     <Company>IziHardGames</Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj">
-      <IziProjId>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</IziProjId>
+    <ProjectReference Include="..\..\src\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj">
+      <Project>c95e71e4-6976-44b3-a0ca-ab0e657c0c72</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
-      <IziProjId>b38d0494-3cb8-4779-afae-455bb55ddfb5</IziProjId>
+    <ProjectReference Include="..\..\src\domains\IziCsproj.Domain\IziCsproj.Domain.csproj">
+      <Project>b38d0494-3cb8-4779-afae-455bb55ddfb5</Project>
     </ProjectReference>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />

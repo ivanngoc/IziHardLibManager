@@ -13,6 +13,10 @@ namespace IziHardGames.FileSystem.NetStd21
             return info.Exists;
         }
         public static bool IsValidPath(string path) => throw new System.NotImplementedException();
+        public static bool IsAbsolute(string path)
+        {
+            return Path.IsPathRooted(path);
+        }
         public static bool IsRelative(string path)
         {
             return !Path.IsPathRooted(path);

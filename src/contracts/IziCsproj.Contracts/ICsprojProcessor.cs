@@ -14,5 +14,6 @@ namespace IziHardGames.DotNetProjects
         Task<int> DistinctRelationsAsync();
         Task<int> FormatIncludePathToEnvVarBasedPathAsync();
         Task<int> ReplaceAbsIncludesWithRelativeAsync();
+        Task<int> ReplaceAbsIncludesWithEnvBasedAsync();
     }
 }

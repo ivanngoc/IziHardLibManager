@@ -11,40 +11,38 @@
     <Author>Tran Ngoc Anh</Author>
     <Company>IziHardGames</Company>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver"  />
-    <PackageReference Include="MongoDB.EntityFrameworkCore"  />
-    <PackageReference Include="CommandLineParser"  />
+    <PackageReference Include="MongoDB.Driver" />
+    <PackageReference Include="MongoDB.EntityFrameworkCore" />
+    <PackageReference Include="CommandLineParser" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\ConsoleArguments\ConsoleArguments.csproj">
-      <IziProjId>51797893-dcf3-43ba-98fb-e84cd2af20b1</IziProjId>
+    <ProjectReference Include="..\ConsoleArguments\ConsoleArguments.csproj">
+      <Project>51797893-dcf3-43ba-98fb-e84cd2af20b1</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
-      <IziProjId>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</IziProjId>
+    <ProjectReference Include="..\IziLibrary.MetaFactory\IziLibrary.Metas.Factory.csproj">
+      <Project>d3a8fad5-e4cc-469e-88de-b8e43b5158f4</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj">
-      <IziProjId>b8682796-fe92-4c41-8a95-2dcaedf2103a</IziProjId>
+    <ProjectReference Include="..\IziLibrary.Metas.Asmdef\IziLibrary.Metas.Asmdef.csproj">
+      <Project>b8682796-fe92-4c41-8a95-2dcaedf2103a</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Database\IziLibrary.Database.csproj">
-      <IziProjId>b60120f9-0877-42b9-8317-ceab504ca67b</IziProjId>
+    <ProjectReference Include="..\libs\IziLibrary.Database\IziLibrary.Database.csproj">
+      <Project>b60120f9-0877-42b9-8317-ceab504ca67b</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj">
-      <IziProjId>79250dad-bbcb-4a69-93fb-8bb99e69934a</IziProjId>
+    <ProjectReference Include="..\libs\IziLibrary.Infos\IziLibrary.Metas.Linked.csproj">
+      <Project>79250dad-bbcb-4a69-93fb-8bb99e69934a</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
-      <IziProjId>1cf58f92-33ee-4334-be6b-37bcecc446e4</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj">
+      <Project>1cf58f92-33ee-4334-be6b-37bcecc446e4</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
-      <IziProjId>42792273-6319-4d5b-a70d-176fc2286c71</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj">
+      <Project>42792273-6319-4d5b-a70d-176fc2286c71</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\izhg.linq.netstd21\izhg.linq.netstd21.csproj">
-      <IziProjId>1b18e20d-5128-4a26-ad86-8d37ddc4b74e</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\izhg.linq.netstd21\izhg.linq.netstd21.csproj">
+      <Project>1b18e20d-5128-4a26-ad86-8d37ddc4b74e</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ivan\Documents\.csharp\IziHardLibManager\refs\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj">
-      <IziProjId>d1bfae46-e985-42c3-85bc-b3b9b18f5a12</IziProjId>
+    <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziLibrary.Commands.FileSystem\IziLibrary.Commands.AtFileSystem.csproj">
+      <Project>d1bfae46-e985-42c3-85bc-b3b9b18f5a12</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

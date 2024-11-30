@@ -32,11 +32,12 @@ namespace IziHardGames.DotNetProjects
             return guid;
         }
 
-        public static string ReplacePathWithEnvVariables(string include)
+        public static bool TryReplacePathWithEnvVariables(string include, out string result)
         {
-            if (!UtilityForPath.IsRelative(include))
+            result = string.Empty;
+            if (UtilityForPath.IsRelative(include))
             {
-
+                return false;
             }
             var v1 = GetEnvVariable(IziEnvironments.IZHG_LIB_CONTROL_DIR_FOR_REFS);
             var v2 = GetEnvVariable(IziEnvironments.IZHG_MODULES);
@@ -45,21 +46,25 @@ namespace IziHardGames.DotNetProjects
 
             if (include.StartsWith(v1))
             {
-                return include.Replace(v1, $"$({IziEnvironments.IZHG_LIB_CONTROL_DIR_FOR_REFS})");
+                result = include.Replace(v1, $"$({IziEnvironments.IZHG_LIB_CONTROL_DIR_FOR_REFS})");
+                return true;
             }
             else if (include.StartsWith(v2))
             {
-                return include.Replace(v2, $"$({IziEnvironments.IZHG_MODULES})");
+                result = include.Replace(v2, $"$({IziEnvironments.IZHG_MODULES})");
+                return true;
             }
             else if (include.StartsWith(v3))
             {
-                return include.Replace(v3, $"$({IziEnvironments.IZHG_REFS})");
+                result = include.Replace(v3, $"$({IziEnvironments.IZHG_REFS})");
+                return true;
             }
             else if (include.StartsWith(v4))
             {
-                return include.Replace(v4, $"$({IziEnvironments.IZHG_ROOT})");
+                result = include.Replace(v4, $"$({IziEnvironments.IZHG_ROOT})");
+                return true;
             }
-            throw new NotImplementedException(include);
+            return false;
         }
 
         /// <summary>
