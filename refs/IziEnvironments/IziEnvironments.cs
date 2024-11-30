@@ -12,6 +12,7 @@ namespace IziHardGames.Environments
         public const string PATH_DEVTOOLS_CHAN_IVAN = "PATH_DEVTOOLS_CHAN_IVAN";    
         public const string IZHG_BUILDS_ROOT = "IZHG_BUILDS_ROOT";    
         public const string MY_NUGET_REGISTRY = "MY_NUGET_REGISTRY";    
+        public const string IZHG_CSHARP_PROJECTS = "IZHG_CSHARP_PROJECTS";    
         /// <summary>
         /// рефы для проекта управления библиотеками
         /// </summary>

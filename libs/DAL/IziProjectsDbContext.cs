@@ -30,6 +30,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             modelBuilder.Entity<DeviceSettings>().HasOne(x => x.Device).WithOne(x => x.Settings).HasForeignKey<Device>(x => x.Id).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<EntityCsproj>(x =>
             {
+                x.Property(x => x.RepoGitHub).HasMaxLength(256);
                 x.HasKey(x => x.EntityCsprojId);
                 x.Property(x => x.EntityCsprojId).HasConversion(x => x.Guid, x => CsprojId.Create(x));
                 x.HasMany(x => x.CsProjectAtDevices).WithOne(x => x.EntityCsproj).HasForeignKey(x => x.EntityCsprojId);

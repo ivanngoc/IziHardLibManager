@@ -8,6 +8,7 @@ namespace IziHardGames.DotNetProjects
     {
         public CsprojId EntityCsprojId { get; set; }
         public int CountReferencesToProjects { get; set; }
+        public string? RepoGitHub { get; set; }
         public ICollection<CsProjectAtDevice> CsProjectAtDevices { get; set; } = null!;
         public ICollection<CsprojRelation> AsChild { get; set; } = null!;
         public ICollection<CsprojRelation> AsParent { get; set; } = null!;

@@ -43,6 +43,7 @@ namespace IziHardGames.DotNetProjects
             var v2 = GetEnvVariable(IziEnvironments.IZHG_MODULES);
             var v3 = GetEnvVariable(IziEnvironments.IZHG_REFS);
             var v4 = GetEnvVariable(IziEnvironments.IZHG_ROOT);
+            var v5 = GetEnvVariable(IziEnvironments.IZHG_CSHARP_PROJECTS);
 
             if (include.StartsWith(v1))
             {
@@ -63,7 +64,12 @@ namespace IziHardGames.DotNetProjects
             {
                 result = include.Replace(v4, $"$({IziEnvironments.IZHG_ROOT})");
                 return true;
-            }
+            } 
+            //else if (include.StartsWith(v5))
+            //{
+            //    result = include.Replace(v5, $"$({IziEnvironments.IZHG_CSHARP_PROJECTS})");
+            //    return true;
+            //}
             return false;
         }
 
