@@ -10,6 +10,8 @@
     <!--<BaseOutputPath>C:\builds\$(MSBuildProjectName)\bin\</BaseOutputPath>-->
 
     <!--<MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)extensions</MSBuildProjectExtensionsPath>-->
-    <IziDirOfRefs></IziDirOfRefs>
+    <!--<IziDirOfRefs></IziDirOfRefs>-->
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
 </Project>

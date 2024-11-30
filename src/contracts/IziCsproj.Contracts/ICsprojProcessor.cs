@@ -13,5 +13,6 @@ namespace IziHardGames.DotNetProjects
         Task<int> FormatDependecies();
         Task<int> DistinctRelationsAsync();
         Task<int> FormatIncludePathToEnvVarBasedPathAsync();
+        Task<int> ReplaceAbsIncludesWithRelativeAsync();
     }
 }

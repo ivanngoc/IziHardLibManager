@@ -18,7 +18,6 @@ namespace IziHardGames.DotNetProjects
         public int RelationId { get; set; }
         public Guid DeviceId { get; set; }
         public string Include { get; set; } = null!;
-
         public Device Device { get; set; } = null!;
         [JsonIgnore] public CsprojRelation Relation { get; set; } = null!;
     }
@@ -28,8 +27,16 @@ namespace IziHardGames.DotNetProjects
         public int Id { get; set; }
         public CsprojId? ParentId { get; set; }
         public CsprojId? ChildId { get; set; }
+        public ERelationType RelationType { get; set; }
         public EntityCsproj? Parent { get; set; }
         public EntityCsproj? Child { get; set; }
         public ICollection<CsprojRelationAtDevice> RelationsAtDevice { get; set; }
+    }
+
+    public enum ERelationType
+    {
+        Undefined,
+        None,
+        ParentChild,
     }
 }

@@ -13,6 +13,10 @@ namespace IziLibraryApiGate.Controllers
     [ApiController]
     public class CsprojsController(ICsproSearcher searcher, ICsprojProcessor processor, ICsprojSaver saver, IziProjectsDbContext context) : ControllerBase
     {
+        /// <summary>
+        /// Ищет все *.cspoj по дирикториям в настройках и добавляет в <PropertyGroup/> необходимые данные (автор, Guid проекта, компания)
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(nameof(DiscoverAndEnsureRequiredMetas))]
         public async Task<IActionResult> DiscoverAndEnsureRequiredMetas()
         {
@@ -24,7 +28,9 @@ namespace IziLibraryApiGate.Controllers
             }
             return Ok(csprojsFullPaths.Select(x => x.FullName));
         }
-
+        /// <summary>
+        /// Ищет все *.cspoj по дирикториям в настройках и добавляет запись в БД: PostgreSQL | host.docker.internal:5432 | IziProjectsDbContext | public | Table: Csprojs 
+        /// </summary>
         [HttpGet(nameof(DiscoverAndSaveToDb))]
         public async Task<IActionResult> DiscoverAndSaveToDb()
         {
@@ -97,6 +103,17 @@ namespace IziLibraryApiGate.Controllers
         public async Task<IActionResult> FormatIncludePathToEnvVarBasedPath()
         {
             var count = await processor.FormatIncludePathToEnvVarBasedPathAsync();
+            return Ok(count);
+        }
+
+        /// <summary>
+        /// По всем <see cref="EntityCsproj"/> заменяет ProjectReference-Include с абсолютного пути на относительный
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet(nameof(ReplaceAbsIncludesWithRelative))]
+        public async Task<IActionResult> ReplaceAbsIncludesWithRelative()
+        {
+            var count = await processor.ReplaceAbsIncludesWithRelativeAsync();
             return Ok(count);
         }
     }

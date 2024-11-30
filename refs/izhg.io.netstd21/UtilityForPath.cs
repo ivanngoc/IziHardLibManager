@@ -117,5 +117,30 @@ namespace IziHardGames.FileSystem.NetStd21
             return new FileInfo(pathAbs).FileNameWithoutExtension();
         }
 
+        public static bool TryAbsToRelative(FileInfo from, FileInfo to, out string? pathRel)
+        {
+            pathRel = null;
+            // Get absolute paths
+            string absParent = from.Directory.Root.FullName;
+            string absChild = to.Directory.Root.FullName;
+
+            // Ensure both files exist
+            if (!from.Exists || !to.Exists)
+                return false;
+
+            // Check if both paths have a common root
+            if (!absChild.StartsWith(Path.GetDirectoryName(absParent) ?? string.Empty, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            // Get relative path
+            Uri parentUri = new Uri(from.Directory.FullName);
+            Uri childUri = new Uri(to.FullName);
+            pathRel = Uri.UnescapeDataString(parentUri.MakeRelativeUri(childUri).ToString());
+
+            // Convert to correct directory separator if needed
+            pathRel = pathRel.Replace('/', Path.DirectorySeparatorChar);
+
+            return true;
+        }
     }
 }

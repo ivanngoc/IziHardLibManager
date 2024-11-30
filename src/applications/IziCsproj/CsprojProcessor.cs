@@ -315,5 +315,32 @@ namespace IziHardGames.DotNetProjects
             }
             return count;
         }
+
+        public async Task<int> ReplaceAbsIncludesWithRelativeAsync()
+        {
+            var es = await context.Csprojs.Include(x => x.CsProjectAtDevices).ToArrayAsync();
+            var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
+            int replace = default;
+            foreach (var e in es)
+            {
+                var atDevice = e.CsProjectAtDevices.Where(x => x.DeviceId == idDevice).FirstOrDefault();
+                if (atDevice != null)
+                {
+#if DEBUG
+                    if (atDevice.EntityCsprojId.Guid == Guid.Parse("91eae8b6-897f-4229-bb3a-8893e171ee15"))
+                    {
+                        Console.WriteLine("Hit");
+                    }
+#endif
+                    var path = atDevice.PathAbs;
+                    var csproj = new Csproj(new FileInfo(path));
+                    if (await csproj.ReplaceIncludesOfProjectReferencesWherePathIsAbsAsync(context, idDevice))
+                    {
+                        replace++;
+                    }
+                }
+            }
+            return replace;
+        }
     }
 }

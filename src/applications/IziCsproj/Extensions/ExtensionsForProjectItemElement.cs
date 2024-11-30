@@ -18,10 +18,20 @@ namespace IziHardGames.DotNetProjects.Extensions
             return res;
         }
 
-        public static string GetIncludePath(this ProjectItemElement element, FileInfo fileInfo)
+        public static void SetIncludePath(this ProjectItemElement element, string value)
+        {
+            element.Include = value;
+        }
+
+        public static string GetIncludePathAsAbs(this ProjectItemElement element, FileInfo fileInfo)
         {
             var pathAbs = IziEnvironmentsHelper.GetActualAbsolutePath(element.Include, fileInfo.Directory?.FullName);
             return pathAbs;
+        }
+
+        public static string GetIncludePathAsIs(this ProjectItemElement element, FileInfo fileInfo)
+        {
+            return element.Include;
         }
 
         public static CsprojProjectReferenceRequiredMetas GetMetas(this ProjectItemElement projectItemElement)

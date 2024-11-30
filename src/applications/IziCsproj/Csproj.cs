@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using IziHardGames.DotNetProjects.Extensions;
+using IziHardGames.FileSystem.NetStd21;
+using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.Build.Construction;
+using Microsoft.EntityFrameworkCore;
 
 namespace IziHardGames.DotNetProjects
 {
@@ -84,6 +87,38 @@ namespace IziHardGames.DotNetProjects
             root.FormatPathsToRelativeWithEnvVariables();
             root.Save();
             await Task.CompletedTask;
+        }
+
+        public async Task<bool> ReplaceIncludesOfProjectReferencesWherePathIsAbsAsync(IziProjectsDbContext context, Guid idDevice)
+        {
+            ProjectRootElement root = global::Microsoft.Build.Construction.ProjectRootElement.Open(FilePathAbsolute);
+            var refs = root.GetProjectReferences();
+            var result = false;
+            foreach (var refEl in refs)
+            {
+                var include = refEl.GetIncludePathAsIs(this.FileInfo);
+                if (!UtilityForPath.IsRelative(include))
+                {
+                    var meta = refEl.GetMetas();
+                    if (meta.CsprojId.HasValue)
+                    {
+                        var child = await context.ProjectsAtDevice.Where(x => x.DeviceId == idDevice && x.EntityCsprojId == meta.CsprojId.Value).FirstOrDefaultAsync();
+                        if (child != null)
+                        {
+                            var fiChild = new FileInfo(child.PathAbs);
+                            if (UtilityForPath.TryAbsToRelative(FileInfo, fiChild, out var pathRel))
+                            {
+                                Console.WriteLine($"From {include} to {pathRel}");
+                                result = true;
+                                ArgumentNullException.ThrowIfNullOrWhiteSpace(pathRel);
+                                refEl.SetIncludePath(pathRel);
+                            }
+                        }
+                    }
+                }
+            }
+            root.Save();
+            return result;
         }
     }
 }
