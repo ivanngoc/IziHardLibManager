@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>b80b5598-89f7-44fb-906e-40d0fc2b36d6</ProjectGuid>
+    
+    </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\refs\izhg.FileSystem.NetCore\izhg.FileSystem.NetCore.csproj" />
+    <ProjectReference Include="..\..\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -133,7 +133,7 @@ namespace IziHardGames.FileSystem.NetStd21
                 return false;
 
             // Get relative path
-            Uri parentUri = new Uri(from.Directory.FullName);
+            Uri parentUri = new Uri(from.FullName);
             Uri childUri = new Uri(to.FullName);
             pathRel = Uri.UnescapeDataString(parentUri.MakeRelativeUri(childUri).ToString());
 
