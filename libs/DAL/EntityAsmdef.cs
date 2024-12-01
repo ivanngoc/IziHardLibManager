@@ -1,24 +1,29 @@
 ﻿using IziHardGames.CrossTables;
 using IziHardGames.DotNetProjects;
+using IziLibrary.Database.DataBase.EfCore;
 
 namespace IziHardGames.Asmdefs
 {
     public class EntityAsmdef
     {
         public AsmdefId EntityAsmdefId { get; set; }
+        public MetaId? MetaId { get; set; }
         public string? Description { get; set; }
+        public EntityMeta? Meta { get; set; }
 
-        public ICollection<RelationAsmdef> AsParent { get; set; } = null!;
-        public ICollection<RelationAsmdef> AsChild { get; set; } = null!;
-        public ICollection<EntityAsmdefAtDevice> AsmdefsAtDevice { get; set; } = null!;
-        public ICollection<AsmdefXCsproj> AsmdefXCsprojs { get; set; } = null!;
+        public ICollection<RelationAsmdef> AsParent { get; set; }
+        public ICollection<RelationAsmdef> AsChild { get; set; }
+        public ICollection<EntityAsmdefAtDevice> AsmdefsAtDevice { get; set; }
+        public ICollection<AsmdefXCsproj> AsmdefXCsprojs { get; set; }
     }
 
     public class EntityAsmdefAtDevice
     {
         public Guid DeviceId { get; set; }
         public AsmdefId AsmdefId { get; set; }
-        public EntityAsmdef Asmdef { get; set; } = null!;
+        public string PathAbs { get; set; } = null!;
+        public EntityAsmdef Asmdef { get; }
+        public Device Device { get; }
     }
 
     public class RelationAsmdef
@@ -38,5 +43,6 @@ namespace IziHardGames.Asmdefs
         public Guid DeviceId { get; set; }
         public int RelationId { get; set; }
         public RelationAsmdef Relation { get; set; } = null!;
+        public Device Device { get; set; }
     }
 }

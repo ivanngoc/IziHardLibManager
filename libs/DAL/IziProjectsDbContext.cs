@@ -29,6 +29,9 @@ namespace IziLibrary.Database.DataBase.EfCore
         public DbSet<RelationAsmdefAtDevice> RelationAsmdefsAtDevice { get; set; }
         public DbSet<AsmdefXCsproj> AsmdefXCsproj { get; set; }
 
+        public DbSet<EntityMeta> Metas { get; set; }
+        public DbSet<EntityMetaAtDevice> MetasAtDevice { get; set; }
+
         public IziProjectsDbContext(DbContextOptions<IziProjectsDbContext> opt) : base(opt)
         {
 
@@ -56,10 +59,10 @@ namespace IziLibrary.Database.DataBase.EfCore
 
             modelBuilder.Entity<CsprojRelation>(x =>
             {
+                x.HasKey(x => x.Id);
                 x.Property(x => x.CheckDateTime).HasConversion<NullableDateTimeOffsetConverter>().HasColumnType("timestamptz");
                 x.HasOne(x => x.Parent).WithMany(x => x.AsChild).HasForeignKey(x => x.ParentId);
                 x.HasOne(x => x.Child).WithMany(x => x.AsParent).HasForeignKey(x => x.ChildId);
-                x.HasKey(x => x.Id);
                 x.HasIndex(x => new { x.ParentId, x.ChildId }).HasFilter($"\"{nameof(CsprojRelation.ParentId)}\" IS NOT NULL AND \"{nameof(CsprojRelation.ChildId)}\" IS NOT NULL").IsUnique();//.HasDatabaseName("IX_");
                 x.Property(x => x.ParentId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
                 x.Property(x => x.ChildId).HasConversion(x => ((Guid?)x), x => CsprojId.Create(x));
@@ -78,12 +81,19 @@ namespace IziLibrary.Database.DataBase.EfCore
             {
                 x.HasKey(x => x.EntityAsmdefId);
                 x.Property(x => x.EntityAsmdefId).HasConversion<AsmdefIdConverter>();
+                //x.Property(x => x.EntityAsmdefId).HasConversion(x => x.Guid, x => AsmdefId.Create(x));
+
+                x.Property(x => x.MetaId).HasConversion<MetaIdConverterNullable>();
+                x.HasOne(x => x.Meta).WithOne(x => x.Asmdef).HasForeignKey<EntityAsmdef>(x => x.MetaId);
+                x.HasMany(x => x.AsmdefsAtDevice).WithOne(x => x.Asmdef).HasForeignKey(x => x.AsmdefId);
             });
 
             modelBuilder.Entity<EntityAsmdefAtDevice>(x =>
             {
                 x.HasKey(x => new { x.DeviceId, x.AsmdefId });
-                x.HasOne(x => x.Asmdef).WithMany(x => x.AsmdefsAtDevice).HasForeignKey(x => x.AsmdefId);
+                x.Property(x => x.AsmdefId).HasConversion<AsmdefIdConverter>();
+                x.HasOne(x => x.Asmdef).WithMany(x => x.AsmdefsAtDevice).HasForeignKey(x => x.AsmdefId).OnDelete(DeleteBehavior.Cascade);
+                x.HasOne(x => x.Device).WithMany(x => x.Asmdefs).HasForeignKey(x => x.DeviceId).OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<RelationAsmdef>(x =>
@@ -101,6 +111,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             {
                 x.HasKey(x => new { x.DeviceId, x.RelationId });
                 x.HasOne(x => x.Relation).WithMany(x => x.RelationsAtDevice).HasForeignKey(x => x.RelationId);
+                x.HasOne(x => x.Device).WithMany(x => x.RelationsAsmdef).HasForeignKey(x => x.DeviceId);
             });
 
             modelBuilder.Entity<AsmdefXCsproj>(x =>
@@ -110,6 +121,18 @@ namespace IziLibrary.Database.DataBase.EfCore
                 x.HasOne(x => x.Asmdef).WithMany(x => x.AsmdefXCsprojs).HasForeignKey(x => x.AsmdefId);
                 x.Property(x => x.CsprojId).HasConversion<CsprojIdConverter>();
                 x.Property(x => x.AsmdefId).HasConversion<AsmdefIdConverter>();
+            });
+
+            modelBuilder.Entity<EntityMeta>(x =>
+            {
+                x.HasKey(x => x.MetaId);
+                x.Property(x => x.MetaId).HasConversion<MetaIdConverter>();
+            });
+
+            modelBuilder.Entity<EntityMetaAtDevice>(x =>
+            {
+                x.HasKey(x => new { x.DeviceId, x.MetaId });
+                x.Property(x => x.MetaId).HasConversion<MetaIdConverter>();
             });
         }
 
@@ -171,6 +194,9 @@ namespace IziLibrary.Database.DataBase.EfCore
         public ICollection<IziProject> IziProjects { get; set; } = null!;
         public ICollection<CsProjectAtDevice> Csprojects { get; set; } = null!;
         public ICollection<CsprojRelationAtDevice> Relations { get; set; } = null!;
+
+        public ICollection<EntityAsmdefAtDevice> Asmdefs { get; set; } = null!;
+        public ICollection<RelationAsmdefAtDevice> RelationsAsmdef { get; set; } = null!;
     }
 
     public class DeviceSettings
@@ -244,6 +270,26 @@ namespace IziLibrary.Database.DataBase.EfCore
             : base(
                 x => x.HasValue ? (Guid?)x.Value.Guid : null,
                 x => x.HasValue ? CsprojId.Create(x.Value) : null)
+        {
+        }
+    }
+
+    internal class MetaIdConverter : ValueConverter<MetaId, Guid>
+    {
+        public MetaIdConverter()
+            : base(
+                x => x.Guid,
+                x => MetaId.Create(x))
+        {
+        }
+    }
+
+    internal class MetaIdConverterNullable : ValueConverter<MetaId?, Guid?>
+    {
+        public MetaIdConverterNullable()
+            : base(
+                x => x.HasValue ? (Guid?)x.Value.Guid : null,
+                x => x.HasValue ? MetaId.Create(x.Value) : null)
         {
         }
     }

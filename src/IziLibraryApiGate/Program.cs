@@ -1,4 +1,6 @@
-﻿using IziHardGames.DotNetProjects;
+﻿using IziHardGames.Asmdefs;
+using IziHardGames.Asmdefs.Contracts;
+using IziHardGames.DotNetProjects;
 using IziHardGames.IziLibrary.Commands.AtDataBase;
 using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
@@ -30,6 +32,7 @@ namespace IziLibraryApiGate
             builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
             builder.Services.AddScoped<ICsprojProcessor, CsprojProcessor>();
             builder.Services.AddScoped<ICsprojSaver, CsprojSaver>();
+            builder.Services.AddScoped<IAsmdefSearcher, AsmdefSearcher>();
 
             IServiceConfig.Configure(builder.Services);
 

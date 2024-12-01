@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>b457f8f3-cb90-4ab0-a841-6ac223e6f234</ProjectGuid>
+    <RootNamespace>IziHardGames.Asmdefs.Contracts</RootNamespace>
+  </PropertyGroup>
+
+</Project>

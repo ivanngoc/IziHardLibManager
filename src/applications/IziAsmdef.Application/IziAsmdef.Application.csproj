@@ -4,15 +4,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ProjectGuid>ed447949-779c-4d00-b219-ddd83874e278</ProjectGuid>
+    <ProjectGuid>b92c1d89-c32d-43e5-8a55-75f6a774ec44</ProjectGuid>
     <RootNamespace>IziHardGames.Asmdefs</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\DAL\DAL.csproj" />
     <ProjectReference Include="..\..\..\refs\izhg.io.netstd21\izhg.FileSystem.netstd21.csproj" />
-    <ProjectReference Include="..\..\contracts\IziProjectsManager.Common\IziProjectsManager.Common.csproj" />
-    <ProjectReference Include="..\IziMeta.Domain\IziMeta.Domain.csproj" />
+    <ProjectReference Include="..\..\contracts\Asmdef.Contracts\Asmdef.Contracts.csproj" />
+    <ProjectReference Include="..\..\domains\IziAsmdef.Domain\IziAsmdef.Domain.csproj" />
   </ItemGroup>
 
 </Project>

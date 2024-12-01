@@ -14,6 +14,7 @@ namespace IziHardGames.DotNetProjects
         {
             int count = default;
             var idDevice = IziEnvironmentsHelper.GetCurrentDeviceGuid();
+            var dic = new Dictionary<CsprojId, FileInfo>();
             foreach (var fileInfo in fileInfos)
             {
                 var meta = new Csproj(fileInfo);
@@ -23,6 +24,17 @@ namespace IziHardGames.DotNetProjects
                     Console.WriteLine($"{guid}: {fileInfo.FullName}");
                     if (guid == default) throw new FormatException(fileInfo.FullName);
                     var id = (CsprojId)guid;
+                    try
+                    {
+                        dic.Add(id, fileInfo);
+                    }
+                    catch (Exception)
+                    {
+                        if (dic.TryGetValue(id, out var existed))
+                        {
+                            throw new Exception($"Duplicates founded: {existed.FullName} | {fileInfo.FullName}");
+                        }
+                    }
                     var toProcess = await context.Csprojs.Where(x => x.EntityCsprojId == id).Include(x => x.CsProjectAtDevices).FirstOrDefaultAsync();
                     CsProjectAtDevice? csProjectAtDevice = null;
                     if (toProcess == null)

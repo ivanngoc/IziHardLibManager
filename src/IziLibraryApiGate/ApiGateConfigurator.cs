@@ -27,7 +27,7 @@ namespace IziLibraryApiGate
                 ArgumentNullException.ThrowIfNull(asm);
                 var name = asm.GetName().Name;
                 opt.MigrationsAssembly(name);
-            });
+            }).EnableSensitiveDataLogging();
         }
     }
 

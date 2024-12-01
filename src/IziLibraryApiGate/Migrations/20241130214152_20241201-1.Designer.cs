@@ -3,6 +3,7 @@ using System;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IziLibraryApiGate.Migrations
 {
     [DbContext(typeof(IziProjectsDbContext))]
-    partial class IziProjectsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241130214152_20241201-1")]
+    partial class _202412011
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,10 +66,6 @@ namespace IziLibraryApiGate.Migrations
 
                     b.Property<Guid>("AsmdefId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("PathAbs")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("DeviceId", "AsmdefId");
 
@@ -351,15 +350,7 @@ namespace IziLibraryApiGate.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IziLibrary.Database.DataBase.EfCore.Device", "Device")
-                        .WithMany("Asmdefs")
-                        .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Asmdef");
-
-                    b.Navigation("Device");
                 });
 
             modelBuilder.Entity("IziHardGames.Asmdefs.EntityMetaAtDevice", b =>
@@ -390,19 +381,11 @@ namespace IziLibraryApiGate.Migrations
 
             modelBuilder.Entity("IziHardGames.Asmdefs.RelationAsmdefAtDevice", b =>
                 {
-                    b.HasOne("IziLibrary.Database.DataBase.EfCore.Device", "Device")
-                        .WithMany("RelationsAsmdef")
-                        .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("IziHardGames.Asmdefs.RelationAsmdef", "Relation")
                         .WithMany("RelationsAtDevice")
                         .HasForeignKey("RelationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Device");
 
                     b.Navigation("Relation");
                 });
@@ -529,13 +512,9 @@ namespace IziLibraryApiGate.Migrations
 
             modelBuilder.Entity("IziLibrary.Database.DataBase.EfCore.Device", b =>
                 {
-                    b.Navigation("Asmdefs");
-
                     b.Navigation("Csprojects");
 
                     b.Navigation("Relations");
-
-                    b.Navigation("RelationsAsmdef");
                 });
 
             modelBuilder.Entity("IziLibrary.Database.DataBase.EfCore.DeviceSettings", b =>

@@ -31,9 +31,11 @@
     <ProjectReference Include="$(IZHG_LIB_CONTROL_DIR_FOR_REFS)\IziEnvironments\IziEnvironments.csproj">
       <Project>eb0769fe-2287-4367-9151-47ce9a6cd916</Project>
     </ProjectReference>
+    <ProjectReference Include="..\applications\IziAsmdef.Application\IziAsmdef.Application.csproj" />
     <ProjectReference Include="..\applications\IziCsproj\IziCsproj.Application.csproj">
       <Project>e64a64c7-bcf0-48d0-92af-795ffa02c2f7</Project>
     </ProjectReference>
+    <ProjectReference Include="..\contracts\Asmdef.Contracts\Asmdef.Contracts.csproj" />
     <ProjectReference Include="..\contracts\IziCsproj.Contracts\IziCsproj.Contracts.csproj">
       <Project>fe1cca0c-f05c-439e-93c2-673656bac4dc</Project>
     </ProjectReference>

@@ -21,7 +21,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
-    
+
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
@@ -41,8 +41,8 @@
 
     <PackageVersion Include="Microsoft.Build" Version="17.10.4" />
     <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
-    
-    
+
+
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <PrivateAssets>all</PrivateAssets>
@@ -78,5 +78,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="YamlDotNet" Version="16.2.0" />
+    <PackageVersion Include="YamlDotNet.System.Text.Json" Version="1.6.4" />
   </ItemGroup>
 </Project>
