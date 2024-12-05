@@ -1,3 +1,5 @@
 npm install @mui/material @emotion/react @emotion/styled --save
 npm install @mui/x-data-grid --save
 npm install axios --save
+npm install devextreme devextreme-react --save
+npm install @types/devextreme --save-dev

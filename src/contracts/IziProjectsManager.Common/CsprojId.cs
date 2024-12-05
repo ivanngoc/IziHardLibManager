@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using IziHardGames.Projects.Common;
 
 namespace IziHardGames.DotNetProjects
 {
+    [JsonConverter(typeof(GuidConverter<CsprojId>))]
     public struct CsprojId : IIdentityValueObject, IEquatable<CsprojId>
     {
         public Guid Guid { get; set; }

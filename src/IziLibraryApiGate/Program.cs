@@ -7,6 +7,7 @@ using IziHardGames.Projects.DataBase;
 using IziLibrary.Database.DataBase.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace IziLibraryApiGate
 {
@@ -20,13 +21,24 @@ namespace IziLibraryApiGate
             var optBuilder = new DbContextOptionsBuilder<IziProjectsDbContext>();
 
 
+            //builder.Services.AddCors(x => x.AddPolicy(policy => policy.));
             builder.Services.AddSingleton<IDbConfigurator, ApiGateConfigurator>();
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null; // Use PascalCase
+                options.JsonSerializerOptions.DictionaryKeyPolicy = null;  // For dictionary keys
+            });
             builder.Services.AddDbContextPool<IziProjectsDbContext>(x => x.ConfigureWithIziSpecifics());
 
             //builder.Services.AddDbContext<ModulesDbContextV1>();
             //builder.Services.AddDbContext<ModulesDbContextV2>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddCors(options => options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            }));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGenWithSpecificOfIziHardGames();
             builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
@@ -40,15 +52,18 @@ namespace IziLibraryApiGate
 
             var app = builder.Build();
 
+            app.UseRouting();
+            app.UseCors("AllowAll");
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwaggerWithSpecificOfIziHardGames();
             }
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.MapControllers();
+
 
             app.Run();
         }

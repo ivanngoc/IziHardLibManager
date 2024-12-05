@@ -12,5 +12,10 @@ namespace IziLibrary.Database.DataBase.EfCore
         public string PathAbs { get; set; } = null!;
         [JsonIgnore] public Device Device { get; set; } = null!;
         public EntityCsproj EntityCsproj { get; set; } = null!;
+
+        public string GetFileName()
+        {
+            return new FileInfo(PathAbs).Name;
+        }
     }
 }

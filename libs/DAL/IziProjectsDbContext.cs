@@ -141,6 +141,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             Devices.Add(new Device()
             {
                 Id = laptop,
+                Description = "Laptop",
                 Settings = new DeviceSettings()
                 {
                     Id = laptop,
@@ -155,6 +156,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             Devices.Add(new Device()
             {
                 Id = desktopVn,
+                Description = "Desktop VNN",
                 Settings = new DeviceSettings()
                 {
                     Id = desktopVn,
@@ -165,6 +167,7 @@ namespace IziLibrary.Database.DataBase.EfCore
             Devices.Add(new Device()
             {
                 Id = desktopKem,
+                Description = "Desktop Kemerovo",
                 Settings = new DeviceSettings()
                 {
                     Id = desktopKem,

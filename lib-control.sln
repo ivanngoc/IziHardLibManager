@@ -88,13 +88,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "playgrounds", "playgrounds"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "playgrounds\Playground\Playground.csproj", "{4E8B0FE9-A56B-43C6-B921-0243134528AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziAsmdef.Domain", "src\domains\IziAsmdef.Domain\IziAsmdef.Domain.csproj", "{BE386A70-6F54-4A2B-AD86-E1B3711C7DDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziAsmdef.Domain", "src\domains\IziAsmdef.Domain\IziAsmdef.Domain.csproj", "{BE386A70-6F54-4A2B-AD86-E1B3711C7DDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziAsmdef.Application", "src\applications\IziAsmdef.Application\IziAsmdef.Application.csproj", "{E7A0EBA4-9F7C-4DCF-BDAD-66EA573D517B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziAsmdef.Application", "src\applications\IziAsmdef.Application\IziAsmdef.Application.csproj", "{E7A0EBA4-9F7C-4DCF-BDAD-66EA573D517B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmdef.Contracts", "src\contracts\Asmdef.Contracts\Asmdef.Contracts.csproj", "{B110EE7C-91DF-4BAF-805F-B83D91183356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmdef.Contracts", "src\contracts\Asmdef.Contracts\Asmdef.Contracts.csproj", "{B110EE7C-91DF-4BAF-805F-B83D91183356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IziMeta.Domain", "src\domains\IziMeta.Domain\IziMeta.Domain.csproj", "{AFB285EC-C32F-4FC4-9894-C76445FB8D9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IziMeta.Domain", "src\domains\IziMeta.Domain\IziMeta.Domain.csproj", "{AFB285EC-C32F-4FC4-9894-C76445FB8D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tables.Application", "src\applications\Tables.Application\Tables.Application.csproj", "{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -230,6 +232,10 @@ Global
 		{AFB285EC-C32F-4FC4-9894-C76445FB8D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB285EC-C32F-4FC4-9894-C76445FB8D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB285EC-C32F-4FC4-9894-C76445FB8D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -270,6 +276,7 @@ Global
 		{E7A0EBA4-9F7C-4DCF-BDAD-66EA573D517B} = {BFDC67A1-7FDE-4FD9-BAE3-1FB302794C16}
 		{B110EE7C-91DF-4BAF-805F-B83D91183356} = {31E89F88-E26A-4CAA-81C5-E8804BD9E728}
 		{AFB285EC-C32F-4FC4-9894-C76445FB8D9F} = {E82AAB01-93D2-45AF-AEE4-A14F22D964A7}
+		{2F1D0F88-992A-41BD-A267-8E86DD0C7FF0} = {BFDC67A1-7FDE-4FD9-BAE3-1FB302794C16}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F86D174B-190A-4572-AC93-551DB1CFA836}
