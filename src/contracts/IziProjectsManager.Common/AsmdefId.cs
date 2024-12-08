@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using IziHardGames.DotNetProjects;
 using IziHardGames.Projects.Common;
 
 namespace IziHardGames.Asmdefs
 {
+    [JsonConverter(typeof(GuidConverter<AsmdefId>))]
     public struct AsmdefId : IIdentityValueObject, IEquatable<AsmdefId>
     {
         public Guid Guid { get; set; }

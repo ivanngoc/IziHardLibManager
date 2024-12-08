@@ -1,0 +1,1 @@
+export const allowedPageSizes = [25, 50, 100, 1000];

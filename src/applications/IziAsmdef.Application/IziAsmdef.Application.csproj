@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\domains\IziAsmdef.Domain\IziAsmdef.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Async" />
+  </ItemGroup>
+
 </Project>

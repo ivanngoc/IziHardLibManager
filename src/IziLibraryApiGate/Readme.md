@@ -1,0 +1,1 @@
+﻿dotnet ef migrations add 20241207-1 --context IziProjectsDbContext --verbose

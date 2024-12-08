@@ -5,6 +5,7 @@ using IziLibrary.Database.DataBase.EfCore;
 using IziHardGames.FileSystem.NetStd21;
 using IziHardGames.Asmdefs.Models;
 using Microsoft.EntityFrameworkCore;
+using YamlDotNet.Core.Tokens;
 
 namespace IziHardGames.Asmdefs
 {
@@ -21,19 +22,30 @@ namespace IziHardGames.Asmdefs
             foreach (var fi in files)
             {
                 var asmdef = new Asmdef(fi);
-                EntityAsmdef? existed = null;
+                EntityAsmdef? toProcess = null;
                 var guid = await asmdef.GetGuidAsync();
                 if (guid.HasValue)
                 {
-                    existed = asmdefs.FirstOrDefault(x => x.EntityAsmdefId == guid.Value);
-                    dic.Add(guid.Value, existed);
-                    if (existed == null)
+                    toProcess = asmdefs.FirstOrDefault(x => x.EntityAsmdefId == guid.Value);
+                    try
                     {
-                        existed = new EntityAsmdef()
+                        dic.Add(guid.Value, toProcess);
+                    }
+                    catch (Exception ex)
+                    {
+                        var existed = dic[guid.Value];
+                        throw new Exception($"Duplicate Guid. existed path: {existed.AsmdefsAtDevice.First().PathAbs}. Processed: {fi.FullName}", ex);
+                    }
+                    if (toProcess == null)
+                    {
+                        var tags = await asmdef.GetOrCreateTags(context.Tags).ToListAsync();
+                        toProcess = new EntityAsmdef()
                         {
                             EntityAsmdefId = guid.Value,
+                            Name = fi.FileNameWithoutExtension(),
+                            Tags = tags,
                         };
-                        context.Asmdefs.Add(existed);
+                        context.Asmdefs.Add(toProcess);
                     }
                     var existedAtDevice = asmdefsAtDevice.FirstOrDefault(x => x.DeviceId == idDevice && x.AsmdefId == guid.Value);
                     if (existedAtDevice == null)
@@ -41,7 +53,7 @@ namespace IziHardGames.Asmdefs
                         existedAtDevice = new EntityAsmdefAtDevice()
                         {
                             DeviceId = idDevice,
-                            AsmdefId = existed.EntityAsmdefId,
+                            AsmdefId = toProcess.EntityAsmdefId,
                             //Asmdef = default,
                         };
                         context.AsmdefsAtDevice.Add(existedAtDevice);
@@ -80,7 +92,8 @@ namespace IziHardGames.Asmdefs
 
                 dirs = new List<string>()
                 {
-                    @"C:\Users\ngoc\Documents"
+                    @"C:\Users\ngoc\Documents",
+                    @"C:\.izhg-lib"
                 };
 
                 excludeFilenameStartsWith = new List<string>()
@@ -96,7 +109,8 @@ namespace IziHardGames.Asmdefs
                 };
                 excludeDirs = new List<string>()
                 {
-                    @"C:\Users\ivan\Documents\GCE"
+                    @"C:\Users\ivan\Documents\GCE",
+                    @"C:\Users\ivan\Documents\.unity\GameProject5\Library\"
                 };
             }
 

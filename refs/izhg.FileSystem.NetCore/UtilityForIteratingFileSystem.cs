@@ -23,7 +23,15 @@ namespace IziHardGames.FileSystem.NetCore
         }
         public static IEnumerable<FileInfo> GetAllFiles(DirectoryInfo directoryInfo, bool excludeJunctions = true)
         {
-            var files = directoryInfo.GetFiles();
+            FileInfo[] files = Array.Empty<FileInfo>();
+            try
+            {
+                files = directoryInfo.GetFiles();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                yield break;
+            }
             foreach (var file in files)
             {
                 yield return file;
@@ -32,7 +40,7 @@ namespace IziHardGames.FileSystem.NetCore
             foreach (var subdir in subDris)
             {
                 if (excludeJunctions && IsJunction(subdir)) continue;
-                var subFiles = GetAllFiles(subdir);
+                var subFiles = GetAllFiles(subdir, excludeJunctions);
                 foreach (var file in subFiles)
                 {
                     yield return file;
@@ -43,16 +51,18 @@ namespace IziHardGames.FileSystem.NetCore
         public static IEnumerable<FileInfo> GetAllFiles(DirectoryInfo directoryInfo, Func<FileInfo, bool> filter, bool excludeJunctions = true)
         {
             var files = GetAllFiles(directoryInfo, excludeJunctions);
-
+#if DEBUG
+            var deb = files.Where(x => x.FullName.StartsWith(@"C:\Users\ivan\Documents\.izi_modules\modules\com.izihardgames.app-domain.netstd21.unity3d")).ToArray();
+#endif
             foreach (var item in files)
             {
                 if (filter(item)) yield return item;
             }
         }
-      
+
         private static bool IsJunction(DirectoryInfo subdir)
         {
-            return (subdir.Attributes != FileAttributes.Directory);
+            return (!subdir.Attributes.HasFlag(FileAttributes.Directory));
         }
     }
 }

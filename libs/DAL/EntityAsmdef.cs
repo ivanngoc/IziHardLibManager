@@ -9,12 +9,14 @@ namespace IziHardGames.Asmdefs
         public AsmdefId EntityAsmdefId { get; set; }
         public MetaId? MetaId { get; set; }
         public string? Description { get; set; }
+        public string Name { get; set; }
         public EntityMeta? Meta { get; set; }
 
         public ICollection<RelationAsmdef> AsParent { get; set; }
         public ICollection<RelationAsmdef> AsChild { get; set; }
         public ICollection<EntityAsmdefAtDevice> AsmdefsAtDevice { get; set; }
         public ICollection<AsmdefXCsproj> AsmdefXCsprojs { get; set; }
+        public ICollection<EntityTag> Tags { get; set; }
     }
 
     public class EntityAsmdefAtDevice
@@ -24,6 +26,11 @@ namespace IziHardGames.Asmdefs
         public string PathAbs { get; set; } = null!;
         public EntityAsmdef Asmdef { get; }
         public Device Device { get; }
+
+        public string GetFileName()
+        {
+            return new FileInfo(PathAbs).Name;
+        }
     }
 
     public class RelationAsmdef

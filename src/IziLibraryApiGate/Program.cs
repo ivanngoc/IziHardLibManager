@@ -5,6 +5,8 @@ using IziHardGames.IziLibrary.Commands.AtDataBase;
 using IziHardGames.Projects;
 using IziHardGames.Projects.DataBase;
 using IziLibrary.Database.DataBase.EfCore;
+using IziMetas.Application;
+using Metas.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -42,6 +44,7 @@ namespace IziLibraryApiGate
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGenWithSpecificOfIziHardGames();
             builder.Services.AddScoped<ICsproSearcher, CsprojSearcher>();
+            builder.Services.AddScoped<IMetaSearcher, MetaSearcher>();
             builder.Services.AddScoped<ICsprojProcessor, CsprojProcessor>();
             builder.Services.AddScoped<ICsprojSaver, CsprojSaver>();
             builder.Services.AddScoped<IAsmdefSearcher, AsmdefSearcher>();
@@ -64,6 +67,16 @@ namespace IziLibraryApiGate
 
             app.MapControllers();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<IziProjectsDbContext>();
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
+            }
 
             app.Run();
         }

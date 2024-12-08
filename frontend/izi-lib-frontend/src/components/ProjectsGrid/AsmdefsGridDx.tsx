@@ -1,16 +1,18 @@
 import { DataGrid } from 'devextreme-react'
 import React, { useEffect, useState } from 'react'
-import { CsprojDto } from '../../types/Dtos/CsprojDto'
 import { apiService } from '../../api/ApiForProjects'
-import { Column, FilterPanel, FilterRow, Search, SearchPanel } from 'devextreme-react/cjs/data-grid'
+import { Column, FilterPanel, FilterRow, Pager, Search, SearchPanel } from 'devextreme-react/cjs/data-grid'
 import 'devextreme/dist/css/dx.light.css';  // Import DevExtreme CSS
+import { AsmdefDto } from '../../types/Dtos/AsmdefDto'
+import { allowedPageSizes } from '../../shared/TableConfigs';
 // import 'devextreme/dist/css/dx.dark.css';  // Import DevExtreme CSS
 
-const ProjectsGridDx = () => {
-    const [datas, setDatas] = useState<CsprojDto[]>([]);
+
+const AsmdefsGridDx = () => {
+    const [datas, setDatas] = useState<AsmdefDto[]>([]);
 
     useEffect(() => {
-        apiService.getTableForProjects().then(x => {
+        apiService.getTableForAsmdefs().then(x => {
             if (x.isSome()) {
                 setDatas(x.unwrap());
             }
@@ -20,7 +22,7 @@ const ProjectsGridDx = () => {
 
     return (
         <div>
-            <h1>Csprojs</h1>
+            <h1>Asmdefs</h1>
             <DataGrid
                 dataSource={datas}
                 allowColumnResizing={true}>
@@ -33,6 +35,7 @@ const ProjectsGridDx = () => {
                 <Column dataField='Devices'></Column>
                 <Column dataField='Tags'></Column>
                 <SearchPanel visible={true} />
+                <Pager allowedPageSizes={allowedPageSizes} showNavigationButtons={true} showPageSizeSelector={true}></Pager>
                 {
                     // один большой фильтр
                     <FilterPanel visible={true}></FilterPanel>
@@ -46,4 +49,4 @@ const ProjectsGridDx = () => {
     )
 }
 
-export default ProjectsGridDx
+export default AsmdefsGridDx

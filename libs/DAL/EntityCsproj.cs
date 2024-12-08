@@ -15,6 +15,7 @@ namespace IziHardGames.DotNetProjects
         public ICollection<CsprojRelation> AsChild { get; set; } = null!;
         public ICollection<CsprojRelation> AsParent { get; set; } = null!;
         public ICollection<AsmdefXCsproj> AsmdefXCsprojs { get; set; } = null!;
+        public ICollection<EntityTag> Tags { get; set; } = null!;
     }
 
     public class CsprojRelationAtDevice
@@ -37,13 +38,5 @@ namespace IziHardGames.DotNetProjects
         public EntityCsproj? Child { get; set; }
         public DateTimeOffset? CheckDateTime { get; set; }
         public ICollection<CsprojRelationAtDevice> RelationsAtDevice { get; set; }
-    }
-
-    public enum ERelationType
-    {
-        Undefined,
-        None,
-        ParentChild,
-        ParentMissingChild,
     }
 }

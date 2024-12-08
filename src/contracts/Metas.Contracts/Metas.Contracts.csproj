@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>51c6495e-5fb3-4d25-b4f2-fff2d7136fd3</ProjectGuid>
+    <Tags>contracts;*.meta;</Tags>
+  </PropertyGroup>
+
+</Project>

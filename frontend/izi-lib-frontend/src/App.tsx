@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ProjectsGrid from './components/ProjectsGrid/ProjectsGridMui'
 import ProjectsGridDx from './components/ProjectsGrid/ProjectsGridDx'
+import MainPage from './components/MainPage/MainPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,7 +32,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       {/* <ProjectsGrid></ProjectsGrid> */}
-      <ProjectsGridDx></ProjectsGridDx>
+      <MainPage></MainPage>
     </>
   )
 }

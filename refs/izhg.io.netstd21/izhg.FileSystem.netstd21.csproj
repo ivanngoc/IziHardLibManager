@@ -8,6 +8,7 @@
     <RootNamespace>IziHardGames.ForFileSystem</RootNamespace>
     <Author>Tran Ngoc Anh</Author>
     <Company>IziHardGames</Company>
+    <Tags>refs</Tags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
     <DefineConstants>WINDOWS</DefineConstants>

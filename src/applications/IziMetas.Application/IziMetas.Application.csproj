@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ProjectGuid>e8370885-6952-4b10-a3c0-ec1904901f92</ProjectGuid>
+    <Tags>ddd-application</Tags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\DAL\DAL.csproj" />
+    <ProjectReference Include="..\..\contracts\Metas.Contracts\Metas.Contracts.csproj" />
+    <ProjectReference Include="..\..\domains\IziMeta.Domain\IziMeta.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

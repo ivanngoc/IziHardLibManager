@@ -8,7 +8,9 @@ namespace IziHardGames.Metas.Models
 {
     public class Meta
     {
+        public const string EXTENSION = ".meta";
         private readonly FileInfo fiMeta;
+        public string PathAbs => fiMeta.FullName;
         public Meta(FileInfo fiMeta)
         {
             this.fiMeta = fiMeta;
@@ -16,7 +18,7 @@ namespace IziHardGames.Metas.Models
 
         public static Meta? FromAsmdef(FileInfo fi)
         {
-            var name = fi.FullName + ".meta";
+            var name = fi.FullName + EXTENSION;
             var fiMeta = new FileInfo(name);
             if (fiMeta.Exists)
             {
@@ -42,6 +44,11 @@ namespace IziHardGames.Metas.Models
                 }
             }
             return null;
+        }
+
+        public bool TryGetAsdmefGuid()
+        {
+            throw new NotImplementedException();
         }
     }
 }

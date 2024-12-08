@@ -20,6 +20,7 @@ namespace IziLibrary.Database.DataBase.EfCore
         public DbSet<IziProject> Projects { get; set; }
         public DbSet<Device> Devices { get; set; }
         public DbSet<DeviceSettings> DeviceSettings { get; set; }
+        public DbSet<EntityPackageJson> PackageJsons { get; set; }
 
 
         // Unity3d Assembly defenitions
@@ -31,6 +32,9 @@ namespace IziLibrary.Database.DataBase.EfCore
 
         public DbSet<EntityMeta> Metas { get; set; }
         public DbSet<EntityMetaAtDevice> MetasAtDevice { get; set; }
+
+
+        public DbSet<EntityTag> Tags { get; set; }
 
         public IziProjectsDbContext(DbContextOptions<IziProjectsDbContext> opt) : base(opt)
         {
@@ -48,6 +52,7 @@ namespace IziLibrary.Database.DataBase.EfCore
                 x.HasKey(x => x.EntityCsprojId);
                 x.Property(x => x.EntityCsprojId).HasConversion<CsprojIdConverter>();
                 x.HasMany(x => x.CsProjectAtDevices).WithOne(x => x.EntityCsproj).HasForeignKey(x => x.EntityCsprojId);
+                x.HasMany(x => x.Tags).WithMany(x => x.Csprojs);
             });
 
             modelBuilder.Entity<CsProjectAtDevice>(x =>
@@ -86,6 +91,7 @@ namespace IziLibrary.Database.DataBase.EfCore
                 x.Property(x => x.MetaId).HasConversion<MetaIdConverterNullable>();
                 x.HasOne(x => x.Meta).WithOne(x => x.Asmdef).HasForeignKey<EntityAsmdef>(x => x.MetaId);
                 x.HasMany(x => x.AsmdefsAtDevice).WithOne(x => x.Asmdef).HasForeignKey(x => x.AsmdefId);
+                x.HasMany(x => x.Tags).WithMany(x => x.Asmdefs);
             });
 
             modelBuilder.Entity<EntityAsmdefAtDevice>(x =>
@@ -127,12 +133,28 @@ namespace IziLibrary.Database.DataBase.EfCore
             {
                 x.HasKey(x => x.MetaId);
                 x.Property(x => x.MetaId).HasConversion<MetaIdConverter>();
+                x.HasMany(x => x.Tags).WithMany(x => x.Metas);
             });
 
             modelBuilder.Entity<EntityMetaAtDevice>(x =>
             {
                 x.HasKey(x => new { x.DeviceId, x.MetaId });
                 x.Property(x => x.MetaId).HasConversion<MetaIdConverter>();
+                x.HasOne(x => x.Meta).WithMany(x => x.EntityMetaAtDevices).HasForeignKey(x => x.MetaId);
+                x.HasOne(x => x.Device).WithMany(x => x.Metas).HasForeignKey(x => x.DeviceId);
+            });
+
+            modelBuilder.Entity<EntityTag>(x =>
+            {
+                x.HasKey(x => x.TagId);
+                x.HasIndex(x => x.TagIdAlt).IsUnique().HasFilter($"\"{nameof(EntityTag.TagIdAlt)}\" IS NOT NULL ");
+                x.Property(x => x.TagIdAlt).HasConversion<TagIdConverterNullable>();
+            });
+
+            modelBuilder.Entity<EntityPackageJson>(x =>
+            {
+                x.HasKey(x => x.PackageJsonId);
+                x.Property(x => x.PackageJsonId).HasConversion<PackageJsonIdConverter>();
             });
         }
 
@@ -200,6 +222,7 @@ namespace IziLibrary.Database.DataBase.EfCore
 
         public ICollection<EntityAsmdefAtDevice> Asmdefs { get; set; } = null!;
         public ICollection<RelationAsmdefAtDevice> RelationsAsmdef { get; set; } = null!;
+        public ICollection<EntityMetaAtDevice> Metas { get; set; } = null!;
     }
 
     public class DeviceSettings
@@ -293,6 +316,46 @@ namespace IziLibrary.Database.DataBase.EfCore
             : base(
                 x => x.HasValue ? (Guid?)x.Value.Guid : null,
                 x => x.HasValue ? MetaId.Create(x.Value) : null)
+        {
+        }
+    }
+
+
+    internal class TagIdConverter : ValueConverter<TagId, Guid>
+    {
+        public TagIdConverter()
+            : base(
+                x => x.Guid,
+                x => TagId.Create(x))
+        {
+        }
+    }
+
+    internal class TagIdConverterNullable : ValueConverter<TagId?, Guid?>
+    {
+        public TagIdConverterNullable()
+            : base(
+                x => x.HasValue ? (Guid?)x.Value.Guid : null,
+                x => x.HasValue ? TagId.Create(x.Value) : null)
+        {
+        }
+    }
+    internal class PackageJsonIdConverter : ValueConverter<PackageJsonId, Guid>
+    {
+        public PackageJsonIdConverter()
+            : base(
+                x => x.Guid,
+                x => PackageJsonId.Create(x))
+        {
+        }
+    }
+
+    internal class PackageJsonIdConverterNullable : ValueConverter<PackageJsonId?, Guid?>
+    {
+        public PackageJsonIdConverterNullable()
+            : base(
+                x => x.HasValue ? (Guid?)x.Value.Guid : null,
+                x => x.HasValue ? PackageJsonId.Create(x.Value) : null)
         {
         }
     }

@@ -16,6 +16,13 @@ namespace IziHardGames.Asmdefs
         public static bool operator ==(MetaId left, MetaId right) => left.Guid == right.Guid;
         public static bool operator !=(MetaId left, MetaId right) => left.Guid != right.Guid;
 
+        public static bool operator ==(MetaId left, Guid right) => left.Guid == right;
+        public static bool operator !=(MetaId left, Guid right) => left.Guid != right;
+
+        public static bool operator ==(Guid left, MetaId right) => left == right.Guid;
+        public static bool operator !=(Guid left, MetaId right) => left != right.Guid;
+
+
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
